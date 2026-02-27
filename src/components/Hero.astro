@@ -1,0 +1,119 @@
+<section
+  class="relative w-full py-20 sm:py-32 min-h-screen flex flex-col justify-center"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full z-10 relative">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <!-- Texto -->
+      <div>
+        <h1
+          class="text-balance text-4xl font-semibold tracking-tight sm:text-6xl lg:text-6xl leading-[1.1]"
+          data-aos="fade-right"
+        >
+          Verificá cheques en <span class="text-accent bold">segundos</span>
+        </h1>
+
+        <p
+          class="mt-6 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl font-light"
+          data-aos="fade-right"
+          data-aos-delay="100"
+        >
+          Escaneá o ingresá los datos manualmente y obtené un resumen claro con
+          información oficial del BCRA y ARCA. Tomá decisiones informadas antes
+          de aceptar un cheque.
+        </p>
+
+        <!-- CTAs -->
+        <div
+          class="mt-10 flex flex-col gap-4 sm:flex-row"
+          data-aos="fade-right"
+          data-aos-delay="200"
+        >
+          <button
+            class="h-12 rounded-full bg-accent px-8 text-base font-medium text-accent-foreground shadow-[0_0_30px_-5px_var(--color-accent)] hover:shadow-[0_0_40px_-5px_var(--color-accent)] hover:bg-accent/90 transition-all duration-300"
+          >
+            Descargar en Android
+          </button>
+
+          <button
+            class="h-12 rounded-full border border-white/20 px-8 text-base font-medium hover:bg-white/5 transition-all duration-300"
+          >
+            Descargar en iOS
+          </button>
+        </div>
+
+        <!-- Features -->
+        <div
+          class="mt-16 flex flex-wrap items-center gap-8 text-white/60"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <div
+            class="flex items-center gap-3 text-sm font-medium tracking-wide string"
+          >
+            <svg
+              class="h-5 w-5 text-accent"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            DATOS OFICIALES BCRA
+          </div>
+
+          <div
+            class="flex items-center gap-3 text-sm font-medium tracking-wide"
+          >
+            <svg
+              class="h-5 w-5 text-accent"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+              ></path>
+            </svg>
+            CONEXIÓN CON ARCA
+          </div>
+        </div>
+      </div>
+      <!-- Imagen -->
+      <div
+        class="relative flex items-center justify-center h-[70vh] lg:h-auto mt-10 lg:mt-0"
+        data-aos="fade-left"
+        data-aos-duration="1000"
+      >
+        <div
+          class="relative mx-auto max-w-sm h-full flex items-center justify-center lg:-translate-y-12"
+        >
+          <!-- Glow -->
+          <div
+            class="absolute -inset-6 rounded-full bg-accent/20 blur-[80px] pointer-events-none"
+          >
+          </div>
+
+          <!-- Imagen de atrás (MUY expuesta) -->
+          <img
+            src="hero1.webp"
+            alt="ChequeAR App Screenshot secundaria"
+            class="absolute rounded-[2.5rem] shadow-2xl h-full lg:max-h-[700px] object-contain
+                            -rotate-12 -translate-x-16 translate-y-8
+                            opacity-60 hover:opacity-100 animate-float animation-delay-600 transition-opacity duration-500"
+          />
+
+          <!-- Imagen principal -->
+          <img
+            src="hero2.webp"
+            alt="ChequeAR App Screenshot"
+            class="relative rounded-[2.5rem] shadow-2xl h-full lg:max-h-[700px] object-contain
+                            animate-float rotate-6 hover:rotate-2 transition-transform duration-500 border border-white/10"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
