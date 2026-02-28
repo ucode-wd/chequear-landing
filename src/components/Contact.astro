@@ -149,7 +149,7 @@
                 data-aos="fade-left"
                 data-aos-delay="200"
             >
-                <form class="space-y-10" method="post" action="/contact">
+                <form id="contact-form" class="space-y-6">
                     <div class="relative group">
                         <input
                             id="name"
@@ -157,11 +157,11 @@
                             type="text"
                             placeholder="Nombre completo"
                             required
-                            class="peer w-full border-0 border-b border-white/20 bg-transparent px-0 py-4 text-lg font-light text-white placeholder:text-transparent focus:border-accent focus:ring-0 transition-colors"
+                            class="peer w-full rounded-2xl border border-white/10 bg-white/5 px-6 pt-7 pb-3 text-base font-light text-white placeholder:text-transparent focus:border-accent focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all shadow-sm"
                         />
                         <label
                             for="name"
-                            class="absolute left-0 -top-5 text-sm font-light text-white/50 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-white/40 peer-placeholder-shown:top-4 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-accent pointer-events-none"
+                            class="absolute left-6 top-2 text-xs font-medium text-white/50 transition-all pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-focus:top-2 peer-focus:text-xs peer-focus:font-medium peer-focus:text-accent"
                             >Nombre completo</label
                         >
                     </div>
@@ -173,25 +173,20 @@
                             type="email"
                             placeholder="Email"
                             required
-                            class="peer w-full border-0 border-b border-white/20 bg-transparent px-0 py-4 text-lg font-light text-white placeholder:text-transparent focus:border-accent focus:ring-0 transition-colors"
+                            class="peer w-full rounded-2xl border border-white/10 bg-white/5 px-6 pt-7 pb-3 text-base font-light text-white placeholder:text-transparent focus:border-accent focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all shadow-sm"
                         />
                         <label
                             for="email"
-                            class="absolute left-0 -top-5 text-sm font-light text-white/50 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-white/40 peer-placeholder-shown:top-4 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-accent pointer-events-none"
+                            class="absolute left-6 top-2 text-xs font-medium text-white/50 transition-all pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-focus:top-2 peer-focus:text-xs peer-focus:font-medium peer-focus:text-accent"
                             >Email</label
                         >
                     </div>
 
-                    <div class="relative pt-2">
-                        <label
-                            for="subject"
-                            class="absolute left-0 -top-3 text-sm font-light text-white/50 pointer-events-none"
-                            >Motivo</label
-                        >
+                    <div class="relative group">
                         <select
                             id="subject"
                             name="subject"
-                            class="w-full border-0 border-b border-white/20 bg-transparent px-0 py-4 text-lg font-light text-white focus:border-accent focus:ring-0 transition-colors bg-none appearance-none cursor-pointer [&>option]:bg-[#0d0914] [&>option]:text-white"
+                            class="peer w-full rounded-2xl border border-white/10 bg-white/5 px-6 pt-7 pb-3 text-base font-light text-white focus:border-accent focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all shadow-sm appearance-none cursor-pointer [&>option]:bg-[#0d0914] [&>option]:text-white"
                         >
                             <option value="general">Consulta general</option>
                             <option value="negociacion"
@@ -203,57 +198,96 @@
                             <option value="queja">Queja / Reclamo</option>
                             <option value="soporte">Soporte técnico</option>
                         </select>
+                        <label
+                            for="subject"
+                            class="absolute left-6 top-2 text-xs font-medium text-white/50 transition-all pointer-events-none peer-focus:text-accent"
+                            >Motivo</label
+                        >
                         <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white/40"
+                            class="pointer-events-none absolute inset-y-0 right-4 flex items-center px-2 text-white/40"
                         >
                             <svg
-                                class="h-4 w-4"
+                                class="h-5 w-5"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
                                 stroke-width="2"
-                                ><path d="M19 9l-7 7-7-7"></path></svg
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M19 9l-7 7-7-7"></path></svg
                             >
                         </div>
                     </div>
 
                     <!-- Empresa (oculto por defecto) -->
-                    <div id="company-field" class="hidden relative mt-10">
+                    <div id="company-field" class="hidden relative group mt-6">
                         <input
                             id="company"
                             name="company"
                             type="text"
                             placeholder="Empresa"
-                            class="peer w-full border-0 border-b border-white/20 bg-transparent px-0 py-4 text-lg font-light text-white placeholder:text-transparent focus:border-accent focus:ring-0 transition-colors"
+                            class="peer w-full rounded-2xl border border-white/10 bg-white/5 px-6 pt-7 pb-3 text-base font-light text-white placeholder:text-transparent focus:border-accent focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all shadow-sm"
                         />
                         <label
                             for="company"
-                            class="absolute left-0 -top-5 text-sm font-light text-white/50 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-white/40 peer-placeholder-shown:top-4 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-accent pointer-events-none"
+                            class="absolute left-6 top-2 text-xs font-medium text-white/50 transition-all pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-focus:top-2 peer-focus:text-xs peer-focus:font-medium peer-focus:text-accent"
                             >Empresa</label
                         >
                     </div>
 
-                    <div class="relative mt-10">
+                    <div class="relative group mt-6">
                         <textarea
                             id="message"
                             name="message"
                             rows="4"
                             placeholder="Mensaje"
-                            class="peer w-full border-0 border-b border-white/20 bg-transparent px-0 py-4 text-lg font-light text-white placeholder:text-transparent focus:border-accent focus:ring-0 transition-colors resize-y min-h-[120px]"
+                            class="peer w-full rounded-2xl border border-white/10 bg-white/5 px-6 pt-7 pb-3 text-base font-light text-white placeholder:text-transparent focus:border-accent focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all resize-y min-h-[140px] shadow-sm"
                         ></textarea>
                         <label
                             for="message"
-                            class="absolute left-0 -top-5 text-sm font-light text-white/50 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-white/40 peer-placeholder-shown:top-4 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-accent pointer-events-none"
+                            class="absolute left-6 top-2 text-xs font-medium text-white/50 transition-all pointer-events-none peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:font-light peer-focus:top-2 peer-focus:text-xs peer-focus:font-medium peer-focus:text-accent"
                             >Mensaje</label
                         >
                     </div>
 
                     <button
+                        id="submit-button"
                         type="submit"
-                        class="w-full h-14 rounded-full bg-accent text-accent-foreground text-base font-medium shadow-[0_0_30px_-5px_var(--color-accent)] hover:shadow-[0_0_40px_-5px_var(--color-accent)] hover:bg-accent/90 transition-all duration-300 mt-8"
+                        class="relative w-full h-14 rounded-full bg-accent text-accent-foreground text-base font-medium shadow-[0_0_30px_-5px_var(--color-accent)] hover:shadow-[0_0_40px_-5px_var(--color-accent)] hover:bg-accent/90 transition-all duration-300 mt-8 disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden"
                     >
-                        Enviar mensaje
+                        <span id="button-text">Enviar mensaje</span>
+                        <div
+                            id="button-spinner"
+                            class="absolute inset-0 hidden items-center justify-center"
+                        >
+                            <svg
+                                class="animate-spin h-5 w-5 text-accent-foreground"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    class="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path
+                                    class="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                ></path>
+                            </svg>
+                        </div>
                     </button>
+                    <!-- Form Message Container -->
+                    <div
+                        id="form-message"
+                        class="hidden mt-4 text-center text-sm font-medium transition-all duration-300"
+                    >
+                    </div>
                 </form>
             </div>
         </div>
@@ -261,7 +295,12 @@
 
     <!-- Script funcional -->
     <script>
+        import emailjs from "@emailjs/browser";
+
         document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById(
+                "contact-form",
+            ) as HTMLFormElement | null;
             const subjectSelect = document.getElementById(
                 "subject",
             ) as HTMLSelectElement | null;
@@ -269,6 +308,16 @@
             const companyInput = document.getElementById(
                 "company",
             ) as HTMLInputElement | null;
+            const submitButton = document.getElementById(
+                "submit-button",
+            ) as HTMLButtonElement | null;
+            const buttonText = document.getElementById("button-text");
+            const buttonSpinner = document.getElementById("button-spinner");
+            const formMessage = document.getElementById("form-message");
+
+            emailjs.init({
+                publicKey: "eFPWngjeXPb2n3PuI",
+            });
 
             function toggleCompanyField() {
                 if (subjectSelect?.value === "negociacion") {
@@ -283,6 +332,52 @@
 
             subjectSelect?.addEventListener("change", toggleCompanyField);
             toggleCompanyField();
+
+            form?.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                if (
+                    !submitButton ||
+                    !buttonText ||
+                    !buttonSpinner ||
+                    !formMessage
+                )
+                    return;
+
+                // Loading state
+                submitButton.disabled = true;
+                buttonText.classList.add("hidden");
+                buttonSpinner.classList.remove("hidden");
+                buttonSpinner.classList.add("flex");
+                formMessage.classList.add("hidden");
+                formMessage.textContent = "";
+                formMessage.className =
+                    "hidden mt-4 text-center text-sm font-medium";
+
+                emailjs
+                    .sendForm("service_5oar7hb", "template_y6ezqlm", form)
+                    .then(() => {
+                        form.reset();
+                        toggleCompanyField();
+                        formMessage.textContent =
+                            "¡Mensaje enviado correctamente! Nos pondremos en contacto a la brevedad.";
+                        formMessage.classList.remove("hidden");
+                        formMessage.classList.add("text-emerald-400");
+                    })
+                    .catch((error) => {
+                        console.error("FAILED...", error);
+                        formMessage.textContent =
+                            "Ocurrió un error al enviar el mensaje. Por favor, intentá nuevamente más tarde.";
+                        formMessage.classList.remove("hidden");
+                        formMessage.classList.add("text-red-400");
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        buttonText.classList.remove("hidden");
+                        buttonSpinner.classList.add("hidden");
+                        buttonSpinner.classList.remove("flex");
+                    });
+            });
         });
     </script>
 </section>

@@ -1,7 +1,8 @@
 <header class="fixed inset-x-0 top-0 z-50">
     <!-- Wrapper con fondo sutil -->
     <div
-        class="header-scroll-glass border-b border-primary-foreground/5 bg-primary/30 backdrop-blur-md"
+        class="header-scroll-glass relative z-50 border-b border-white/5 bg-primary/40 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300"
+        id="header-nav"
     >
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
@@ -19,12 +20,12 @@
                     />
                     <span class="flex flex-col leading-tight">
                         <span
-                            class="text-lg sm:text-xl font-bold tracking-tight text-primary-foreground"
+                            class="text-lg sm:text-xl font-bold tracking-tight text-white"
                         >
                             Cheque<span class="text-accent">AR</span>
                         </span>
                         <span
-                            class="hidden sm:block text-xs font-medium text-primary-foreground/70 -mt-0.5"
+                            class="hidden sm:block text-xs font-medium text-white/50 -mt-0.5"
                         >
                             Verificá cheques en segundos
                         </span>
@@ -37,22 +38,16 @@
                     aria-label="Main navigation"
                 >
                     <a
-                        href="#features"
-                        class="text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                        href="#como-funciona"
+                        class="text-sm font-medium text-white/60 hover:text-accent transition-colors duration-300"
                     >
                         Cómo funciona
                     </a>
                     <a
-                        href="#pricing"
-                        class="text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                        href="#contacto"
+                        class="text-sm font-medium text-white/60 hover:text-accent transition-colors duration-300"
                     >
-                        Planes
-                    </a>
-                    <a
-                        href="#faq"
-                        class="text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors"
-                    >
-                        FAQ
+                        Contacto
                     </a>
                 </nav>
 
@@ -61,7 +56,7 @@
                     <!-- CTA desktop -->
                     <a
                         href="#download"
-                        class="hidden sm:inline-flex h-9 items-center justify-center rounded-full bg-primary-foreground px-5 text-sm font-semibold text-primary shadow-sm hover:bg-primary-foreground/90 transition-colors"
+                        class="hidden sm:inline-flex h-10 items-center justify-center rounded-full bg-white/10 border border-white/20 px-6 text-sm font-medium text-white hover:bg-white/20 transition-colors duration-300"
                     >
                         Descargar App
                     </a>
@@ -69,13 +64,13 @@
                     <!-- Mobile menu button -->
                     <button
                         id="mobile-menu-button"
-                        class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20 transition-colors sm:hidden"
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-colors duration-300 md:hidden relative z-50"
                         aria-controls="mobile-menu"
                         aria-expanded="false"
                         aria-label="Abrir menú"
                     >
                         <svg
-                            class="h-5 w-5"
+                            class="h-5 w-5 menu-icon-open"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
@@ -87,47 +82,62 @@
                                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                             ></path>
                         </svg>
+                        <svg
+                            class="h-5 w-5 menu-icon-close absolute inset-0 m-auto hidden"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden">
+    <!-- Mobile menu Fullscreen Overlay -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden fixed inset-0 z-40 bg-primary/40 backdrop-blur-2xl backdrop-saturate-150 flex-col justify-center items-center h-screen px-6 transition-opacity duration-300 opacity-0"
+    >
+        <!-- Glows de fondo para el menu móvil -->
         <div
-            class="border-t border-primary-foreground/10 bg-primary/95 backdrop-blur-xl px-4 py-6"
+            class="absolute top-1/4 -left-32 w-64 h-64 bg-accent/20 rounded-full blur-[100px] pointer-events-none"
         >
-            <nav class="flex flex-col gap-4">
-                <a
-                    href="#features"
-                    class="rounded-xl px-4 py-3 text-base font-medium text-primary-foreground/80 hover:bg-primary-foreground/10 hover:text-primary-foreground transition-colors"
-                >
-                    Cómo funciona
-                </a>
-                <a
-                    href="#pricing"
-                    class="rounded-xl px-4 py-3 text-base font-medium text-primary-foreground/80 hover:bg-primary-foreground/10 hover:text-primary-foreground transition-colors"
-                >
-                    Planes
-                </a>
-                <a
-                    href="#faq"
-                    class="rounded-xl px-4 py-3 text-base font-medium text-primary-foreground/80 hover:bg-primary-foreground/10 hover:text-primary-foreground transition-colors"
-                >
-                    FAQ
-                </a>
-
-                <div class="mt-4 border-t border-primary-foreground/10 pt-6">
-                    <a
-                        href="#download"
-                        class="flex h-12 w-full items-center justify-center rounded-xl bg-primary-foreground text-base font-semibold text-primary hover:bg-primary-foreground/90 transition-colors"
-                    >
-                        Descargar App
-                    </a>
-                </div>
-            </nav>
         </div>
+        <div
+            class="absolute bottom-1/4 -right-32 w-64 h-64 bg-accent/20 rounded-full blur-[100px] pointer-events-none"
+        >
+        </div>
+
+        <nav
+            class="flex flex-col gap-10 items-center text-center relative z-10 w-full"
+        >
+            <a
+                href="#como-funciona"
+                class="mobile-link text-3xl sm:text-4xl font-light text-white/70 hover:text-accent transition-colors duration-300"
+            >
+                Cómo funciona
+            </a>
+            <a
+                href="#contacto"
+                class="mobile-link text-3xl sm:text-4xl font-light text-white/70 hover:text-accent transition-colors duration-300"
+            >
+                Contacto
+            </a>
+
+            <a
+                href="#download"
+                class="mobile-link mt-8 w-full max-w-[280px] flex mx-auto h-14 items-center justify-center rounded-full bg-accent text-lg font-medium text-accent-foreground shadow-[0_0_30px_-5px_var(--color-accent)] hover:shadow-[0_0_40px_-5px_var(--color-accent)] hover:bg-accent/90 transition-all duration-300"
+            >
+                Descargar App
+            </a>
+        </nav>
     </div>
 </header>
 
@@ -135,8 +145,9 @@
     @supports (animation-timeline: scroll()) {
         .header-scroll-glass {
             background-color: transparent;
-            backdrop-filter: blur(0px);
+            backdrop-filter: blur(0px) saturate(100%);
             border-bottom-color: transparent;
+            box-shadow: none;
 
             animation: header-scroll linear both;
             animation-timeline: scroll();
@@ -145,9 +156,12 @@
 
         @keyframes header-scroll {
             to {
-                background-color: oklch(0.28 0.08 255 / 0.85);
-                backdrop-filter: blur(16px);
-                border-bottom-color: oklch(0.99 0 0 / 0.1);
+                background-color: rgba(13, 9, 20, 0.4);
+                backdrop-filter: blur(24px) saturate(150%);
+                border-bottom-color: rgba(255, 255, 255, 0.1);
+                box-shadow:
+                    0 10px 40px -10px rgba(0, 0, 0, 0.5),
+                    inset 0 -1px 0 0 rgba(255, 255, 255, 0.05); /* Outer shadow + inner glow edge */
             }
         }
     }
@@ -157,25 +171,72 @@
     (function () {
         const menuBtn = document.getElementById("mobile-menu-button");
         const mobileMenu = document.getElementById("mobile-menu");
-        if (!menuBtn || !mobileMenu) return;
+        const headerNav = document.getElementById("header-nav");
+        const iconOpen = menuBtn?.querySelector(".menu-icon-open");
+        const iconClose = menuBtn?.querySelector(".menu-icon-close");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
 
-        const openIcon = `
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-        </svg>
-    `;
+        if (!menuBtn || !mobileMenu || !headerNav) return;
 
-        const closeIcon = `
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-    `;
+        function toggleMenu() {
+            const isClosing = !mobileMenu.classList.contains("hidden");
 
-        menuBtn.addEventListener("click", () => {
-            const isOpen = !mobileMenu.classList.contains("hidden");
-            mobileMenu.classList.toggle("hidden");
-            menuBtn.setAttribute("aria-expanded", String(!isOpen));
-            menuBtn.innerHTML = isOpen ? openIcon : closeIcon;
+            if (isClosing) {
+                // Cerrar menú
+                mobileMenu.classList.remove("opacity-100");
+                mobileMenu.classList.add("opacity-0");
+
+                setTimeout(() => {
+                    mobileMenu.classList.add("hidden");
+                    mobileMenu.classList.remove("flex");
+                }, 300); // Esperar la transición
+
+                menuBtn.setAttribute("aria-expanded", "false");
+                iconClose?.classList.add("hidden");
+                iconOpen?.classList.remove("hidden");
+
+                document.body.style.overflow = "";
+                // Restaurar fondo del header
+                headerNav.classList.remove(
+                    "bg-transparent",
+                    "backdrop-blur-none",
+                    "border-transparent",
+                );
+            } else {
+                // Abrir menú
+                mobileMenu.classList.remove("hidden");
+                mobileMenu.classList.add("flex");
+
+                // Pequeño timeout para que se aplique la clase flex antes de iniciar transición
+                setTimeout(() => {
+                    mobileMenu.classList.remove("opacity-0");
+                    mobileMenu.classList.add("opacity-100");
+                }, 10);
+
+                menuBtn.setAttribute("aria-expanded", "true");
+                iconOpen?.classList.add("hidden");
+                iconClose?.classList.remove("hidden");
+
+                document.body.style.overflow = "hidden"; // Bloquear scroll
+                // Quitar fondo del header para que no choque con el blur total
+                headerNav.classList.add(
+                    "bg-transparent",
+                    "backdrop-blur-none",
+                    "border-transparent",
+                );
+            }
+        }
+
+        menuBtn.addEventListener("click", toggleMenu);
+
+        // Cerrar menú al hacer clic en un link interno
+        mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                // Solo si está abierto
+                if (!mobileMenu.classList.contains("hidden")) {
+                    toggleMenu();
+                }
+            });
         });
     })();
 </script>

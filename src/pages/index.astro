@@ -15,12 +15,71 @@ import Footer from "../components/Footer.astro";
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>ChequeAR - Verificá Cheques en segundos</title>
+        <title>
+            ChequeAR - Consultá Cheques Rechazados y Análisis de Riesgo
+        </title>
+        <meta
+            name="description"
+            content="¿Querés saber si un cheque tiene fondos? Consultá cheques rechazados en Argentina y realizá un análisis de riesgo de cheques al instante consultando las bases oficiales del BCRA."
+        />
+        <meta
+            property="og:title"
+            content="ChequeAR - Análisis de riesgo de cheques y fondos"
+        />
+        <meta
+            property="og:description"
+            content="Verificá el riesgo de cheque y consultá pagos rechazados rápidamente en tu celular."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="es_AR" />
+        <link rel="canonical" href="https://chequear.vercel.app/" />
         <!-- AOS CSS -->
         <link
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
             rel="stylesheet"
         />
+        <!-- Schema Data: Software & FAQ -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": ["SoftwareApplication", "FAQPage"],
+                "name": "ChequeAR",
+                "applicationCategory": "FinanceApplication",
+                "operatingSystem": "iOS, Android",
+                "description": "Aplicación para el análisis de riesgo crediticio y consultas online de cheques rechazados en el Banco Central de la República Argentina.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "ARS"
+                },
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "¿Cómo saber si un cheque tiene fondos?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Con ChequeAR podés escanear el cheque y nuestra app consulta instantáneamente las bases de datos oficiales del BCRA y ARCA para informarte si existen fondos o si el emisor tiene antecedentes de riesgo crediticio."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "¿Cómo consultar cheques rechazados en Argentina?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Ingresando el número de CUIT o escaneando un cheque en la aplicación ChequeAR, obtendrás al instante el historial completo de cheques rechazados registrados en el Banco Central o Central de Deudores."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "¿Qué implica el análisis de riesgo de cheques?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Consiste en evaluar el historial financiero del emisor cruzando datos oficiales. Esto te ayuda a prevenir fraudes y saber el verdadero riesgo antes de aceptar un pago diferido."
+                        }
+                    }
+                ]
+            }
+        </script>
     </head>
     <body
         class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-primary text-primary-foreground"
