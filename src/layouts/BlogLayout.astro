@@ -1,0 +1,316 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+import { getCollection } from "astro:content";
+
+interface Props {
+  title: string;
+  slug: string;
+  description: string;
+  keyword: string;
+  category: string;
+  cluster: string;
+  tags: string[];
+  date: string;
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const {
+  title,
+  slug,
+  description,
+  keyword,
+  category,
+  cluster,
+  tags,
+  date,
+  headings,
+} = Astro.props;
+
+const canonicalURL = `https://chequearapp.com.ar/blog/${slug}`;
+
+// --- Interlinking logic ---
+const allPosts = await getCollection("blog");
+const currentSlug = slug;
+
+// 1 pilar del mismo cluster
+const clusterPilar = allPosts.find(
+  (p) =>
+    p.data.slug !== currentSlug &&
+    p.data.cluster === cluster &&
+    p.data.category === "pilar"
+);
+
+// 2 artículos relacionados (mismo cluster, distinto del pilar encontrado)
+const relatedArticles = allPosts
+  .filter(
+    (p) =>
+      p.data.slug !== currentSlug &&
+      p.data.slug !== clusterPilar?.data.slug &&
+      (p.data.cluster === cluster ||
+        p.data.tags.some((t: string) => tags.includes(t)))
+  )
+  .slice(0, 2);
+
+// Guía principal
+const mainGuide = allPosts.find(
+  (p) => p.data.slug === "guia-cheques-argentina"
+);
+
+const relatedLinks = [
+  ...(clusterPilar ? [clusterPilar] : []),
+  ...relatedArticles,
+  ...(mainGuide && mainGuide.data.slug !== currentSlug ? [mainGuide] : []),
+];
+
+// --- TOC from headings ---
+const tocItems = headings.filter((h) => h.depth <= 3);
+
+// --- Schema Markup ---
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description: description,
+  datePublished: date,
+  author: {
+    "@type": "Organization",
+    name: "ChequeAR",
+    url: "https://chequearapp.com.ar",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "ChequeAR",
+    url: "https://chequearapp.com.ar",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonicalURL,
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: "https://chequearapp.com.ar",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://chequearapp.com.ar/blog",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: title,
+      item: canonicalURL,
+    },
+  ],
+};
+
+const categoryLabel =
+  category === "pilar"
+    ? "Guía Completa"
+    : category === "educativo"
+      ? "Artículo Educativo"
+      : "Consulta Práctica";
+
+const categoryColor =
+  category === "pilar"
+    ? "bg-accent/20 text-accent"
+    : category === "educativo"
+      ? "bg-blue-500/20 text-blue-400"
+      : "bg-amber-500/20 text-amber-400";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | ChequeAR</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keyword} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${title} | ChequeAR`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="es_AR" />
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(breadcrumbSchema)}
+    />
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-primary text-primary-foreground"
+  >
+    <!-- Background gradient -->
+    <div
+      class="fixed inset-0 pointer-events-none -z-50 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/10 via-primary to-primary"
+    >
+    </div>
+
+    <Header />
+
+    <main class="relative z-10 w-full flex flex-col items-center overflow-hidden">
+      <article class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-white/40 mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-accent transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/blog" class="hover:text-accent transition-colors">Blog</a>
+          <span>/</span>
+          <span class="text-white/60 truncate max-w-[200px]">{title}</span>
+        </nav>
+
+        <!-- Category Badge + Date -->
+        <div class="flex items-center gap-3 mb-6">
+          <span class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${categoryColor}`}>
+            {categoryLabel}
+          </span>
+          <time class="text-sm text-white/40" datetime={date}>
+            {new Date(date).toLocaleDateString("es-AR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+        </div>
+
+        <!-- H1 -->
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-10">
+          {title}
+        </h1>
+
+        <!-- Table of Contents -->
+        {tocItems.length > 0 && (
+          <nav class="mb-14 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 backdrop-blur-md shadow-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            </div>
+            <div class="relative z-10">
+               <h2 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-accent/20 text-accent shadow-inner border border-accent/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                </span>
+                Contenido
+              </h2>
+              <ul class="space-y-3">
+                {tocItems.map((item) => (
+                  <li class={`${item.depth === 2 ? "" : "ml-6"}`}>
+                    <a
+                      href={`#${item.slug}`}
+                      class="group/link flex items-center gap-2 text-base text-white/70 hover:text-accent transition-all duration-300 hover:translate-x-1"
+                    >
+                      {item.depth === 2 && (
+                        <span class="w-1.5 h-1.5 rounded-full bg-white/20 group-hover/link:bg-accent transition-colors duration-300" />
+                      )}
+                      {item.depth === 3 && (
+                        <span class="text-white/30 text-xs">└</span>
+                      )}
+                      <span>{item.text}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+        )}
+
+        <!-- Article Content -->
+        <div class="prose prose-invert prose-lg md:prose-xl max-w-none
+          [&>h2]:text-2xl md:[&>h2]:text-3xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mt-16 [&>h2]:mb-8 [&>h2]:pb-4 [&>h2]:border-b [&>h2]:border-white/10
+          [&>h3]:text-xl md:[&>h3]:text-2xl [&>h3]:font-semibold [&>h3]:text-white/90 [&>h3]:mt-12 [&>h3]:mb-6
+          [&>p]:text-white/80 [&>p]:leading-relaxed [&>p]:mb-8 [&>p]:tracking-wide
+          [&>ul]:text-white/80 [&>ul]:space-y-3 [&>ul]:mb-8 [&>ul]:ml-4 [&>ul>li]:marker:text-accent
+          [&>ol]:text-white/80 [&>ol]:space-y-3 [&>ol]:mb-8 [&>ol]:ml-4 [&>ol>li]:marker:text-accent [&>ol>li]:marker:font-semibold
+          [&>li]:text-white/80 [&>li]:leading-relaxed
+          [&>blockquote]:border-l-4 [&>blockquote]:border-accent [&>blockquote]:bg-gradient-to-r [&>blockquote]:from-accent/5 [&>blockquote]:to-transparent [&>blockquote]:rounded-r-2xl [&>blockquote]:py-6 [&>blockquote]:px-8 [&>blockquote]:my-10 [&>blockquote]:italic [&>blockquote]:text-white/90 [&>blockquote]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]
+          [&>strong]:text-white [&>strong]:font-semibold
+          [&>a]:text-accent [&>a]:font-medium [&>a]:underline [&>a]:underline-offset-4 [&>a]:decoration-accent/30 hover:[&>a]:decoration-accent [&>a]:transition-colors
+          [&_strong]:text-white [&_strong]:font-semibold
+          [&_a]:text-accent [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-accent/30 hover:[&_a]:decoration-accent [&_a]:transition-colors
+          [&>img]:rounded-3xl [&>img]:border [&>img]:border-white/10 [&>img]:shadow-2xl [&>img]:my-12
+          [&>pre]:rounded-2xl [&>pre]:border [&>pre]:border-white/10 [&>pre]:shadow-2xl [&>pre]:my-10 [&>pre]:p-6
+          [&>code]:bg-white/10 [&>code]:rounded-lg [&>code]:px-1.5 [&>code]:py-0.5 [&>code]:text-accent/90"
+        >
+          <slot />
+        </div>
+
+        <!-- Soft CTA -->
+        <div class="mt-16 p-8 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20">
+          <h2 class="text-xl font-semibold text-white mb-3">
+            ¿Vas a aceptar un cheque? Verificalo antes
+          </h2>
+          <p class="text-white/60 mb-6 leading-relaxed">
+            Con ChequeAR podés analizar el riesgo de un cheque en segundos.
+            Consultá el historial del emisor, cheques rechazados y más,
+            directamente desde tu celular.
+          </p>
+          <a
+            href="/#download"
+            class="inline-flex h-12 items-center justify-center rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground shadow-[0_0_30px_-5px_var(--color-accent)] hover:shadow-[0_0_40px_-5px_var(--color-accent)] hover:bg-accent/90 transition-all duration-300"
+          >
+            Descargar ChequeAR gratis
+          </a>
+        </div>
+
+        <!-- Related Articles -->
+        {relatedLinks.length > 0 && (
+          <div class="mt-16">
+            <h2 class="text-xl font-semibold text-white mb-6">
+              Artículos relacionados
+            </h2>
+            <div class="grid gap-4 sm:grid-cols-2">
+              {relatedLinks.map((post) => (
+                <a
+                  href={`/blog/${post.data.slug}`}
+                  class="group p-5 rounded-xl bg-white/5 border border-white/10 hover:border-accent/30 hover:bg-white/8 transition-all duration-300"
+                >
+                  <span class="text-sm font-medium text-white group-hover:text-accent transition-colors">
+                    {post.data.title}
+                  </span>
+                  <p class="text-xs text-white/40 mt-2 line-clamp-2">
+                    {post.data.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </article>
+    </main>
+
+    <Footer />
+
+    <!-- AOS JS -->
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script is:inline>
+      AOS.init({ duration: 800, once: true, offset: 50 });
+    </script>
+  </body>
+</html>

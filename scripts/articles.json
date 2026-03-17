@@ -1,0 +1,723 @@
+[
+  {
+    "slug": "guia-cheques-argentina",
+    "title": "Guía completa sobre cheques en Argentina",
+    "keyword": "cheques en Argentina",
+    "description": "Todo lo que necesitás saber sobre cheques en Argentina: tipos, plazos, endoso, riesgos y cómo verificar antes de aceptar.",
+    "category": "pilar",
+    "cluster": "verificar-cheque",
+    "tags": ["cheques", "argentina", "guía", "verificación"]
+  },
+  {
+    "slug": "cheque-rechazado-que-significa",
+    "title": "¿Qué significa un cheque rechazado y qué podés hacer?",
+    "keyword": "cheque rechazado qué significa",
+    "description": "Descubrí qué implica un cheque rechazado en Argentina, las causas más comunes y los pasos a seguir para reclamar.",
+    "category": "pilar",
+    "cluster": "cheque-rechazado",
+    "tags": ["cheque rechazado", "rechazo", "BCRA", "reclamo"]
+  },
+  {
+    "slug": "verificar-cheque-antes-aceptar",
+    "title": "Cómo verificar un cheque antes de aceptarlo",
+    "keyword": "verificar cheque antes de aceptarlo",
+    "description": "Pasos concretos para verificar un cheque antes de aceptarlo: consultas al BCRA, historial del emisor y señales de alerta.",
+    "category": "pilar",
+    "cluster": "verificar-cheque",
+    "tags": ["verificar cheque", "aceptar cheque", "BCRA", "análisis"]
+  },
+  {
+    "slug": "cheque-pago-diferido-explicado",
+    "title": "Cheque de pago diferido: qué es, plazos y riesgos",
+    "keyword": "cheque de pago diferido",
+    "description": "Guía completa sobre el cheque de pago diferido en Argentina: qué es, cómo funciona, plazos legales y riesgos al aceptar.",
+    "category": "pilar",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["cheque diferido", "pago diferido", "plazos", "financiamiento"]
+  },
+  {
+    "slug": "consultar-cheques-rechazados-bcra",
+    "title": "Cómo consultar cheques rechazados en el BCRA",
+    "keyword": "consultar cheques rechazados BCRA",
+    "description": "Paso a paso para consultar cheques rechazados en las bases del BCRA y la Central de Deudores en Argentina.",
+    "category": "pilar",
+    "cluster": "cheque-rechazado",
+    "tags": ["BCRA", "cheques rechazados", "consulta", "central de deudores"]
+  },
+  {
+    "slug": "riesgos-aceptar-cheques-terceros",
+    "title": "Riesgos de aceptar cheques de terceros",
+    "keyword": "riesgos aceptar cheques de terceros",
+    "description": "Conocé los principales riesgos de aceptar cheques endosados por terceros y cómo proteger tu negocio.",
+    "category": "pilar",
+    "cluster": "riesgo-cheques",
+    "tags": ["terceros", "endoso", "riesgo", "fraude"]
+  },
+  {
+    "slug": "cheque-comun-vs-diferido",
+    "title": "Cheque común vs cheque de pago diferido: diferencias clave",
+    "keyword": "cheque común vs diferido",
+    "description": "Comparación entre cheque común y cheque de pago diferido en Argentina: plazos, usos y cuál conviene más.",
+    "category": "pilar",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["cheque común", "cheque diferido", "comparación", "plazos"]
+  },
+  {
+    "slug": "echeq-cheque-electronico",
+    "title": "ECHEQ: guía del cheque electrónico en Argentina",
+    "keyword": "ECHEQ cheque electrónico",
+    "description": "Qué es el ECHEQ, cómo funciona, ventajas frente al cheque papel y cómo emitir o recibir cheques electrónicos.",
+    "category": "pilar",
+    "cluster": "verificar-cheque",
+    "tags": ["ECHEQ", "cheque electrónico", "digital", "home banking"]
+  },
+  {
+    "slug": "endoso-cheques-guia",
+    "title": "Endoso de cheques: guía completa para empresas",
+    "keyword": "endoso de cheques",
+    "description": "Cómo funciona el endoso de cheques en Argentina, requisitos legales, límites y errores que pueden causar rechazo.",
+    "category": "pilar",
+    "cluster": "riesgo-cheques",
+    "tags": ["endoso", "transferencia", "requisitos", "rechazo"]
+  },
+  {
+    "slug": "analisis-riesgo-cheques",
+    "title": "Análisis de riesgo de cheques: cómo evaluar antes de cobrar",
+    "keyword": "análisis de riesgo cheques",
+    "description": "Aprende a evaluar el riesgo de un cheque analizando el historial del emisor, antecedentes y señales de alerta.",
+    "category": "pilar",
+    "cluster": "riesgo-cheques",
+    "tags": ["análisis", "riesgo", "emisor", "evaluación"]
+  },
+  {
+    "slug": "causas-rechazo-cheques",
+    "title": "Causas de rechazo de cheques en Argentina",
+    "keyword": "causas rechazo cheques",
+    "description": "Las 10 causas más frecuentes por las que un banco rechaza un cheque en Argentina y cómo evitarlas.",
+    "category": "pilar",
+    "cluster": "cheque-rechazado",
+    "tags": ["rechazo", "causas", "banco", "errores"]
+  },
+  {
+    "slug": "cheques-pymes-argentina",
+    "title": "Cheques para PYMES: cómo manejarlos sin riesgo",
+    "keyword": "cheques PYMES Argentina",
+    "description": "Guía práctica para PYMES argentinas sobre cómo gestionar cheques, reducir rechazos y proteger el flujo de caja.",
+    "category": "pilar",
+    "cluster": "riesgo-cheques",
+    "tags": ["PYMES", "gestión", "flujo de caja", "comercio"]
+  },
+  {
+    "slug": "cheque-denunciado-guia",
+    "title": "Cheque denunciado: qué hacer si recibís uno",
+    "keyword": "cheque denunciado",
+    "description": "Qué significa un cheque denunciado, cómo verificar si tiene denuncias y qué hacer si ya lo aceptaste.",
+    "category": "pilar",
+    "cluster": "cheque-rechazado",
+    "tags": ["denuncia", "cheque robado", "verificación", "reclamo"]
+  },
+  {
+    "slug": "fraude-cheques-prevencion",
+    "title": "Fraude con cheques: cómo prevenirlo en tu negocio",
+    "keyword": "fraude cheques prevención",
+    "description": "Tipos de fraude con cheques en Argentina y medidas prácticas para que tu empresa no sea víctima.",
+    "category": "pilar",
+    "cluster": "riesgo-cheques",
+    "tags": ["fraude", "prevención", "seguridad", "negocio"]
+  },
+  {
+    "slug": "historial-emisor-cheques",
+    "title": "Cómo consultar el historial de un emisor de cheques",
+    "keyword": "historial emisor cheques",
+    "description": "Pasos para consultar el historial financiero de quien emite un cheque: bases del BCRA, ARCA y más.",
+    "category": "pilar",
+    "cluster": "consulta-emisor",
+    "tags": ["emisor", "historial", "BCRA", "ARCA", "consulta"]
+  },
+  {
+    "slug": "cheque-sin-fondos-consecuencias",
+    "title": "Cheque sin fondos: consecuencias legales y financieras",
+    "keyword": "cheque sin fondos consecuencias",
+    "description": "Qué pasa cuando un cheque no tiene fondos: consecuencias para el emisor, el tenedor y cómo reclamar.",
+    "category": "pilar",
+    "cluster": "cheque-sin-fondos",
+    "tags": ["sin fondos", "consecuencias", "legal", "reclamo"]
+  },
+  {
+    "slug": "plazos-legales-cheques",
+    "title": "Plazos legales para cheques en Argentina",
+    "keyword": "plazos legales cheques Argentina",
+    "description": "Todos los plazos que necesitás conocer sobre cheques en Argentina: presentación, caducidad y prescripción.",
+    "category": "pilar",
+    "cluster": "verificar-cheque",
+    "tags": ["plazos", "legal", "caducidad", "presentación"]
+  },
+  {
+    "slug": "central-deudores-bcra",
+    "title": "Central de Deudores del BCRA: cómo consultarla",
+    "keyword": "central de deudores BCRA",
+    "description": "Cómo usar la Central de Deudores del BCRA para verificar la situación financiera de un emisor de cheques.",
+    "category": "pilar",
+    "cluster": "consulta-emisor",
+    "tags": ["central de deudores", "BCRA", "situación financiera", "consulta"]
+  },
+  {
+    "slug": "negociar-cheques-diferidos",
+    "title": "Cómo negociar cheques de pago diferido en Argentina",
+    "keyword": "negociar cheques diferidos",
+    "description": "Guía para negociar cheques diferidos: mercados, tasas de descuento, riesgos y alternativas.",
+    "category": "pilar",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["negociar", "descuento", "mercado", "diferido"]
+  },
+  {
+    "slug": "proteger-negocio-cheques",
+    "title": "Cómo proteger tu negocio al aceptar cheques",
+    "keyword": "proteger negocio aceptar cheques",
+    "description": "Estrategias prácticas para proteger tu empresa al aceptar cheques como medio de pago en Argentina.",
+    "category": "pilar",
+    "cluster": "riesgo-cheques",
+    "tags": ["protección", "negocio", "estrategias", "prevención"]
+  },
+  {
+    "slug": "cheque-sin-fondos-que-hacer",
+    "title": "Cheque sin fondos: ¿qué hacer paso a paso?",
+    "keyword": "cheque sin fondos qué hacer",
+    "description": "Recibiste un cheque sin fondos? Guía paso a paso para reclamar, intimar y cobrar lo que te deben.",
+    "category": "educativo",
+    "cluster": "cheque-sin-fondos",
+    "tags": ["sin fondos", "reclamo", "pasos", "cobro"]
+  },
+  {
+    "slug": "cheque-denunciado-que-significa",
+    "title": "Cheque denunciado: qué significa y cómo actuar",
+    "keyword": "cheque denunciado qué significa",
+    "description": "Qué implica que un cheque esté denunciado como robado o perdido y cómo actuar si lo recibiste.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["denuncia", "robado", "perdido", "actuar"]
+  },
+  {
+    "slug": "cheque-cruzado-explicado",
+    "title": "Cheque cruzado: qué es y para qué sirve",
+    "keyword": "cheque cruzado",
+    "description": "Explicación clara sobre el cheque cruzado en Argentina: qué significa, cómo se cobra y cuándo conviene.",
+    "category": "educativo",
+    "cluster": "verificar-cheque",
+    "tags": ["cheque cruzado", "cobro", "banco", "seguridad"]
+  },
+  {
+    "slug": "cheque-endosado-varias-veces",
+    "title": "Cheque endosado varias veces: ¿es seguro aceptarlo?",
+    "keyword": "cheque endosado varias veces",
+    "description": "Riesgos y límites de aceptar un cheque con múltiples endosos. Cuántos endosos se permiten y qué verificar.",
+    "category": "educativo",
+    "cluster": "riesgo-cheques",
+    "tags": ["endoso", "múltiples", "límite", "seguridad"]
+  },
+  {
+    "slug": "errores-aceptar-cheques",
+    "title": "Errores comunes al aceptar cheques y cómo evitarlos",
+    "keyword": "errores aceptar cheques",
+    "description": "Los errores más frecuentes que cometen comerciantes al recibir cheques y consejos para no repetirlos.",
+    "category": "educativo",
+    "cluster": "riesgo-cheques",
+    "tags": ["errores", "comerciantes", "consejos", "prevención"]
+  },
+  {
+    "slug": "analizar-riesgo-cheque",
+    "title": "Cómo analizar el riesgo de un cheque en 5 pasos",
+    "keyword": "analizar riesgo cheque",
+    "description": "Método de 5 pasos para evaluar si un cheque es seguro antes de aceptarlo como pago.",
+    "category": "educativo",
+    "cluster": "riesgo-cheques",
+    "tags": ["análisis", "pasos", "riesgo", "evaluación"]
+  },
+  {
+    "slug": "cheque-rechazado-como-reclamar",
+    "title": "Cheque rechazado: cómo reclamar el pago",
+    "keyword": "cheque rechazado cómo reclamar",
+    "description": "Guía para reclamar el pago cuando un cheque es rechazado: intimación, plazo y opciones legales.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["reclamo", "intimación", "legal", "cobro"]
+  },
+  {
+    "slug": "diferencia-cheque-echeq",
+    "title": "Diferencias entre cheque papel y ECHEQ",
+    "keyword": "diferencia cheque papel ECHEQ",
+    "description": "Comparación práctica entre el cheque tradicional en papel y el ECHEQ digital: seguridad, plazos y costos.",
+    "category": "educativo",
+    "cluster": "verificar-cheque",
+    "tags": ["ECHEQ", "papel", "digital", "comparación"]
+  },
+  {
+    "slug": "cheque-posdatado-legal",
+    "title": "¿Es legal emitir un cheque posdatado?",
+    "keyword": "cheque posdatado legal",
+    "description": "Qué dice la ley sobre cheques posdatados en Argentina y qué riesgos corrés al emitirlos o aceptarlos.",
+    "category": "educativo",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["posdatado", "legal", "ley", "riesgos"]
+  },
+  {
+    "slug": "cheque-no-a-la-orden",
+    "title": "Cheque no a la orden: qué es y cuándo usarlo",
+    "keyword": "cheque no a la orden",
+    "description": "Qué significa un cheque no a la orden, quién puede cobrarlo y en qué situaciones conviene emitirlo.",
+    "category": "educativo",
+    "cluster": "verificar-cheque",
+    "tags": ["no a la orden", "cobro", "seguridad", "emisor"]
+  },
+  {
+    "slug": "banco-rechaza-cheque-motivos",
+    "title": "¿Por qué el banco rechaza un cheque? Motivos comunes",
+    "keyword": "banco rechaza cheque motivos",
+    "description": "Lista de motivos por los que un banco puede rechazar un cheque: fondos, firma, formato y más.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["banco", "rechazo", "motivos", "formato"]
+  },
+  {
+    "slug": "cheque-certificado-que-es",
+    "title": "Cheque certificado: qué es y cuándo se usa",
+    "keyword": "cheque certificado",
+    "description": "Explicación del cheque certificado en Argentina: qué garantiza, cómo solicitarlo y cuándo conviene.",
+    "category": "educativo",
+    "cluster": "verificar-cheque",
+    "tags": ["certificado", "garantía", "banco", "seguridad"]
+  },
+  {
+    "slug": "depositar-cheque-otro-banco",
+    "title": "Cómo depositar un cheque de otro banco",
+    "keyword": "depositar cheque otro banco",
+    "description": "Pasos y tiempos para depositar un cheque emitido por un banco diferente al tuyo en Argentina.",
+    "category": "educativo",
+    "cluster": "verificar-cheque",
+    "tags": ["depósito", "otro banco", "clearing", "tiempos"]
+  },
+  {
+    "slug": "cheque-vencido-se-puede-cobrar",
+    "title": "¿Se puede cobrar un cheque vencido?",
+    "keyword": "cheque vencido cobrar",
+    "description": "Qué pasa cuando un cheque vence: plazos de presentación, caducidad y opciones para recuperar el dinero.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["vencido", "caducidad", "plazo", "cobro"]
+  },
+  {
+    "slug": "firma-cheque-incorrecta",
+    "title": "Firma incorrecta en cheque: causas de rechazo",
+    "keyword": "firma incorrecta cheque",
+    "description": "Por qué una firma distinta puede causar el rechazo de un cheque y cómo verificar la firma del emisor.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["firma", "rechazo", "verificación", "banco"]
+  },
+  {
+    "slug": "clearing-cheques-tiempos",
+    "title": "Clearing de cheques: tiempos y proceso en Argentina",
+    "keyword": "clearing cheques tiempos",
+    "description": "Cómo funciona el clearing bancario de cheques en Argentina: etapas, tiempos y qué puede salir mal.",
+    "category": "educativo",
+    "cluster": "verificar-cheque",
+    "tags": ["clearing", "proceso", "tiempos", "banco"]
+  },
+  {
+    "slug": "cheque-garantia-alquiler",
+    "title": "Cheque como garantía de alquiler: ¿es válido?",
+    "keyword": "cheque garantía alquiler",
+    "description": "¿Se puede usar un cheque como garantía en un contrato de alquiler? Qué dice la ley y qué riesgos tiene.",
+    "category": "educativo",
+    "cluster": "riesgo-cheques",
+    "tags": ["garantía", "alquiler", "contrato", "legal"]
+  },
+  {
+    "slug": "rechazo-cheque-sin-fondos-bcra",
+    "title": "Rechazo por falta de fondos: qué informa el BCRA",
+    "keyword": "rechazo cheque sin fondos BCRA",
+    "description": "Qué registra el BCRA cuando un cheque es rechazado por falta de fondos y cómo afecta al emisor.",
+    "category": "educativo",
+    "cluster": "cheque-sin-fondos",
+    "tags": ["BCRA", "sin fondos", "registro", "emisor"]
+  },
+  {
+    "slug": "cheque-al-portador-riesgos",
+    "title": "Cheque al portador: riesgos para el comerciante",
+    "keyword": "cheque al portador riesgos",
+    "description": "Qué es un cheque al portador, quién puede cobrarlo y por qué puede ser riesgoso aceptar uno.",
+    "category": "educativo",
+    "cluster": "riesgo-cheques",
+    "tags": ["al portador", "riesgo", "cobro", "comercio"]
+  },
+  {
+    "slug": "inhibicion-librar-cheques",
+    "title": "Inhabilitación para librar cheques: qué significa",
+    "keyword": "inhabilitación librar cheques",
+    "description": "Qué pasa cuando alguien es inhabilitado para emitir cheques y cómo verificar esta situación.",
+    "category": "educativo",
+    "cluster": "consulta-emisor",
+    "tags": ["inhabilitación", "librar", "BCRA", "verificar"]
+  },
+  {
+    "slug": "consultar-cuit-emisor-cheque",
+    "title": "Cómo consultar el CUIT del emisor de un cheque",
+    "keyword": "consultar CUIT emisor cheque",
+    "description": "Pasos para averiguar el CUIT del emisor y consultar su situación financiera antes de aceptar un cheque.",
+    "category": "educativo",
+    "cluster": "consulta-emisor",
+    "tags": ["CUIT", "emisor", "consulta", "ARCA"]
+  },
+  {
+    "slug": "cheque-rechazado-afecta-veraz",
+    "title": "¿Un cheque rechazado afecta el Veraz?",
+    "keyword": "cheque rechazado afecta Veraz",
+    "description": "Relación entre cheques rechazados y el informe del Veraz: cómo impacta y por cuánto tiempo.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["Veraz", "informe crediticio", "impacto", "emisor"]
+  },
+  {
+    "slug": "cheque-extraviado-pasos",
+    "title": "Cheque extraviado: pasos para denunciarlo",
+    "keyword": "cheque extraviado pasos",
+    "description": "Qué hacer si perdiste un cheque: denuncia, notificación al banco y cómo protegerte.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["extraviado", "perdido", "denuncia", "banco"]
+  },
+  {
+    "slug": "multa-cheque-rechazado",
+    "title": "Multa por emitir cheque rechazado en Argentina",
+    "keyword": "multa cheque rechazado",
+    "description": "Qué multas y sanciones aplica el BCRA cuando un emisor tiene cheques rechazados reiteradamente.",
+    "category": "educativo",
+    "cluster": "cheque-sin-fondos",
+    "tags": ["multa", "sanción", "BCRA", "rechazado"]
+  },
+  {
+    "slug": "cheque-diferido-90-dias",
+    "title": "Cheque diferido a 90 días: qué considerar",
+    "keyword": "cheque diferido 90 días",
+    "description": "Factores clave a evaluar antes de aceptar un cheque de pago diferido a 90 días: riesgo, tasa y emisor.",
+    "category": "educativo",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["90 días", "diferido", "riesgo", "evaluación"]
+  },
+  {
+    "slug": "cheque-diferido-180-dias",
+    "title": "Cheque diferido a 180 días: riesgos y recomendaciones",
+    "keyword": "cheque diferido 180 días",
+    "description": "Riesgos de aceptar un cheque diferido a 180 días y recomendaciones para proteger tu negocio.",
+    "category": "educativo",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["180 días", "diferido", "riesgo", "recomendaciones"]
+  },
+  {
+    "slug": "como-llenar-cheque-correctamente",
+    "title": "Cómo llenar un cheque correctamente",
+    "keyword": "cómo llenar cheque",
+    "description": "Guía visual para completar un cheque sin errores: fecha, monto, firma y campos obligatorios.",
+    "category": "educativo",
+    "cluster": "verificar-cheque",
+    "tags": ["llenar", "completar", "formato", "errores"]
+  },
+  {
+    "slug": "protesto-cheque-que-es",
+    "title": "Protesto de cheque: qué es y cómo funciona",
+    "keyword": "protesto cheque",
+    "description": "Qué es el protesto de un cheque en Argentina, cuándo se realiza y qué implicancias tiene para ambas partes.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["protesto", "legal", "notificación", "rechazo"]
+  },
+  {
+    "slug": "aceptar-cheque-cliente-nuevo",
+    "title": "¿Conviene aceptar cheque de un cliente nuevo?",
+    "keyword": "aceptar cheque cliente nuevo",
+    "description": "Riesgos y precauciones al aceptar un cheque de un cliente que no conocés. Cómo verificar antes.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["cliente nuevo", "riesgo", "verificar", "precaución"]
+  },
+  {
+    "slug": "aceptar-cheque-endosado",
+    "title": "¿Es seguro aceptar un cheque endosado?",
+    "keyword": "aceptar cheque endosado",
+    "description": "Qué verificar antes de aceptar un cheque con endoso: cadena de firmas, límites y riesgos reales.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["endosado", "seguridad", "firmas", "verificar"]
+  },
+  {
+    "slug": "aceptar-cheque-empresa-desconocida",
+    "title": "Aceptar cheque de empresa desconocida: qué verificar",
+    "keyword": "aceptar cheque empresa desconocida",
+    "description": "Checklist para verificar un cheque de una empresa que no conocés: CUIT, historial y señales de alerta.",
+    "category": "long-tail",
+    "cluster": "consulta-emisor",
+    "tags": ["empresa", "desconocida", "verificar", "checklist"]
+  },
+  {
+    "slug": "cheque-90-dias-riesgo",
+    "title": "Cheque a 90 días: ¿cuánto riesgo tiene?",
+    "keyword": "cheque 90 días riesgo",
+    "description": "Evaluación del riesgo real de aceptar un cheque a 90 días según el perfil del emisor.",
+    "category": "long-tail",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["90 días", "riesgo", "emisor", "evaluación"]
+  },
+  {
+    "slug": "cheque-180-dias-riesgo",
+    "title": "Cheque a 180 días: ¿vale la pena el riesgo?",
+    "keyword": "cheque 180 días riesgo",
+    "description": "Análisis del riesgo de un cheque diferido a 180 días y factores que debés considerar antes de aceptar.",
+    "category": "long-tail",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["180 días", "riesgo", "análisis", "diferido"]
+  },
+  {
+    "slug": "cheque-historial-rechazos",
+    "title": "Cheque de emisor con historial de rechazos",
+    "keyword": "cheque historial rechazos",
+    "description": "Qué hacer cuando el emisor del cheque tiene antecedentes de rechazos y cómo evaluar el riesgo real.",
+    "category": "long-tail",
+    "cluster": "cheque-rechazado",
+    "tags": ["historial", "rechazos", "antecedentes", "riesgo"]
+  },
+  {
+    "slug": "cheque-denunciado-seguro",
+    "title": "Cheque denunciado: ¿es seguro cobrarlo?",
+    "keyword": "cheque denunciado seguro",
+    "description": "Si recibiste un cheque que aparece denunciado, conocé qué implica y si es posible cobrarlo.",
+    "category": "long-tail",
+    "cluster": "cheque-rechazado",
+    "tags": ["denunciado", "seguridad", "cobro", "riesgo"]
+  },
+  {
+    "slug": "aceptar-cheque-tercero",
+    "title": "Aceptar cheque de tercero: riesgos y verificación",
+    "keyword": "aceptar cheque de tercero",
+    "description": "Riesgos de aceptar un cheque que no fue emitido para vos y cómo verificar la cadena de endosos.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["tercero", "endoso", "cadena", "verificar"]
+  },
+  {
+    "slug": "cheque-monto-alto-precauciones",
+    "title": "Cheque por monto alto: precauciones antes de aceptar",
+    "keyword": "cheque monto alto precauciones",
+    "description": "Medidas de seguridad extra al recibir un cheque por un monto elevado: verificación, garantías y más.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["monto alto", "precauciones", "seguridad", "verificar"]
+  },
+  {
+    "slug": "cheque-proveedor-nuevo",
+    "title": "Pagar con cheque a proveedor nuevo: qué saber",
+    "keyword": "cheque proveedor nuevo",
+    "description": "Consideraciones al emitir o recibir cheques en una relación comercial nueva con un proveedor.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["proveedor", "nuevo", "relación comercial", "cheque"]
+  },
+  {
+    "slug": "cheque-rebotado-como-saber",
+    "title": "¿Cómo saber si un cheque va a rebotar?",
+    "keyword": "cómo saber si cheque rebota",
+    "description": "Señales de alerta y métodos para predecir si un cheque puede ser rechazado antes de depositarlo.",
+    "category": "long-tail",
+    "cluster": "cheque-sin-fondos",
+    "tags": ["rebotar", "señales", "predicción", "fondos"]
+  },
+  {
+    "slug": "verificar-fondos-cheque",
+    "title": "¿Se puede verificar si un cheque tiene fondos?",
+    "keyword": "verificar fondos cheque",
+    "description": "Métodos disponibles para saber si un cheque tiene fondos suficientes antes de aceptarlo.",
+    "category": "long-tail",
+    "cluster": "cheque-sin-fondos",
+    "tags": ["fondos", "verificar", "consulta", "banco"]
+  },
+  {
+    "slug": "cheque-360-dias-conviene",
+    "title": "Cheque a 360 días: ¿conviene aceptarlo?",
+    "keyword": "cheque 360 días conviene",
+    "description": "Análisis de conveniencia de aceptar un cheque diferido al plazo máximo de 360 días.",
+    "category": "long-tail",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["360 días", "máximo", "conveniencia", "diferido"]
+  },
+  {
+    "slug": "cheque-posdatado-riesgo",
+    "title": "Cheque posdatado: ¿qué riesgo tiene aceptarlo?",
+    "keyword": "cheque posdatado riesgo",
+    "description": "Diferencia entre cheque posdatado y diferido, riesgos legales y por qué conviene verificar.",
+    "category": "long-tail",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["posdatado", "riesgo", "legal", "diferido"]
+  },
+  {
+    "slug": "cheque-empresa-quiebra",
+    "title": "Cheque de empresa en quiebra: ¿se puede cobrar?",
+    "keyword": "cheque empresa quiebra",
+    "description": "Qué pasa con los cheques emitidos por una empresa en quiebra o concurso y tus opciones para cobrar.",
+    "category": "long-tail",
+    "cluster": "consulta-emisor",
+    "tags": ["quiebra", "concurso", "cobrar", "empresa"]
+  },
+  {
+    "slug": "cheque-persona-veraz",
+    "title": "Cheque de persona en Veraz: qué hacer",
+    "keyword": "cheque persona Veraz",
+    "description": "¿Conviene aceptar un cheque de alguien que está en el Veraz? Cómo evaluar el riesgo real.",
+    "category": "long-tail",
+    "cluster": "consulta-emisor",
+    "tags": ["Veraz", "persona", "riesgo", "evaluar"]
+  },
+  {
+    "slug": "aceptar-cheque-garantia",
+    "title": "Aceptar cheque como garantía: ¿es recomendable?",
+    "keyword": "aceptar cheque garantía",
+    "description": "Pros y contras de aceptar cheques como garantía en operaciones comerciales o alquileres.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["garantía", "comercial", "pros", "contras"]
+  },
+  {
+    "slug": "cheque-sin-fecha-validez",
+    "title": "Cheque sin fecha: ¿tiene validez?",
+    "keyword": "cheque sin fecha validez",
+    "description": "Qué dice la ley sobre un cheque sin fecha, si el banco lo acepta y qué riesgos implica.",
+    "category": "long-tail",
+    "cluster": "cheque-rechazado",
+    "tags": ["sin fecha", "validez", "ley", "rechazo"]
+  },
+  {
+    "slug": "cheque-mal-llenado-rechazo",
+    "title": "Cheque mal llenado: causas frecuentes de rechazo",
+    "keyword": "cheque mal llenado rechazo",
+    "description": "Errores al completar un cheque que causan rechazo bancario: monto, fecha, firma y más.",
+    "category": "long-tail",
+    "cluster": "cheque-rechazado",
+    "tags": ["mal llenado", "errores", "formato", "rechazo"]
+  },
+  {
+    "slug": "cobrar-cheque-ventanilla",
+    "title": "Cómo cobrar un cheque por ventanilla",
+    "keyword": "cobrar cheque ventanilla",
+    "description": "Requisitos y pasos para cobrar un cheque directamente en ventanilla del banco emisor.",
+    "category": "long-tail",
+    "cluster": "verificar-cheque",
+    "tags": ["ventanilla", "cobro", "banco", "requisitos"]
+  },
+  {
+    "slug": "endoso-cheque-limite-firmas",
+    "title": "Endoso de cheque: ¿cuántas firmas se permiten?",
+    "keyword": "endoso cheque límite firmas",
+    "description": "Límite legal de endosos en cheques argentinos y qué pasa si se supera la cantidad permitida.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["endoso", "límite", "firmas", "legal"]
+  },
+  {
+    "slug": "cheque-sector-construccion",
+    "title": "Cheques en el sector construcción: riesgos frecuentes",
+    "keyword": "cheques sector construcción",
+    "description": "Riesgos habituales al aceptar cheques en la industria de la construcción y cómo prevenirlos.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["construcción", "industria", "riesgos", "prevención"]
+  },
+  {
+    "slug": "cheque-sector-agro",
+    "title": "Cheques en el agro: precauciones para productores",
+    "keyword": "cheques sector agro",
+    "description": "Guía para productores agropecuarios sobre cómo manejar cheques recibidos de compradores y acopiadores.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["agro", "productores", "acopiadores", "campo"]
+  },
+  {
+    "slug": "cheque-comercio-minorista",
+    "title": "Cheques en comercio minorista: ¿conviene aceptarlos?",
+    "keyword": "cheques comercio minorista",
+    "description": "Análisis de conveniencia y riesgos de aceptar cheques en comercios minoristas argentinos.",
+    "category": "long-tail",
+    "cluster": "riesgo-cheques",
+    "tags": ["minorista", "comercio", "conveniencia", "riesgo"]
+  },
+  {
+    "slug": "cheque-operacion-inmobiliaria",
+    "title": "Cheques en operaciones inmobiliarias: qué verificar",
+    "keyword": "cheques operación inmobiliaria",
+    "description": "Verificaciones clave al recibir cheques en compraventa de inmuebles o alquileres comerciales.",
+    "category": "long-tail",
+    "cluster": "verificar-cheque",
+    "tags": ["inmobiliaria", "compraventa", "alquiler", "verificar"]
+  },
+  {
+    "slug": "cheque-cuenta-cerrada",
+    "title": "Cheque de cuenta cerrada: ¿qué hacer?",
+    "keyword": "cheque cuenta cerrada",
+    "description": "Qué pasa cuando depositás un cheque y la cuenta del emisor ya fue cerrada. Opciones y reclamo.",
+    "category": "long-tail",
+    "cluster": "cheque-sin-fondos",
+    "tags": ["cuenta cerrada", "rechazo", "reclamo", "banco"]
+  },
+  {
+    "slug": "cheque-rechazado-cuantas-veces",
+    "title": "¿Cuántas veces se puede presentar un cheque rechazado?",
+    "keyword": "cheque rechazado cuántas veces presentar",
+    "description": "Si te rechazaron un cheque, conocé cuántas veces podés volver a presentarlo y en qué plazos.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["rechazado", "presentar", "plazo", "reintentar"]
+  },
+  {
+    "slug": "cheque-devuelto-diferencia-rechazado",
+    "title": "Cheque devuelto vs rechazado: ¿cuál es la diferencia?",
+    "keyword": "cheque devuelto vs rechazado",
+    "description": "Diferencias entre un cheque devuelto y uno rechazado: causas, consecuencias y cómo actuar en cada caso.",
+    "category": "educativo",
+    "cluster": "cheque-rechazado",
+    "tags": ["devuelto", "rechazado", "diferencia", "causas"]
+  },
+  {
+    "slug": "cheque-cancelado-que-significa",
+    "title": "Cheque cancelado: qué significa y cómo afecta",
+    "keyword": "cheque cancelado qué significa",
+    "description": "Qué implica la cancelación de un cheque, quién puede solicitarla y cómo verificar esta situación.",
+    "category": "educativo",
+    "cluster": "verificar-cheque",
+    "tags": ["cancelado", "cancelación", "verificar", "banco"]
+  },
+  {
+    "slug": "tasa-descuento-cheque-diferido",
+    "title": "Tasa de descuento de cheques diferidos: cómo calcularla",
+    "keyword": "tasa descuento cheque diferido",
+    "description": "Cómo se calcula la tasa de descuento al negociar un cheque diferido y qué factores influyen.",
+    "category": "educativo",
+    "cluster": "cheque-pago-diferido",
+    "tags": ["tasa", "descuento", "diferido", "cálculo"]
+  },
+  {
+    "slug": "responsabilidad-endosante-cheque",
+    "title": "Responsabilidad del endosante de un cheque",
+    "keyword": "responsabilidad endosante cheque",
+    "description": "Qué responsabilidad legal tiene quien endosa un cheque si este es rechazado o tiene problemas.",
+    "category": "educativo",
+    "cluster": "riesgo-cheques",
+    "tags": ["endosante", "responsabilidad", "legal", "rechazo"]
+  },
+  {
+    "slug": "cuenta-corriente-requisitos-cheques",
+    "title": "Requisitos para abrir cuenta corriente y emitir cheques",
+    "keyword": "requisitos cuenta corriente cheques",
+    "description": "Qué necesitás para abrir una cuenta corriente en Argentina y empezar a emitir cheques legalmente.",
+    "category": "educativo",
+    "cluster": "consulta-emisor",
+    "tags": ["cuenta corriente", "requisitos", "emisor", "banco"]
+  }
+]
+

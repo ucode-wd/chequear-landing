@@ -1,0 +1,192 @@
+---
+import "../../styles/global.css";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const categories = [
+  { value: "all", label: "Todos" },
+  { value: "pilar", label: "Guías Completas" },
+  { value: "educativo", label: "Educativos" },
+  { value: "long-tail", label: "Consultas Prácticas" },
+];
+
+const categoryColor: Record<string, string> = {
+  pilar: "bg-accent/20 text-accent",
+  educativo: "bg-blue-500/20 text-blue-400",
+  "long-tail": "bg-amber-500/20 text-amber-400",
+};
+
+const categoryLabel: Record<string, string> = {
+  pilar: "Guía Completa",
+  educativo: "Educativo",
+  "long-tail": "Consulta Práctica",
+};
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Blog sobre Cheques en Argentina | ChequeAR</title>
+    <meta
+      name="description"
+      content="Guías, artículos y respuestas sobre cheques en Argentina. Aprende a verificar cheques, evitar rechazos y reducir riesgos al cobrar."
+    />
+    <link rel="canonical" href="https://chequearapp.com.ar/blog" />
+    <meta property="og:title" content="Blog sobre Cheques en Argentina | ChequeAR" />
+    <meta
+      property="og:description"
+      content="Guías, artículos y respuestas sobre cheques en Argentina."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-primary text-primary-foreground"
+  >
+    <div
+      class="fixed inset-0 pointer-events-none -z-50 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/10 via-primary to-primary"
+    >
+    </div>
+
+    <Header />
+
+    <main class="relative z-10 w-full flex flex-col items-center overflow-hidden">
+      <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+        <!-- Hero -->
+        <div class="text-center mb-16">
+          <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+            Blog sobre <span class="text-accent">Cheques</span>
+          </h1>
+          <p class="text-lg text-white/50 max-w-2xl mx-auto">
+            Guías completas, artículos educativos y respuestas prácticas para
+            entender y manejar cheques en Argentina.
+          </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12" id="category-filters">
+          {categories.map((cat) => (
+            <button
+              data-category={cat.value}
+              class={`px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 cursor-pointer ${
+                cat.value === "all"
+                  ? "bg-accent text-accent-foreground border-accent"
+                  : "bg-white/5 text-white/60 border-white/10 hover:border-accent/40 hover:text-white"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="articles-grid">
+          {sortedPosts.map((post) => (
+            <a
+              href={`/blog/${post.data.slug}`}
+              class="group article-card flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/30 hover:bg-white/8 transition-all duration-300"
+              data-category={post.data.category}
+              data-aos="fade-up"
+            >
+              <div class="flex items-center gap-2 mb-4">
+                <span
+                  class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${categoryColor[post.data.category]}`}
+                >
+                  {categoryLabel[post.data.category]}
+                </span>
+                <span class="text-xs text-white/30">
+                  {post.data.cluster.replace(/-/g, " ")}
+                </span>
+              </div>
+              <h2 class="text-lg font-semibold text-white group-hover:text-accent transition-colors duration-300 mb-3 line-clamp-2">
+                {post.data.title}
+              </h2>
+              <p class="text-sm text-white/50 line-clamp-3 flex-1">
+                {post.data.description}
+              </p>
+              <div class="mt-4 flex items-center gap-2">
+                <time class="text-xs text-white/30" datetime={post.data.date}>
+                  {new Date(post.data.date).toLocaleDateString("es-AR", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </time>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script is:inline>
+      AOS.init({ duration: 800, once: true, offset: 50 });
+    </script>
+
+    <!-- Category filter script -->
+    <script is:inline>
+      (function () {
+        const buttons = document.querySelectorAll("#category-filters button");
+        const cards = document.querySelectorAll(".article-card");
+
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const cat = btn.getAttribute("data-category");
+
+            // Update active button
+            buttons.forEach((b) => {
+              b.classList.remove(
+                "bg-accent",
+                "text-accent-foreground",
+                "border-accent"
+              );
+              b.classList.add(
+                "bg-white/5",
+                "text-white/60",
+                "border-white/10"
+              );
+            });
+            btn.classList.remove(
+              "bg-white/5",
+              "text-white/60",
+              "border-white/10"
+            );
+            btn.classList.add(
+              "bg-accent",
+              "text-accent-foreground",
+              "border-accent"
+            );
+
+            // Filter cards
+            cards.forEach((card) => {
+              if (cat === "all" || card.getAttribute("data-category") === cat) {
+                card.style.display = "";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

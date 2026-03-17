@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chequearapp.com.ar/sitemap.xml
