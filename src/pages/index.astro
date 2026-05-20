@@ -7,7 +7,6 @@ import HowItWorks from "../components/HowItWorks.astro";
 import CTA from "../components/CTA.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
-import Analytics from '@vercel/analytics/astro';
 ---
 
 <html lang="es">
@@ -116,6 +115,9 @@ import Analytics from '@vercel/analytics/astro';
                 offset: 50,
             });
         </script>
-        <Analytics />
+        <script>
+            import { inject } from '@vercel/analytics';
+            inject();
+        </script>
     </body>
 </html>

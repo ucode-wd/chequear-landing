@@ -3,7 +3,6 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import { getCollection } from "astro:content";
-import Analytics from '@vercel/analytics/astro';
 import SchemaInjector from "../components/seo/SchemaInjector.astro";
 
 interface Props {
@@ -465,6 +464,9 @@ const riesgoStyle = nivelRiesgo ? riesgoStyles[nivelRiesgo] : null;
         }
       })();
     </script>
-    <Analytics />
+    <script>
+      import { inject } from '@vercel/analytics';
+      inject();
+    </script>
   </body>
 </html>
