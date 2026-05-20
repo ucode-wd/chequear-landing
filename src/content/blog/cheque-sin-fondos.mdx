@@ -1,0 +1,40 @@
+---
+title: "Cheques Sin Fondos: Guía Legal y Procedimientos"
+slug: "cheque-sin-fondos"
+description: "Consecuencias legales de emitir un cheque sin fondos en Argentina. Cómo intimar al cobro y multas del BCRA."
+category: "pilar"
+cluster: "cheque-sin-fondos"
+date: "2026-05-20"
+nivelRiesgo: "alto"
+normativaAplicable: "Artículos 302 y 303 del Código Penal de la Nación Argentina"
+multaEstimada: "Inhabilitación bancaria inmediata más multas de la entidad de hasta 4%."
+solucionChequear: true
+fechaVerificacion: 2026-05-20
+tipoEsquema: "article"
+author: "Equipo Técnico ChequeAR"
+reviewedBy: "Asesoría Legal ChequeAR"
+---
+import RiskAlert from '../../components/mdx/RiskAlert.astro';
+import LegalQuote from '../../components/mdx/LegalQuote.astro';
+import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+import ActionCTA from '../../components/mdx/ActionCTA.astro';
+
+<UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
+
+<RiskAlert nivel={frontmatter.nivelRiesgo}>
+  Librar un cheque sin fondos es un delito penal en Argentina bajo determinadas circunstancias (Art. 302 del Código Penal). El tenedor cuenta con la vía ejecutiva rápida para accionar judicialmente.
+</RiskAlert>
+
+## Procedimiento para reclamar un Cheque Sin Fondos
+
+Si tu banco te devuelve un cheque con la constancia de "Sin Fondos Suficientes", debés actuar de inmediato:
+
+1. **Intimación por Carta Documento**: Enviá una carta documento al emisor otorgándole un plazo legal (habitualmente de 15 días) para pagar el valor del cheque.
+2. **Cierre de Vía Ejecutiva**: La constancia de rechazo puesta por el banco en el cheque hace las veces de protesto y habilita el juicio ejecutivo directo.
+3. **Reporte al BCRA**: El banco reportará automáticamente al emisor en la Central de Deudores del BCRA.
+
+<LegalQuote normativa={frontmatter.normativaAplicable}>
+  "Será reprimido con prisión de seis meses a cuatro años... el que libre un cheque y frustre su pago mediante contraorden dada al banco... o que libre un cheque sin tener provisión de fondos..." — Artículo 302 del Código Penal.
+</LegalQuote>
+
+<ActionCTA />

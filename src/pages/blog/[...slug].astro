@@ -24,6 +24,11 @@ const { Content, headings } = await render(post);
   tags={post.data.tags}
   date={post.data.date}
   headings={headings}
+  fechaVerificacion={post.data.fechaVerificacion}
+  tipoEsquema={post.data.tipoEsquema}
+  preguntasFrecuentes={post.data.preguntasFrecuentes}
+  author={post.data.author}
+  reviewedBy={post.data.reviewedBy}
 >
   <Content />
 </BlogLayout>

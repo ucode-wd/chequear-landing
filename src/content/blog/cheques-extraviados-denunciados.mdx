@@ -1,0 +1,34 @@
+---
+title: "Cheques Denunciados o Extraviados"
+slug: "cheques-extraviados-denunciados"
+description: "Cómo denunciar un cheque robado o extraviado en Argentina. Pasos ante el banco y prevención de estafas."
+category: "pilar"
+cluster: "riesgo-cheques"
+date: "2026-05-20"
+nivelRiesgo: "alto"
+normativaAplicable: "Decreto Ley de Cheques 24.452 y circulares del BCRA sobre Denuncias"
+solucionChequear: true
+fechaVerificacion: 2026-05-20
+tipoEsquema: "article"
+author: "Equipo Técnico ChequeAR"
+reviewedBy: "Asesoría Legal ChequeAR"
+---
+import RiskAlert from '../../components/mdx/RiskAlert.astro';
+import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+import ActionCTA from '../../components/mdx/ActionCTA.astro';
+
+<UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
+
+<RiskAlert nivel={frontmatter.nivelRiesgo}>
+  Un cheque denunciado por robo, hurto o extravío no puede ser cobrado. Su circulación constituye un peligro latente de fraude para comerciantes y proveedores.
+</RiskAlert>
+
+## Pasos para denunciar un cheque extraviado
+
+Si perdiste o te robaron una chequera o un cheque individual, debés actuar inmediatamente para evitar que se cobre:
+
+1. **Denuncia Policial**: Radicá la denuncia policial correspondiente detallando el número de cheque, CUIT del emisor, banco y monto si se conoce.
+2. **Notificación al Banco**: Comunicá la denuncia al banco emisor mediante los canales habilitados para bloquear el clearing de ese instrumento.
+3. **Carta al Librador / Beneficiario**: Informá a las partes comerciales involucradas para anular la transacción.
+
+<ActionCTA />

@@ -1,0 +1,38 @@
+---
+title: "Cheques de Pago Diferido: Plazos, Tasas y Riesgos"
+slug: "cheques-pago-diferido"
+description: "Cómo funcionan los cheques de pago diferido (CPD) en Argentina, plazos de cobro legal, negociación y tasas de descuento."
+category: "pilar"
+cluster: "cheque-pago-diferido"
+date: "2026-05-20"
+nivelRiesgo: "medio"
+normativaAplicable: "Artículos 54 al 60 de la Ley de Cheques 24.452"
+solucionChequear: true
+fechaVerificacion: 2026-05-20
+tipoEsquema: "article"
+author: "Equipo Técnico ChequeAR"
+reviewedBy: "Asesoría Legal ChequeAR"
+---
+import RiskAlert from '../../components/mdx/RiskAlert.astro';
+import LegalQuote from '../../components/mdx/LegalQuote.astro';
+import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+import ActionCTA from '../../components/mdx/ActionCTA.astro';
+
+<UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
+
+<RiskAlert nivel={frontmatter.nivelRiesgo}>
+  Los cheques diferidos representan una excelente herramienta de financiamiento, pero conllevan el riesgo de devaluación o falta de liquidez del emisor si los plazos exceden los 90 días.
+</RiskAlert>
+
+## Plazos y Tiempos Legales
+
+Un cheque de pago diferido (CPD) es una orden de pago librada a una fecha futura determinada. 
+
+- **Plazo de emisión a cobro**: No puede exceder los 360 días.
+- **Plazo de presentación**: Una vez llegada la fecha de pago diferido, el tenedor tiene **30 días corridos** para presentarlo al cobro o depósito en el banco.
+
+<LegalQuote normativa={frontmatter.normativaAplicable}>
+  "El cheque de pago diferido es una orden de pago, librada a fecha determinada, posterior a la de su creación, contra una entidad financiera..." — Artículo 54 de la Ley 24.452.
+</LegalQuote>
+
+<ActionCTA />

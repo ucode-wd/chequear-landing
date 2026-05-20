@@ -1,0 +1,100 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tipoEsquema: 'faq' | 'howto' | 'article';
+  fechaVerificacion: Date | string;
+  preguntasFrecuentes?: Array<{ pregunta: string; respuesta: string }>;
+  author?: string;
+  reviewedBy?: string;
+  url?: string;
+}
+
+const { 
+  title, 
+  description, 
+  tipoEsquema, 
+  fechaVerificacion: rawFecha, 
+  preguntasFrecuentes = [], 
+  author = 'Equipo ChequeAR', 
+  reviewedBy = 'Equipo Legal ChequeAR',
+  url = Astro.url.href
+} = Astro.props;
+
+const fechaVerificacion = typeof rawFecha === 'string' ? new Date(rawFecha) : rawFecha;
+const isoDate = fechaVerificacion.toISOString();
+
+// 1. Esquema base (Article)
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "dateModified": isoDate,
+  "datePublished": isoDate, // Usamos la misma de verificación por simplicidad
+  "author": {
+    "@type": "Organization",
+    "name": author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ChequeAR",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chequearapp.com.ar/logo.png" // fallback
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": url
+  }
+};
+
+// 2. Esquema FAQPage
+const faqSchema = preguntasFrecuentes.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": preguntasFrecuentes.map(item => ({
+    "@type": "Question",
+    "name": item.pregunta,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.respuesta
+    }
+  }))
+} : null;
+
+// 3. Esquema HowTo (Guías operativas paso a paso)
+const howToSchema = tipoEsquema === 'howto' ? {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": title,
+  "description": description,
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Consultar CUIT",
+      "text": "Ingresá el CUIT del emisor en la Central de Deudores del BCRA."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Analizar Historial",
+      "text": "Verificá si existen cheques rechazados en los últimos 24 meses."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Escanear con ChequeAR",
+      "text": "Utilizá la app para automatizar el cálculo de riesgo."
+    }
+  ]
+} : null;
+
+// Seleccionar esquemas a inyectar (siempre incluimos Article, y opcionalmente FAQ o HowTo)
+const schemasToInject = [articleSchema];
+if (tipoEsquema === 'faq' && faqSchema) schemasToInject.push(faqSchema);
+if (tipoEsquema === 'howto' && howToSchema) schemasToInject.push(howToSchema);
+---
+
+{schemasToInject.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

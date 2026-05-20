@@ -1,0 +1,36 @@
+---
+title: "Guía Completa sobre Endoso de Cheques"
+slug: "endoso-de-cheques"
+description: "Cómo endosar un cheque o ECHEQ correctamente en Argentina. Límites de firmas y responsabilidades del endosante."
+category: "pilar"
+cluster: "riesgo-cheques"
+date: "2026-05-20"
+nivelRiesgo: "bajo"
+normativaAplicable: "Artículos 12 al 22 de la Ley de Cheques 24.452"
+solucionChequear: false
+fechaVerificacion: 2026-05-20
+tipoEsquema: "article"
+author: "Equipo Técnico ChequeAR"
+reviewedBy: "Asesoría Legal ChequeAR"
+---
+import RiskAlert from '../../components/mdx/RiskAlert.astro';
+import LegalQuote from '../../components/mdx/LegalQuote.astro';
+import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+
+<UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
+
+<RiskAlert nivel={frontmatter.nivelRiesgo}>
+  El endoso transmite la propiedad del cheque y convierte al endosante en garante solidario del pago. Asegurate de firmar correctamente para evitar rechazos de clearing.
+</RiskAlert>
+
+## Límites de Endosos en Argentina
+
+El Banco Central establece límites estrictos a la cantidad de firmas o endosos que puede tener un cheque físico para evitar la evasión fiscal y el lavado:
+
+- **Cheque Común**: Admite hasta **1 endoso** (más el recibo al momento del cobro).
+- **Cheque de Pago Diferido**: Admite hasta **2 endosos**.
+- **ECHEQ (Cheque Electrónico)**: Admite hasta **99 endosos** por vía digital.
+
+<LegalQuote normativa={frontmatter.normativaAplicable}>
+  "El endoso debe ser puro y simple. Toda condición a la que esté subordinado se tendrá por no escrita. El endoso parcial es nulo..." — Artículo 15 de la Ley de Cheques.
+</LegalQuote>

@@ -1,0 +1,34 @@
+---
+title: "Guía de Aceptación de Cheques: Riesgos y Verificaciones"
+slug: "guia-aceptacion-cheques"
+description: "Todo lo que tenés que verificar antes de aceptar un cheque como medio de pago en Argentina: firmas, clearing y deudas."
+category: "pilar"
+cluster: "verificar-cheque"
+date: "2026-05-20"
+nivelRiesgo: "medio"
+normativaAplicable: "Comunicaciones del BCRA sobre Clearing y Depósitos"
+solucionChequear: true
+fechaVerificacion: 2026-05-20
+tipoEsquema: "article"
+author: "Equipo Técnico ChequeAR"
+reviewedBy: "Asesoría de Operaciones ChequeAR"
+---
+import RiskAlert from '../../components/mdx/RiskAlert.astro';
+import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+import ActionCTA from '../../components/mdx/ActionCTA.astro';
+
+<UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
+
+<RiskAlert nivel={frontmatter.nivelRiesgo}>
+  Aceptar cheques de clientes nuevos o desconocidos representa un riesgo moderado que exige una verificación inmediata en la base de datos del Banco Central.
+</RiskAlert>
+
+## ¿Cómo verificar un cheque correctamente?
+
+Cuando operás comercialmente con cheques en tu negocio, es fundamental seguir un proceso estructurado para mitigar pérdidas:
+
+1. **Revisión Formal**: Comprobá que la fecha de emisión, el monto en letras y números coincidan exactamente, y que el endoso esté bien firmado.
+2. **Historial del Emisor**: Buscá el CUIT del emisor en los registros del BCRA para asegurarte de que no tenga cheques rechazados acumulados.
+3. **Plazos**: Evaluá si el clearing a 30, 60 o 90 días no afectará tu flujo de caja financiero inmediato.
+
+<ActionCTA />

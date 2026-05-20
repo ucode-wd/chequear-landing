@@ -1,0 +1,32 @@
+---
+title: "Guía Legal y Conceptual de Cheques en Argentina"
+slug: "guia-legal-cheques"
+description: "Marco legal de los cheques físicos y electrónicos en Argentina. Derechos, obligaciones del emisor y del tenedor."
+category: "pilar"
+cluster: "riesgo-cheques"
+date: "2026-05-20"
+nivelRiesgo: "bajo"
+normativaAplicable: "Ley de Cheques 24.452 y modificaciones del Código Civil y Comercial"
+solucionChequear: false
+fechaVerificacion: 2026-05-20
+tipoEsquema: "article"
+author: "Equipo Técnico ChequeAR"
+reviewedBy: "Asesoría Legal ChequeAR"
+---
+import RiskAlert from '../../components/mdx/RiskAlert.astro';
+import LegalQuote from '../../components/mdx/LegalQuote.astro';
+import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+
+<UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
+
+<RiskAlert nivel={frontmatter.nivelRiesgo}>
+  Conocer tus derechos y obligaciones legales al emitir o recibir cheques es tu principal escudo ante contingencias judiciales y disputas de clearing.
+</RiskAlert>
+
+## Marco Legal Vigente
+
+Toda la operatoria de cheques en la República Argentina está regida por la **Ley 24.452**. Esta norma define de manera precisa los tipos de cheques (común y diferido), las obligaciones cambiarias de los endosantes y el procedimiento ejecutivo ante rebotes de clearing.
+
+<LegalQuote normativa={frontmatter.normativaAplicable}>
+  "La ley aplicable al cheque es la vigente al momento de su presentación o clearing..." — Extracto interpretativo del Código Civil y Comercial.
+</LegalQuote>

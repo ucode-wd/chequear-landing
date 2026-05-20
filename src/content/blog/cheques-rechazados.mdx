@@ -1,0 +1,57 @@
+---
+title: "Cheques Rechazados: Causas, Consecuencias y Qué Hacer"
+slug: "cheques-rechazados"
+description: "Guía completa sobre cheques rechazados en Argentina: motivos oficiales del BCRA, multas aplicables y cómo iniciar el cobro de forma legal."
+category: "pilar"
+cluster: "cheque-rechazado"
+date: "2026-05-20"
+nivelRiesgo: "alto"
+normativaAplicable: "Reglamentación de Cuentas Corrientes del BCRA (OPASI 2) y Ley de Cheques 24.452"
+multaEstimada: "Hasta el 4% del valor del cheque más comisiones de clearing."
+solucionChequear: true
+fechaVerificacion: 2026-05-20
+tipoEsquema: "faq"
+author: "Equipo Técnico ChequeAR"
+reviewedBy: "Asesoría Legal ChequeAR"
+preguntasFrecuentes:
+  - pregunta: "¿Por qué causas el banco puede rechazar un cheque?"
+    respuesta: "Los motivos principales son la falta de fondos, defectos formales (firmas, fechas) y denuncias previas de extravío o robo."
+  - pregunta: "¿Cuánto tiempo tengo para cobrar un cheque rechazado?"
+    respuesta: "El plazo legal de prescripción para ejercer la acción ejecutiva es de 1 año contado desde la fecha de vencimiento de la presentación."
+  - pregunta: "¿El cheque rechazado afecta mi perfil de Veraz?"
+    respuesta: "Sí, todos los rechazos de cheques se informan a la Central de Deudores del BCRA, lo que impacta negativamente tu score crediticio en Veraz, Nosis y otras bases."
+---
+import RiskAlert from '../../components/mdx/RiskAlert.astro';
+import LegalQuote from '../../components/mdx/LegalQuote.astro';
+import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+import ActionCTA from '../../components/mdx/ActionCTA.astro';
+
+<UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
+
+<RiskAlert nivel={frontmatter.nivelRiesgo}>
+  Un cheque rechazado suspende inmediatamente el clearing financiero del emisor. Si recibís un cheque con historial desfavorable, el riesgo de incobrabilidad es sumamente crítico.
+</RiskAlert>
+
+El cheque rechazado es una de las mayores problemáticas comerciales en Argentina. Cuando una entidad financiera rechaza el pago de un instrumento de crédito, emite una constancia que detalla el motivo exacto, abriendo la vía para iniciar reclamos legales.
+
+## Motivos Principales de Rechazo del BCRA
+
+Los rechazos bancarios están codificados de forma estricta según el Banco Central de la República Argentina:
+
+1. **Falta de Fondos Suficientes**: El emisor no tiene suficiente saldo líquido en su cuenta corriente para cubrir el importe.
+2. **Defectos Formales**: Errores en la redacción, firmas disímiles con el registro bancario, o fechas mal escritas.
+3. **Falta de Registro (para cheques de pago diferido)**: El cheque no fue registrado oportunamente para avalar su clearing futuro.
+4. **Causas de Fuerza Mayor / Denuncias**: Cheques denunciados como robados, extraviados o bajo medida cautelar activa.
+
+<LegalQuote normativa={frontmatter.normativaAplicable}>
+  "El banco que se niegue a pagar un cheque presentará al tenedor una constancia escrita donde exprese las razones de la negativa, con indicación del día y hora de la presentación..." — Artículo 38 de la Ley de Cheques 24.452.
+</LegalQuote>
+
+## Consecuencias y Multas Asociadas
+
+Librar un cheque sin fondos no es una simple falta administrativa. Genera multas automáticas debitadas por la entidad financiera que pueden ascender al **4% del valor del cheque**, además de sanciones que incluyen la inhabilitación para abrir nuevas cuentas corrientes y el reporte negativo en el BCRA.
+
+<ActionCTA 
+  title="¿Recibiste un cheque y querés evitar el rechazo?"
+  description="Con ChequeAR podés escanear el código QR del ECHEQ o ingresar el CUIT del emisor para verificar su historial completo de deudas y cheques rechazados del BCRA al instante."
+/>
