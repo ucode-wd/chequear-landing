@@ -3,6 +3,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import { getCollection } from "astro:content";
+import Analytics from '@vercel/analytics/astro';
+import SchemaInjector from "../components/seo/SchemaInjector.astro";
 
 interface Props {
   title: string;
@@ -14,6 +16,13 @@ interface Props {
   tags: string[];
   date: string;
   headings: { depth: number; slug: string; text: string }[];
+  
+  // Nuevos metadatos de validación y esquema
+  fechaVerificacion: Date;
+  tipoEsquema: 'faq' | 'howto' | 'article';
+  preguntasFrecuentes?: Array<{ pregunta: string; respuesta: string }>;
+  author?: string;
+  reviewedBy?: string;
 }
 
 const {
@@ -26,6 +35,11 @@ const {
   tags,
   date,
   headings,
+  fechaVerificacion,
+  tipoEsquema,
+  preguntasFrecuentes,
+  author,
+  reviewedBy
 } = Astro.props;
 
 const canonicalURL = `https://chequearapp.com.ar/blog/${slug}`;
@@ -34,7 +48,7 @@ const canonicalURL = `https://chequearapp.com.ar/blog/${slug}`;
 const allPosts = await getCollection("blog");
 const currentSlug = slug;
 
-// 1 pilar del mismo cluster
+// 1 pilar del mismo clúster
 const clusterPilar = allPosts.find(
   (p) =>
     p.data.slug !== currentSlug &&
@@ -42,16 +56,16 @@ const clusterPilar = allPosts.find(
     p.data.category === "pilar"
 );
 
-// 2 artículos relacionados (mismo cluster, distinto del pilar encontrado)
+// 2 artículos relacionados (mismo clúster, distinto del pilar encontrado)
 const relatedArticles = allPosts
   .filter(
     (p) =>
       p.data.slug !== currentSlug &&
       p.data.slug !== clusterPilar?.data.slug &&
       (p.data.cluster === cluster ||
-        p.data.tags.some((t: string) => tags.includes(t)))
+        p.data.tags?.some((t: string) => tags?.includes(t)))
   )
-  .slice(0, 2);
+  .slice(0, 3);
 
 // Guía principal
 const mainGuide = allPosts.find(
@@ -66,29 +80,6 @@ const relatedLinks = [
 
 // --- TOC from headings ---
 const tocItems = headings.filter((h) => h.depth <= 3);
-
-// --- Schema Markup ---
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: title,
-  description: description,
-  datePublished: date,
-  author: {
-    "@type": "Organization",
-    name: "ChequeAR",
-    url: "https://chequearapp.com.ar",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "ChequeAR",
-    url: "https://chequearapp.com.ar",
-  },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": canonicalURL,
-  },
-};
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -124,10 +115,29 @@ const categoryLabel =
 
 const categoryColor =
   category === "pilar"
-    ? "bg-accent/20 text-accent"
+    ? "bg-accent/15 text-accent border-accent/20"
     : category === "educativo"
-      ? "bg-blue-500/20 text-blue-400"
-      : "bg-amber-500/20 text-amber-400";
+      ? "bg-blue-500/15 text-blue-400 border-blue-500/20"
+      : "bg-amber-500/15 text-amber-400 border-amber-500/20";
+
+// Reading time estimate
+const wordsPerMinute = 200;
+const articleText = title + " " + description;
+const wordCount = articleText.split(/\s+/).length + (tocItems.length * 80); // rough estimate
+const readingTime = Math.max(3, Math.ceil(wordCount / wordsPerMinute));
+
+// Frontmatter risk data
+const post = allPosts.find(p => p.data.slug === currentSlug);
+const nivelRiesgo = (post?.data as any)?.nivelRiesgo;
+const normativaAplicable = (post?.data as any)?.normativaAplicable;
+const multaEstimada = (post?.data as any)?.multaEstimada;
+
+const riesgoStyles: Record<string, {label:string, color:string, bg:string, dot:string}> = {
+  bajo: { label: 'Bajo', color: 'text-emerald-400', bg: 'bg-emerald-500/10', dot: 'bg-emerald-500' },
+  medio: { label: 'Moderado', color: 'text-amber-400', bg: 'bg-amber-500/10', dot: 'bg-amber-500' },
+  alto: { label: 'Crítico', color: 'text-rose-400', bg: 'bg-rose-500/10', dot: 'bg-rose-500' },
+};
+const riesgoStyle = nivelRiesgo ? riesgoStyles[nivelRiesgo] : null;
 ---
 
 <html lang="es">
@@ -148,26 +158,32 @@ const categoryColor =
     <meta property="og:locale" content="es_AR" />
 
     <!-- Schema Markup -->
-    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <SchemaInjector 
+      title={title}
+      description={description}
+      tipoEsquema={tipoEsquema}
+      fechaVerificacion={fechaVerificacion}
+      preguntasFrecuentes={preguntasFrecuentes}
+      author={author}
+      reviewedBy={reviewedBy}
+    />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(breadcrumbSchema)}
     />
 
-    <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-    <!-- Google Fonts -->
+    <!-- Google Fonts - Sora -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body
     class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-primary text-primary-foreground"
   >
+    <!-- Reading progress bar -->
+    <div id="reading-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-accent via-accent/80 to-emerald-400 z-[100] origin-left" style="transform: scaleX(0); transition: transform 0.15s ease-out;"></div>
+
     <!-- Background gradient -->
     <div
       class="fixed inset-0 pointer-events-none -z-50 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/10 via-primary to-primary"
@@ -177,132 +193,149 @@ const categoryColor =
     <Header />
 
     <main class="relative z-10 w-full flex flex-col items-center overflow-hidden">
-      <article class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+        
         <!-- Breadcrumb -->
-        <nav class="flex items-center gap-2 text-sm text-white/40 mb-8" aria-label="Breadcrumb">
-          <a href="/" class="hover:text-accent transition-colors">Inicio</a>
-          <span>/</span>
-          <a href="/blog" class="hover:text-accent transition-colors">Blog</a>
-          <span>/</span>
-          <span class="text-white/60 truncate max-w-[200px]">{title}</span>
+        <nav class="flex items-center gap-2 text-sm text-white/30 mb-10 font-medium" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-accent transition-colors duration-300 flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+            Inicio
+          </a>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          <a href="/blog" class="hover:text-accent transition-colors duration-300">Blog</a>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-white/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          <span class="text-white/50 truncate max-w-[220px]">{title}</span>
         </nav>
 
-        <!-- Category Badge + Date -->
-        <div class="flex items-center gap-3 mb-6">
-          <span class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${categoryColor}`}>
-            {categoryLabel}
-          </span>
-          <time class="text-sm text-white/40" datetime={date}>
-            {new Date(date).toLocaleDateString("es-AR", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </time>
-        </div>
-
-        <!-- H1 -->
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-10">
-          {title}
-        </h1>
-
-        <!-- Table of Contents -->
-        {tocItems.length > 0 && (
-          <nav class="mb-14 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 backdrop-blur-md shadow-2xl relative overflow-hidden group">
-            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
-              <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-            </div>
-            <div class="relative z-10">
-               <h2 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-accent/20 text-accent shadow-inner border border-accent/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                </span>
-                Contenido
-              </h2>
-              <ul class="space-y-3">
-                {tocItems.map((item) => (
-                  <li class={`${item.depth === 2 ? "" : "ml-6"}`}>
-                    <a
-                      href={`#${item.slug}`}
-                      class="group/link flex items-center gap-2 text-base text-white/70 hover:text-accent transition-all duration-300 hover:translate-x-1"
-                    >
-                      {item.depth === 2 && (
-                        <span class="w-1.5 h-1.5 rounded-full bg-white/20 group-hover/link:bg-accent transition-colors duration-300" />
-                      )}
-                      {item.depth === 3 && (
-                        <span class="text-white/30 text-xs">└</span>
-                      )}
-                      <span>{item.text}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </nav>
-        )}
-
-        <!-- Article Content -->
-        <div class="prose prose-invert prose-lg md:prose-xl max-w-none
-          [&>h2]:text-2xl md:[&>h2]:text-3xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mt-16 [&>h2]:mb-8 [&>h2]:pb-4 [&>h2]:border-b [&>h2]:border-white/10
-          [&>h3]:text-xl md:[&>h3]:text-2xl [&>h3]:font-semibold [&>h3]:text-white/90 [&>h3]:mt-12 [&>h3]:mb-6
-          [&>p]:text-white/80 [&>p]:leading-relaxed [&>p]:mb-8 [&>p]:tracking-wide
-          [&>ul]:text-white/80 [&>ul]:space-y-3 [&>ul]:mb-8 [&>ul]:ml-4 [&>ul>li]:marker:text-accent
-          [&>ol]:text-white/80 [&>ol]:space-y-3 [&>ol]:mb-8 [&>ol]:ml-4 [&>ol>li]:marker:text-accent [&>ol>li]:marker:font-semibold
-          [&>li]:text-white/80 [&>li]:leading-relaxed
-          [&>blockquote]:border-l-4 [&>blockquote]:border-accent [&>blockquote]:bg-gradient-to-r [&>blockquote]:from-accent/5 [&>blockquote]:to-transparent [&>blockquote]:rounded-r-2xl [&>blockquote]:py-6 [&>blockquote]:px-8 [&>blockquote]:my-10 [&>blockquote]:italic [&>blockquote]:text-white/90 [&>blockquote]:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]
-          [&>strong]:text-white [&>strong]:font-semibold
-          [&>a]:text-accent [&>a]:font-medium [&>a]:underline [&>a]:underline-offset-4 [&>a]:decoration-accent/30 hover:[&>a]:decoration-accent [&>a]:transition-colors
-          [&_strong]:text-white [&_strong]:font-semibold
-          [&_a]:text-accent [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-accent/30 hover:[&_a]:decoration-accent [&_a]:transition-colors
-          [&>img]:rounded-3xl [&>img]:border [&>img]:border-white/10 [&>img]:shadow-2xl [&>img]:my-12
-          [&>pre]:rounded-2xl [&>pre]:border [&>pre]:border-white/10 [&>pre]:shadow-2xl [&>pre]:my-10 [&>pre]:p-6
-          [&>code]:bg-white/10 [&>code]:rounded-lg [&>code]:px-1.5 [&>code]:py-0.5 [&>code]:text-accent/90"
-        >
-          <slot />
-        </div>
-
-        <!-- Soft CTA -->
-        <div class="mt-16 p-8 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20">
-          <h2 class="text-xl font-semibold text-white mb-3">
-            ¿Vas a aceptar un cheque? Verificalo antes
-          </h2>
-          <p class="text-white/60 mb-6 leading-relaxed">
-            Con ChequeAR podés analizar el riesgo de un cheque en segundos.
-            Consultá el historial del emisor, cheques rechazados y más,
-            directamente desde tu celular.
-          </p>
-          <a
-            href="/#download"
-            class="inline-flex h-12 items-center justify-center rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground shadow-[0_0_30px_-5px_var(--color-accent)] hover:shadow-[0_0_40px_-5px_var(--color-accent)] hover:bg-accent/90 transition-all duration-300"
-          >
-            Descargar ChequeAR gratis
-          </a>
-        </div>
-
-        <!-- Related Articles -->
-        {relatedLinks.length > 0 && (
-          <div class="mt-16">
-            <h2 class="text-xl font-semibold text-white mb-6">
-              Artículos relacionados
-            </h2>
-            <div class="grid gap-4 sm:grid-cols-2">
-              {relatedLinks.map((post) => (
-                <a
-                  href={`/blog/${post.data.slug}`}
-                  class="group p-5 rounded-xl bg-white/5 border border-white/10 hover:border-accent/30 hover:bg-white/8 transition-all duration-300"
-                >
-                  <span class="text-sm font-medium text-white group-hover:text-accent transition-colors">
-                    {post.data.title}
-                  </span>
-                  <p class="text-xs text-white/40 mt-2 line-clamp-2">
-                    {post.data.description}
-                  </p>
-                </a>
-              ))}
-            </div>
+        <!-- ====== Article Header (Full-width) ====== -->
+        <!-- ====== Article Header (Centered) ====== -->
+        <header class="mb-12 max-w-3xl mx-auto text-center flex flex-col items-center" data-aos="fade-up">
+          <!-- Category Badge + Date + Reading Time -->
+          <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
+            <span class={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold border tracking-wide ${categoryColor}`}>
+              {categoryLabel}
+            </span>
+            <span class="text-white/15">·</span>
+            <time class="text-sm text-white/35 font-medium" datetime={date}>
+              {new Date(date).toLocaleDateString("es-AR", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+            <span class="text-white/15">·</span>
+            <span class="text-sm text-white/35 font-medium flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              {readingTime} min de lectura
+            </span>
           </div>
-        )}
-      </article>
+
+          <!-- H1 -->
+          <h1 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-white leading-[1.15] tracking-tight">
+            {title}
+          </h1>
+
+          <!-- Description -->
+          <p class="mt-5 text-lg text-white/50 leading-relaxed max-w-2xl font-light mx-auto">
+            {description}
+          </p>
+        </header>
+
+        <!-- ====== Single-column Article ====== -->
+        <div class="max-w-4xl mx-auto">
+
+          <!-- ====== Article Content ====== -->
+          <article id="article-content">
+
+            <!-- Article Content -->
+            <div class="prose prose-invert prose-lg max-w-none
+              [&>h2]:text-2xl md:[&>h2]:text-[1.7rem] [&>h2]:font-bold [&>h2]:text-white [&>h2]:mt-14 [&>h2]:mb-6 [&>h2]:pb-3 [&>h2]:border-b [&>h2]:border-white/[0.06] [&>h2]:leading-tight
+              [&>h3]:text-xl md:[&>h3]:text-[1.35rem] [&>h3]:font-semibold [&>h3]:text-white/90 [&>h3]:mt-10 [&>h3]:mb-5
+              [&>p]:text-white/65 [&>p]:leading-[1.85] [&>p]:mb-6 [&>p]:tracking-[0.01em]
+              [&>ul]:text-white/65 [&>ul]:space-y-2.5 [&>ul]:mb-7 [&>ul]:ml-1 [&>ul>li]:marker:text-accent/60
+              [&>ol]:text-white/65 [&>ol]:space-y-2.5 [&>ol]:mb-7 [&>ol]:ml-1 [&>ol>li]:marker:text-accent/60 [&>ol>li]:marker:font-semibold
+              [&>li]:text-white/65 [&>li]:leading-relaxed
+              [&>blockquote]:border-l-[3px] [&>blockquote]:border-accent/40 [&>blockquote]:bg-gradient-to-r [&>blockquote]:from-accent/[0.04] [&>blockquote]:to-transparent [&>blockquote]:rounded-r-xl [&>blockquote]:py-4 [&>blockquote]:px-6 [&>blockquote]:my-8 [&>blockquote]:italic [&>blockquote]:text-white/70
+              [&>strong]:text-white [&>strong]:font-semibold
+              [&>a]:text-accent [&>a]:font-medium [&>a]:underline [&>a]:underline-offset-4 [&>a]:decoration-accent/30 hover:[&>a]:decoration-accent [&>a]:transition-colors
+              [&_strong]:text-white [&_strong]:font-semibold
+              [&_a]:text-accent [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-accent/30 hover:[&_a]:decoration-accent [&_a]:transition-colors
+              [&>img]:rounded-2xl [&>img]:border [&>img]:border-white/[0.06] [&>img]:shadow-2xl [&>img]:my-10
+              [&>pre]:rounded-xl [&>pre]:border [&>pre]:border-white/[0.06] [&>pre]:shadow-2xl [&>pre]:my-8 [&>pre]:p-5
+              [&>code]:bg-white/[0.06] [&>code]:rounded-md [&>code]:px-1.5 [&>code]:py-0.5 [&>code]:text-accent/80 [&>code]:text-[0.9em]"
+            >
+              <slot />
+            </div>
+
+            <!-- ====== FAQ Accordion ====== -->
+            {preguntasFrecuentes && preguntasFrecuentes.length > 0 && (
+              <section class="mt-16 mb-10" id="faq-section">
+                <div class="flex items-center gap-3 mb-8">
+                  <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  </div>
+                  <h2 class="text-xl md:text-2xl font-bold text-white">
+                    Preguntas Frecuentes
+                  </h2>
+                </div>
+
+                <div class="space-y-3">
+                  {preguntasFrecuentes.map((faq, index) => (
+                    <div class="faq-item rounded-xl border border-white/[0.06] bg-white/[0.02] overflow-hidden transition-colors hover:border-white/[0.1]">
+                      <button
+                        class="faq-trigger w-full flex items-center justify-between text-left p-5 text-sm font-semibold text-white/80 hover:text-white transition-colors cursor-pointer"
+                        data-faq-index={index}
+                        aria-expanded="false"
+                      >
+                        <span class="pr-4">{faq.pregunta}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="faq-chevron h-4 w-4 flex-shrink-0 text-white/30 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                      </button>
+                      <div class="faq-answer" data-faq-answer={index}>
+                        <div>
+                          <div class="px-5 pb-5 pt-0">
+                            <p class="text-sm text-white/50 leading-relaxed">{faq.respuesta}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+
+
+            <!-- Related Articles -->
+            {relatedLinks.length > 0 && (
+              <div class="mt-16">
+                <h2 class="text-lg font-bold text-white mb-6 flex items-center gap-2.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                  Artículos relacionados
+                </h2>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                  {relatedLinks.map((post) => (
+                    <a
+                      href={`/blog/${post.data.slug}`}
+                      class="group relative p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-accent/20 hover:bg-white/[0.04] transition-all duration-300"
+                    >
+                      <span class="text-sm font-semibold text-white/80 group-hover:text-accent transition-colors duration-300 block leading-snug">
+                        {post.data.title}
+                      </span>
+                      <p class="text-xs text-white/30 mt-2.5 line-clamp-2 leading-relaxed">
+                        {post.data.description}
+                      </p>
+                      <div class="mt-3 flex items-center gap-1.5 text-accent/50 group-hover:text-accent transition-colors">
+                        <span class="text-[11px] font-medium">Leer más</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </article>
+        </div>
+      </div>
     </main>
 
     <Footer />
@@ -312,5 +345,126 @@ const categoryColor =
     <script is:inline>
       AOS.init({ duration: 800, once: true, offset: 50 });
     </script>
+
+    <!-- Scroll-Spy, Reading Progress, FAQ & Mobile TOC -->
+    <script is:inline>
+      (function() {
+        // === Reading Progress Bar ===
+        const progressBar = document.getElementById('reading-progress');
+        const articleContent = document.getElementById('article-content');
+
+        function updateProgress() {
+          if (!articleContent || !progressBar) return;
+          const rect = articleContent.getBoundingClientRect();
+          const articleTop = rect.top + window.scrollY;
+          const articleHeight = rect.height;
+          const viewportHeight = window.innerHeight;
+          const scrolled = window.scrollY - articleTop + viewportHeight * 0.3;
+          const progress = Math.max(0, Math.min(1, scrolled / articleHeight));
+          progressBar.style.transform = `scaleX(${progress})`;
+        }
+
+        // === Scroll-Spy for Desktop TOC ===
+        const tocLinks = document.querySelectorAll('[data-toc-slug]');
+        const tocDots = document.querySelectorAll('[data-toc-dot]');
+        const headingIds = Array.from(tocLinks).map(link => link.getAttribute('data-toc-slug'));
+
+        function updateScrollSpy() {
+          const scrollPosition = window.scrollY + 120;
+          let activeId = null;
+
+          for (let i = headingIds.length - 1; i >= 0; i--) {
+            const el = document.getElementById(headingIds[i]);
+            if (el && el.offsetTop <= scrollPosition) {
+              activeId = headingIds[i];
+              break;
+            }
+          }
+
+          tocLinks.forEach(link => {
+            const slug = link.getAttribute('data-toc-slug');
+            if (slug === activeId) {
+              link.classList.add('is-active');
+            } else {
+              link.classList.remove('is-active');
+            }
+          });
+
+          tocDots.forEach(dot => {
+            const slug = dot.getAttribute('data-toc-dot');
+            if (slug === activeId) {
+              dot.classList.add('is-active');
+            } else {
+              dot.classList.remove('is-active');
+            }
+          });
+        }
+
+        // Combined scroll handler with throttle
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            window.requestAnimationFrame(function() {
+              updateProgress();
+              updateScrollSpy();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+
+        updateProgress();
+        updateScrollSpy();
+
+        // === FAQ Accordion ===
+        const faqTriggers = document.querySelectorAll('.faq-trigger');
+        faqTriggers.forEach(trigger => {
+          trigger.addEventListener('click', function() {
+            const index = this.getAttribute('data-faq-index');
+            const answer = document.querySelector(`[data-faq-answer="${index}"]`);
+            const chevron = this.querySelector('.faq-chevron');
+            const isOpen = answer.classList.contains('is-open');
+
+            // Close all others
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('is-open'));
+            document.querySelectorAll('.faq-chevron').forEach(c => c.style.transform = '');
+            document.querySelectorAll('.faq-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+
+            if (!isOpen) {
+              answer.classList.add('is-open');
+              chevron.style.transform = 'rotate(180deg)';
+              this.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+
+        // === Mobile TOC Toggle ===
+        const mobileTocToggle = document.getElementById('mobile-toc-toggle');
+        const mobileTocContent = document.getElementById('mobile-toc-content');
+        const mobileTocChevron = document.getElementById('mobile-toc-chevron');
+
+        if (mobileTocToggle && mobileTocContent) {
+          mobileTocToggle.addEventListener('click', function() {
+            const isOpen = mobileTocContent.classList.contains('is-open');
+            if (isOpen) {
+              mobileTocContent.classList.remove('is-open');
+              mobileTocChevron.style.transform = '';
+            } else {
+              mobileTocContent.classList.add('is-open');
+              mobileTocChevron.style.transform = 'rotate(180deg)';
+            }
+          });
+
+          // Close mobile TOC when clicking a link
+          document.querySelectorAll('.mobile-toc-link').forEach(link => {
+            link.addEventListener('click', () => {
+              mobileTocContent.classList.remove('is-open');
+              mobileTocChevron.style.transform = '';
+            });
+          });
+        }
+      })();
+    </script>
+    <Analytics />
   </body>
 </html>

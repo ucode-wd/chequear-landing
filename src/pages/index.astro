@@ -7,6 +7,7 @@ import HowItWorks from "../components/HowItWorks.astro";
 import CTA from "../components/CTA.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
+import Analytics from '@vercel/analytics/astro';
 ---
 
 <html lang="es">
@@ -14,6 +15,10 @@ import Footer from "../components/Footer.astro";
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width" />
+        <!-- Google Fonts - Sora -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <meta name="generator" content={Astro.generator} />
         <title>ChequeAR - Verificá Cheques en segundos</title>
         <meta name="description" content="La mejor aplicación para consultar cheques rechazados y riesgo crediticio en Argentina. Escaneá cheques, consultá el BCRA y operá con seguridad." />
@@ -111,5 +116,6 @@ import Footer from "../components/Footer.astro";
                 offset: 50,
             });
         </script>
+        <Analytics />
     </body>
 </html>

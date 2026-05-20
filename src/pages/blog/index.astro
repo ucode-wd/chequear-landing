@@ -3,6 +3,7 @@ import "../../styles/global.css";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { getCollection } from "astro:content";
+import Analytics from '@vercel/analytics/astro';
 
 const allPosts = await getCollection("blog");
 const sortedPosts = allPosts.sort(
@@ -17,15 +18,28 @@ const categories = [
 ];
 
 const categoryColor: Record<string, string> = {
-  pilar: "bg-accent/20 text-accent",
-  educativo: "bg-blue-500/20 text-blue-400",
-  "long-tail": "bg-amber-500/20 text-amber-400",
+  pilar: "bg-accent/15 text-accent border-accent/20",
+  educativo: "bg-blue-500/15 text-blue-400 border-blue-500/20",
+  "long-tail": "bg-amber-500/15 text-amber-400 border-amber-500/20",
 };
 
 const categoryLabel: Record<string, string> = {
   pilar: "Guía Completa",
   educativo: "Educativo",
   "long-tail": "Consulta Práctica",
+};
+
+// Cluster labels
+const riskColor: Record<string, string> = {
+  alto: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+  medio: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+  bajo: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+};
+
+const riskLabel: Record<string, string> = {
+  alto: "Riesgo Crítico",
+  medio: "Riesgo Moderado",
+  bajo: "Riesgo Bajo",
 };
 ---
 
@@ -34,16 +48,16 @@ const categoryLabel: Record<string, string> = {
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
-    <title>Blog sobre Cheques en Argentina | ChequeAR</title>
+    <title>Guías sobre Cheques en Argentina | ChequeAR</title>
     <meta
       name="description"
-      content="Guías, artículos y respuestas sobre cheques en Argentina. Aprende a verificar cheques, evitar rechazos y reducir riesgos al cobrar."
+      content="Guías completas y verificadas sobre cheques en Argentina. Entendé tus derechos, evitá rechazos y reducí riesgos al operar con cheques."
     />
     <link rel="canonical" href="https://chequearapp.com.ar/blog" />
-    <meta property="og:title" content="Blog sobre Cheques en Argentina | ChequeAR" />
+    <meta property="og:title" content="Guías sobre Cheques en Argentina | ChequeAR" />
     <meta
       property="og:description"
-      content="Guías, artículos y respuestas sobre cheques en Argentina."
+      content="Guías completas y verificadas sobre cheques en Argentina."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_AR" />
@@ -51,10 +65,7 @@ const categoryLabel: Record<string, string> = {
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body
     class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-primary text-primary-foreground"
@@ -67,71 +78,87 @@ const categoryLabel: Record<string, string> = {
     <Header />
 
     <main class="relative z-10 w-full flex flex-col items-center overflow-hidden">
-      <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+
         <!-- Hero -->
-        <div class="text-center mb-16">
-          <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Blog sobre <span class="text-accent">Cheques</span>
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/15 text-accent text-xs font-semibold tracking-wider mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+            {sortedPosts.length} guías verificadas
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-5 tracking-tight leading-[1.1]">
+            Todo sobre <span class="text-accent">Cheques</span> en Argentina
           </h1>
-          <p class="text-lg text-white/50 max-w-2xl mx-auto">
-            Guías completas, artículos educativos y respuestas prácticas para
-            entender y manejar cheques en Argentina.
+          <p class="text-lg text-white/40 max-w-2xl mx-auto leading-relaxed font-light">
+            Guías completas, verificadas y actualizadas con la normativa vigente del BCRA y la Ley de Cheques 24.452.
           </p>
         </div>
 
-        <!-- Category Filters -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12" id="category-filters">
-          {categories.map((cat) => (
-            <button
-              data-category={cat.value}
-              class={`px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 cursor-pointer ${
-                cat.value === "all"
-                  ? "bg-accent text-accent-foreground border-accent"
-                  : "bg-white/5 text-white/60 border-white/10 hover:border-accent/40 hover:text-white"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+        <!-- Articles Grid -->
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {sortedPosts.map((post, index) => {
+            const nivel = post.data.nivelRiesgo;
+            const fecha = new Date(post.data.fechaVerificacion);
+            const formattedDate = fecha.toLocaleDateString("es-AR", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              timeZone: "UTC"
+            });
+            return (
+              <a
+                href={`/blog/${post.data.slug}`}
+                class="group relative flex flex-col p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-accent/25 hover:bg-white/[0.04] transition-all duration-300 overflow-hidden"
+                data-aos="fade-up"
+                data-aos-delay={Math.min(index * 60, 300)}
+              >
+                <!-- Hover glow -->
+                <div class="absolute -right-10 -top-10 w-24 h-24 rounded-full bg-accent/0 group-hover:bg-accent/6 blur-2xl transition-colors duration-500 pointer-events-none"></div>
+
+                <!-- Risk badge + date -->
+                <div class="flex items-center justify-between mb-4">
+                  {nivel ? (
+                    <span class={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold border tracking-wide ${riskColor[nivel]}`}>
+                      <span class="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>
+                      {riskLabel[nivel]}
+                    </span>
+                  ) : (
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-semibold border bg-accent/10 text-accent border-accent/20">
+                      Guía Pilar
+                    </span>
+                  )}
+                  <time class="text-[10px] text-white/20 font-medium" datetime={fecha.toISOString()}>
+                    {formattedDate}
+                  </time>
+                </div>
+
+                <!-- Title -->
+                <h2 class="text-[0.95rem] font-bold text-white/85 group-hover:text-accent transition-colors duration-300 mb-3 line-clamp-2 leading-snug flex-1">
+                  {post.data.title}
+                </h2>
+
+                <!-- Description -->
+                <p class="text-[13px] text-white/35 line-clamp-3 leading-relaxed mb-5">
+                  {post.data.description}
+                </p>
+
+                <!-- Footer row -->
+                <div class="pt-4 border-t border-white/[0.04] flex items-center justify-between">
+                  {post.data.author && (
+                    <span class="text-[11px] text-white/20 font-medium truncate max-w-[60%]">
+                      {post.data.author}
+                    </span>
+                  )}
+                  <span class="flex items-center gap-1 text-accent/40 group-hover:text-accent transition-colors text-[11px] font-medium ml-auto">
+                    Leer guía
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                  </span>
+                </div>
+              </a>
+            );
+          })}
         </div>
 
-        <!-- Articles Grid -->
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="articles-grid">
-          {sortedPosts.map((post) => (
-            <a
-              href={`/blog/${post.data.slug}`}
-              class="group article-card flex flex-col p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/30 hover:bg-white/8 transition-all duration-300"
-              data-category={post.data.category}
-              data-aos="fade-up"
-            >
-              <div class="flex items-center gap-2 mb-4">
-                <span
-                  class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${categoryColor[post.data.category]}`}
-                >
-                  {categoryLabel[post.data.category]}
-                </span>
-                <span class="text-xs text-white/30">
-                  {post.data.cluster.replace(/-/g, " ")}
-                </span>
-              </div>
-              <h2 class="text-lg font-semibold text-white group-hover:text-accent transition-colors duration-300 mb-3 line-clamp-2">
-                {post.data.title}
-              </h2>
-              <p class="text-sm text-white/50 line-clamp-3 flex-1">
-                {post.data.description}
-              </p>
-              <div class="mt-4 flex items-center gap-2">
-                <time class="text-xs text-white/30" datetime={post.data.date}>
-                  {new Date(post.data.date).toLocaleDateString("es-AR", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </time>
-              </div>
-            </a>
-          ))}
-        </div>
       </div>
     </main>
 
@@ -141,52 +168,6 @@ const categoryLabel: Record<string, string> = {
     <script is:inline>
       AOS.init({ duration: 800, once: true, offset: 50 });
     </script>
-
-    <!-- Category filter script -->
-    <script is:inline>
-      (function () {
-        const buttons = document.querySelectorAll("#category-filters button");
-        const cards = document.querySelectorAll(".article-card");
-
-        buttons.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const cat = btn.getAttribute("data-category");
-
-            // Update active button
-            buttons.forEach((b) => {
-              b.classList.remove(
-                "bg-accent",
-                "text-accent-foreground",
-                "border-accent"
-              );
-              b.classList.add(
-                "bg-white/5",
-                "text-white/60",
-                "border-white/10"
-              );
-            });
-            btn.classList.remove(
-              "bg-white/5",
-              "text-white/60",
-              "border-white/10"
-            );
-            btn.classList.add(
-              "bg-accent",
-              "text-accent-foreground",
-              "border-accent"
-            );
-
-            // Filter cards
-            cards.forEach((card) => {
-              if (cat === "all" || card.getAttribute("data-category") === cat) {
-                card.style.display = "";
-              } else {
-                card.style.display = "none";
-              }
-            });
-          });
-        });
-      })();
-    </script>
+    <Analytics />
   </body>
 </html>

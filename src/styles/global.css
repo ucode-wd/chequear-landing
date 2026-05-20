@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 * {
@@ -41,8 +42,10 @@
    Tailwind / shadcn theme mapping
    ========================================================= */
 @theme inline {
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Sora", "Inter", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+  --font-body: "Sora", "Inter", system-ui, sans-serif;
 
   --color-background: var(--bg);
   --color-foreground: var(--fg);
@@ -51,7 +54,7 @@
   --color-primary-foreground: oklch(0.99 0 0);
 
   --color-accent: var(--accent);
-  --color-accent-foreground: oklch(0.99 0 0);
+  --color-accent-foreground: oklch(0.12 0.03 255);
 
   --color-muted: var(--muted);
   --color-muted-foreground: oklch(0.5 0.01 255);
@@ -77,9 +80,13 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
 }
 
+/* =========================================================
+   Animations — Global
+   ========================================================= */
 @keyframes float {
   0% {
     transform: translateY(0);
@@ -100,6 +107,108 @@
 
 .animation-delay-600 {
   animation-delay: 600ms;
+}
+
+/* =========================================================
+   Animations — Blog Article UI
+   ========================================================= */
+
+/* Subtle glow pulse for verification badges */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px 0 rgba(var(--glow-color, 74, 222, 128), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 18px 4px rgba(var(--glow-color, 74, 222, 128), 0.5);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Shimmer sweep for CTA buttons and cards */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Rotating gradient border for premium cards */
+@keyframes border-rotate {
+  0% {
+    --border-angle: 0deg;
+  }
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+/* Reading progress bar */
+@keyframes progress-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Fade-in-up for staggered reveals */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+/* FAQ accordion smooth height transition */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease;
+  opacity: 0;
+}
+
+.faq-answer.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-answer > div {
+  overflow: hidden;
+}
+
+/* Scroll-spy active state for TOC items */
+.toc-link {
+  transition: color 0.25s ease, transform 0.25s ease, padding-left 0.25s ease;
+}
+
+.toc-link.is-active {
+  color: var(--color-accent);
+  padding-left: 4px;
+}
+
+.toc-indicator {
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.toc-indicator.is-active {
+  background-color: var(--color-accent);
+  transform: scale(1.4);
 }
 
 /* Fix CSS for webkit autofill to keep the dark glass aesthetic */
