@@ -9,21 +9,29 @@
 
 /* =========================================================
    Color tokens — ChequeAR
+   Azul marca: #192C5F → oklch(0.23 0.09 263)
+   Verde marca: #20B582 → oklch(0.66 0.14 158)
    ========================================================= */
 :root {
   /* Base */
   --bg: oklch(0.99 0 0);
-  --fg: oklch(0.25 0.02 255);
+  --fg: oklch(0.23 0.09 263); /* = #192C5F */
 
-  /* Brand */
-  --primary: oklch(0.28 0.08 255);
-  /* Azul ChequeAR */
-  --accent: oklch(0.75 0.14 163);
-  /* Verde ChequeAR */
+  /* ── Brand Blue: #192C5F ──────────────────────────────── */
+  --primary:         oklch(0.23 0.09 263); /* #192C5F — Navy oscuro para texto y contraste fuerte */
+  --primary-vivid:   oklch(0.32 0.12 263); /* Azul medio para badges, bordes activos             */
+  --primary-vibrant: oklch(0.42 0.16 263); /* Azul vivo para botones (fondo con texto blanco)    */
+  --primary-light:   oklch(0.97 0.012 263); /* Tinte azul muy sutil para fondos de tarjetas       */
+  --primary-soft:    oklch(0.88 0.03 263); /* Azul apagado para bordes y divisores               */
+
+  /* ── Brand Green: #20B582 ────────────────────────────── */
+  --accent:          oklch(0.37 0.11 158); /* Verde oscuro para texto legible en blanco           */
+  --accent-brand:    oklch(0.66 0.14 158); /* #20B582 — Verde marca para fondos/badges/iconos     */
+  --accent-glow:     oklch(0.72 0.15 158); /* Verde luminoso para glows decorativos               */
 
   /* UI */
-  --muted: oklch(0.96 0.005 255);
-  --border: oklch(0.92 0.005 255);
+  --muted:  oklch(0.96 0.006 263);
+  --border: oklch(0.90 0.015 263);
   --danger: oklch(0.58 0.24 27);
 
   /* Radius */
@@ -34,8 +42,15 @@
   --bg: oklch(0.14 0 0);
   --fg: oklch(0.98 0 0);
 
-  --muted: oklch(0.26 0 0);
+  --muted:  oklch(0.26 0 0);
   --border: oklch(0.26 0 0);
+
+  --primary-vivid:   oklch(0.42 0.12 263);
+  --primary-vibrant: oklch(0.55 0.17 263);
+  --primary-light:   oklch(0.18 0.04 263);
+  --primary-soft:    oklch(0.28 0.06 263);
+  --accent:          oklch(0.66 0.14 158); /* Verde marca en dark */
+  --accent-brand:    oklch(0.66 0.14 158);
 }
 
 /* =========================================================
@@ -50,25 +65,32 @@
   --color-background: var(--bg);
   --color-foreground: var(--fg);
 
-  --color-primary: var(--primary);
+  --color-primary:           var(--primary);
   --color-primary-foreground: oklch(0.99 0 0);
+  --color-primary-vivid:     var(--primary-vivid);
+  --color-primary-vibrant:   var(--primary-vibrant);
+  --color-primary-light:     var(--primary-light);
+  --color-primary-soft:      var(--primary-soft);
 
-  --color-accent: var(--accent);
-  --color-accent-foreground: oklch(0.12 0.03 255);
+  --color-accent:             var(--accent);
+  --color-accent-foreground:  oklch(0.99 0 0);   /* texto blanco sobre verde oscuro */
+  --color-accent-brand:       var(--accent-brand);
+  --color-accent-glow:        var(--accent-glow);
 
-  --color-muted: var(--muted);
-  --color-muted-foreground: oklch(0.5 0.01 255);
+  --color-muted:           var(--muted);
+  --color-muted-foreground: oklch(0.50 0.01 263);
 
   --color-border: var(--border);
-  --color-ring: var(--accent);
+  --color-ring:   var(--primary-vibrant);
 
-  --color-destructive: var(--danger);
+  --color-destructive:            var(--danger);
   --color-destructive-foreground: oklch(0.99 0 0);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
 }
+
 
 /* =========================================================
    Base styles
@@ -198,7 +220,7 @@
 }
 
 .toc-link.is-active {
-  color: var(--color-accent);
+  color: var(--color-primary-vibrant);
   padding-left: 4px;
 }
 
@@ -207,7 +229,7 @@
 }
 
 .toc-indicator.is-active {
-  background-color: var(--color-accent);
+  background-color: var(--color-primary-vibrant);
   transform: scale(1.4);
 }
 

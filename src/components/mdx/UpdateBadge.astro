@@ -17,7 +17,7 @@ const formattedDate = fecha.toLocaleDateString('es-AR', {
 });
 ---
 
-<div class="flex flex-wrap items-center gap-3 mb-8 pb-5 border-b border-white/[0.06]">
+<div class="flex flex-wrap items-center gap-3 mb-8 pb-5 border-b border-primary/[0.06]">
   <!-- Verified badge -->
   <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wide">
     <span class="relative flex h-2 w-2">
@@ -27,18 +27,18 @@ const formattedDate = fecha.toLocaleDateString('es-AR', {
     Información Verificada
   </div>
 
-  <span class="text-white/15 text-xs">•</span>
+  <span class="text-primary/15 text-xs">•</span>
 
   <!-- Date -->
-  <span class="text-xs font-medium text-white/40">
-    Última revisión: <time datetime={fecha.toISOString()} class="text-white/60">{formattedDate}</time>
+  <span class="text-xs font-medium text-primary/40">
+    Última revisión: <time datetime={fecha.toISOString()} class="text-primary/60">{formattedDate}</time>
   </span>
 
   {normativa && (
     <>
-      <span class="text-white/15 text-xs">•</span>
-      <span class="text-xs text-white/40">
-        Normativa: <strong class="font-semibold text-white/60">{normativa}</strong>
+      <span class="text-primary/15 text-xs">•</span>
+      <span class="text-xs text-primary/40">
+        Normativa: <strong class="font-semibold text-primary/60">{normativa}</strong>
       </span>
     </>
   )}

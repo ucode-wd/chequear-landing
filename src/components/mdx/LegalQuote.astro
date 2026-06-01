@@ -6,7 +6,7 @@ interface Props {
 const { normativa } = Astro.props;
 ---
 
-<div class="my-8 relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-xl shadow-2xl">
+<div class="my-8 relative overflow-hidden rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.04] to-primary/[0.01] backdrop-blur-xl shadow-2xl">
   <!-- Accent left bar -->
   <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent via-accent/60 to-transparent"></div>
 
@@ -24,14 +24,14 @@ const { normativa } = Astro.props;
     </div>
 
     <!-- Quote body -->
-    <blockquote class="text-sm leading-relaxed text-white/70 italic pl-1 border-0">
+    <blockquote class="text-sm leading-relaxed text-primary/70 italic pl-1 border-0">
       <slot />
     </blockquote>
 
     <!-- Source footer -->
-    <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-end">
-      <span class="text-[11px] font-medium text-white/30">
-        — Fuente oficial: <span class="text-white/50 underline decoration-white/10 underline-offset-2">{normativa}</span>
+    <div class="mt-4 pt-3 border-t border-primary/5 flex items-center justify-end">
+      <span class="text-[11px] font-medium text-primary/30">
+        — Fuente oficial: <span class="text-primary/50 underline decoration-white/10 underline-offset-2">{normativa}</span>
       </span>
     </div>
   </div>

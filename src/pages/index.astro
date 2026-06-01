@@ -17,26 +17,50 @@ import Footer from "../components/Footer.astro";
         <!-- Google Fonts - Sora -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
         <meta name="generator" content={Astro.generator} />
         <title>ChequeAR - Verificá Cheques en segundos</title>
-        <meta name="description" content="La mejor aplicación para consultar cheques rechazados y riesgo crediticio en Argentina. Escaneá cheques, consultá el BCRA y operá con seguridad." />
+        <meta
+            name="description"
+            content="La mejor aplicación para consultar cheques rechazados y riesgo crediticio en Argentina. Escaneá cheques, consultá el BCRA y operá con seguridad."
+        />
         <link rel="canonical" href="https://chequearapp.com.ar" />
-        
+
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://chequearapp.com.ar" />
-        <meta property="og:title" content="ChequeAR - Verificá Cheques en segundos" />
-        <meta property="og:description" content="Consultá el historial de cheques rechazados en el BCRA y ARCA. Escaneá y verificá riesgos en segundos." />
-        <meta property="og:image" content="https://chequearapp.com.ar/logo.png" />
+        <meta
+            property="og:title"
+            content="ChequeAR - Verificá Cheques en segundos"
+        />
+        <meta
+            property="og:description"
+            content="Consultá el historial de cheques rechazados en el BCRA y ARCA. Escaneá y verificá riesgos en segundos."
+        />
+        <meta
+            property="og:image"
+            content="https://chequearapp.com.ar/logo.png"
+        />
         <meta property="og:locale" content="es_AR" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://chequearapp.com.ar" />
-        <meta property="twitter:title" content="ChequeAR - Verificá Cheques en segundos" />
-        <meta property="twitter:description" content="Consultá el historial de cheques rechazados en el BCRA y ARCA. Escaneá y verificá riesgos en segundos." />
-        <meta property="twitter:image" content="https://chequearapp.com.ar/logo.png" />
+        <meta
+            property="twitter:title"
+            content="ChequeAR - Verificá Cheques en segundos"
+        />
+        <meta
+            property="twitter:description"
+            content="Consultá el historial de cheques rechazados en el BCRA y ARCA. Escaneá y verificá riesgos en segundos."
+        />
+        <meta
+            property="twitter:image"
+            content="https://chequearapp.com.ar/logo.png"
+        />
         <!-- AOS CSS -->
         <link
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
@@ -86,11 +110,11 @@ import Footer from "../components/Footer.astro";
         </script>
     </head>
     <body
-        class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-primary text-primary-foreground"
+        class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-white text-primary"
     >
         <!-- Gradients base para unificar todo el canvas -->
         <div
-            class="fixed inset-0 pointer-events-none -z-50 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/10 via-primary to-primary"
+            class="fixed inset-0 pointer-events-none -z-50 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-vibrant/8 via-primary-light/40 to-white"
         >
         </div>
         <Header />
@@ -116,7 +140,7 @@ import Footer from "../components/Footer.astro";
             });
         </script>
         <script>
-            import { inject } from '@vercel/analytics';
+            import { inject } from "@vercel/analytics";
             inject();
         </script>
     </body>

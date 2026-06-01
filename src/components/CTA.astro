@@ -1,15 +1,27 @@
 <section class="relative w-full py-24 sm:py-32" id="download">
-    <!-- Mismo glow que en Hero para unificar visualmente -->
+    <!-- Glow de fondo — azul grande + verde marca superpuesto -->
     <div
         class="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none"
     >
-        <div class="w-[40rem] h-[40rem] rounded-full bg-accent/10 blur-[100px]">
+        <!-- Glow azul ancho -->
+        <div
+            class="w-[50rem] h-[50rem] rounded-full bg-primary-vibrant/5 blur-[120px]"
+        >
+        </div>
+    </div>
+    <div
+        class="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none"
+    >
+        <!-- Glow verde marca encima, más concentrado -->
+        <div
+            class="w-[28rem] h-[28rem] rounded-full bg-accent-glow/5 blur-[80px]"
+        >
         </div>
     </div>
 
     <!-- Línea decorativa vertical -->
     <div
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-24 bg-gradient-to-b from-white/10 to-transparent"
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-24 bg-gradient-to-b from-primary/10 to-transparent"
     >
     </div>
 
@@ -24,29 +36,38 @@
                 Consultá cheques rechazados al instante
             </h2>
             <p
-                class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-white/60 font-light"
+                class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-primary/60 font-light"
             >
                 No dejes que el riesgo crediticio afecte tu negocio. Sumate a
                 miles de usuarios que ya confían en ChequeAR.
             </p>
             <div
-                class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+                class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row flex-wrap w-full"
             >
-                <div class="flex justify-center gap-4 flex-wrap">
-                    <a
-                        href="https://play.google.com/store/apps/details?id=com.ucode.chequear&hl=es_AR&pli=1"
-                        class="flex h-12 items-center justify-center rounded-full bg-accent px-8 text-base font-medium text-accent-foreground shadow-[0_0_30px_-5px_var(--color-accent)] hover:shadow-[0_0_40px_-5px_var(--color-accent)] hover:bg-accent/90 transition-all duration-300"
-                    >
-                        Descargar en Android
-                    </a>
+                <!-- Primario: Azul marca -->
+                <a
+                    href="https://play.google.com/store/apps/details?id=com.ucode.chequear&hl=es_AR&pli=1"
+                    class="flex h-12 items-center justify-center rounded-full bg-primary-vibrant px-8 text-base font-semibold text-white shadow-[0_4px_20px_-4px_rgba(25,44,95,0.45)] hover:shadow-[0_8px_30px_-4px_rgba(25,44,95,0.55)] hover:bg-primary-vibrant/90 transition-all duration-300 animate-shimmer"
+                    style="background-image: linear-gradient(110deg, #192C5F 40%, #2a4585 50%, #192C5F 60%);"
+                >
+                    Descargar en Android
+                </a>
 
-                    <a
-                        href="https://apps.apple.com/ar/app/chequear-verific%C3%A1-cheques/id6756928345?l=en-GB"
-                        class="flex h-12 items-center justify-center rounded-full border border-white/20 px-8 text-base font-medium hover:bg-white/5 transition-all duration-300"
-                    >
-                        Descargar en iOS
-                    </a>
-                </div>
+                <!-- Secundario: Verde marca -->
+                <a
+                    href="https://apps.apple.com/ar/app/chequear-verific%C3%A1-cheques/id6756928345?l=en-GB"
+                    class="flex h-12 items-center justify-center rounded-full border border-accent-brand/50 px-8 text-base font-medium text-accent hover:bg-accent-brand/8 hover:border-accent-brand/70 transition-all duration-300"
+                >
+                    Descargar en iOS
+                </a>
+
+                <!-- Secundario: Verde marca -->
+                <a
+                    href="https://app.chequearapp.com.ar"
+                    class="flex h-12 items-center justify-center rounded-full border border-accent-brand/50 px-8 text-base font-medium text-accent hover:bg-accent-brand/8 hover:border-accent-brand/70 transition-all duration-300"
+                >
+                    Abrir en mi PC
+                </a>
             </div>
         </div>
     </div>
