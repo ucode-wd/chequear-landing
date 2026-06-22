@@ -8,10 +8,17 @@ date: "2026-05-20"
 nivelRiesgo: "alto"
 normativaAplicable: "Decreto Ley de Cheques 24.452 y circulares del BCRA sobre Denuncias"
 solucionChequear: true
-fechaVerificacion: 2026-05-20
-tipoEsquema: "article"
+fechaVerificacion: 2026-06-21
+tipoEsquema: "faq"
 author: "Equipo Técnico ChequeAR"
 reviewedBy: "Asesoría Legal ChequeAR"
+preguntasFrecuentes:
+  - pregunta: "¿Cómo saber si un cheque está denunciado?"
+    respuesta: "Podés verificarlo en la Central de Cheques Denunciados del BCRA ingresando el número de cheque, CUIT del banco, número de sucursal y de cuenta corriente. También podés automatizar esta consulta con ChequeAR para auditar a tus clientes."
+  - pregunta: "¿Qué pasa si cobro un cheque denunciado?"
+    respuesta: "El clearing o la ventanilla del banco rechazará el cobro automáticamente por estar denunciado por extravío o robo. Podés reclamar judicialmente el pago a quien te lo endosó, pero no podrás cobrarlo contra la cuenta corriente original."
+  - pregunta: "¿Quién puede denunciar la pérdida de un cheque?"
+    respuesta: "Tanto el titular de la cuenta corriente (librador) como el beneficiario desposeído del cheque físico tienen la obligación y el derecho de efectuar la denuncia policial y notificar de inmediato al banco para frenar su cobro."
 ---
 import RiskAlert from '../../components/mdx/RiskAlert.astro';
 import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
@@ -20,15 +27,83 @@ import ActionCTA from '../../components/mdx/ActionCTA.astro';
 <UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
 
 <RiskAlert nivel={frontmatter.nivelRiesgo}>
-  Un cheque denunciado por robo, hurto o extravío no puede ser cobrado. Su circulación constituye un peligro latente de fraude para comerciantes y proveedores.
+  Un cheque denunciado por robo, hurto, extravío o adulteración no puede ser pagado por el clearing bancario. Aceptar y hacer circular este tipo de valores representa un peligro latente de fraude financiero y puede derivar en imputaciones penales por receptación o encubrimiento si no se comprueba la buena fe comercial.
 </RiskAlert>
 
-## Pasos para denunciar un cheque extraviado
+En el comercio diario en Argentina, el extravío o robo de chequeras físicas y de cheques individuales de terceros es una contingencia lamentablemente habitual. Cuando esto ocurre, el sistema legal y bancario prioriza bloquear la circulación de estos documentos para proteger el patrimonio del dueño legítimo, desactivando el clearing correspondiente de forma perentoria.
 
-Si perdiste o te robaron una chequera o un cheque individual, debés actuar inmediatamente para evitar que se cobre:
+Sin embargo, para los comerciantes y Pymes, recibir un cheque denunciado como pago de mercadería o servicios es una de las estafas más usuales. El estafador hace circular el documento rápidamente antes de que el receptor habitual realice las validaciones correspondientes o de que la denuncia impacte en las bases de datos oficiales.
 
-1. **Denuncia Policial**: Radicá la denuncia policial correspondiente detallando el número de cheque, CUIT del emisor, banco y monto si se conoce.
-2. **Notificación al Banco**: Comunicá la denuncia al banco emisor mediante los canales habilitados para bloquear el clearing de ese instrumento.
-3. **Carta al Librador / Beneficiario**: Informá a las partes comerciales involucradas para anular la transacción.
+En esta guía detallada analizamos la obligación legal de denunciar cheques según el Artículo 5 de la Ley de Cheques N° 24.452, los pasos que debés seguir ante el banco y la policía ante una pérdida de valores, las graves implicancias penales de realizar denuncias falsas y cómo defender tus derechos si sos un tenedor de buena fe.
 
-<ActionCTA />
+---
+
+## Obligación Legal de Denunciar: El Artículo 5 de la Ley de Cheques
+
+La **Ley de Cheques 24.452** estipula con claridad que el titular de la cuenta corriente o el beneficiario desposeído de un cheque no solo tiene la facultad, sino la **obligación legal de actuar de forma inmediata** en caso de pérdida de control del documento:
+
+* **Sujeto de la denuncia**: La denuncia puede ser iniciada tanto por el librador (emisor del cheque que perdió la chequera) como por el tenedor legítimo (el comerciante que había recibido el cheque endosado y sufrió un robo en su local).
+* **Finalidad**: La ley busca evitar que el banco pague a un tenedor ilegítimo, bloqueando el clearing de forma preventiva.
+
+Una vez recibida la notificación por parte del cliente, el banco emisor del cheque tiene la obligación de ingresar de inmediato la alerta en el sistema compensador del Banco Central (BCRA) para que el clearing nacional rechace de forma automática cualquier intento de depósito del instrumento.
+
+---
+
+## Procedimiento ante Pérdida, Robo o Extravío
+
+Si perdiste o te robaron un cheque o una chequera, debés seguir un protocolo estricto en un plazo no mayor a **48 horas** para deslindar responsabilidades:
+
+### Paso 1: Radicar la Denuncia Policial
+Es el primer paso obligatorio. No sirve únicamente llamar al banco; se requiere un comprobante policial formal.
+* Dirigite a la comisaría más cercana o realizá la denuncia a través de los portales de denuncias online de tu provincia.
+* **Detalles indispensables**: La denuncia debe listar de forma minuciosa:
+  * El nombre de la entidad bancaria emisora.
+  * El número de la cuenta corriente.
+  * Los números de serie de los cheques robados o extraviados.
+  * Si los cheques estaban en blanco o ya firmados y completados con importes y beneficiarios.
+
+### Paso 2: Notificar Formalmente al Banco Emisor
+Llamá de inmediato a la línea de emergencias de tu banco para suspender temporalmente el clearing de forma telefónica.
+* Posteriormente, debés presentar por escrito o a través del canal de home banking corporativo la constancia de la denuncia policial en un plazo máximo (típicamente de 24 horas hábiles hábiles) para que la suspensión sea definitiva.
+* El banco catalogará los cheques bajo los códigos oficiales de rechazo: "Denunciado por Robo/Sustracción" o "Denunciado por Extravío".
+
+---
+
+## La Denuncia Falsa de Cheques: Un Delito Penal Grave
+
+En épocas de crisis de liquidez, algunos emisores de cheques incurren en una práctica fraudulenta y delictiva: **el "autorobo" o denuncia falsa de cheques**. 
+
+Consiste en entregar un cheque de pago diferido a un proveedor para retirar mercadería y, pocos días antes de la fecha de cobro, radicar una denuncia policial falsa de extravío o robo del cheque para evitar que el banco debite los fondos de la cuenta corriente.
+
+### Implicancias Penales en Argentina:
+1. **Falsa Denuncia (Art. 245 del Código Penal)**: Denunciar ante la autoridad policial un delito inexistente (el robo simulado de la chequera) conlleva penas de prisión de dos meses a un año o multas económicas.
+2. **Frustración Maliciosa de Pago (Art. 302 Inc. 2 del Código Penal)**: El Código Penal castiga específicamente a quien libre un cheque y frustre su pago de forma maliciosa (utilizando una denuncia policial falsa de extravío para bloquear el clearing). La pena es de **prisión de 6 meses a 4 años**.
+
+*Jurisprudencia*: Los juzgados de instrucción criminal de Argentina investigan exhaustivamente las cadenas de fechas. Si se demuestra que la supuesta denuncia de robo del cheque se realizó después de que el emisor firmara facturas de compra y remitos de entrega de mercadería, el dolo de estafa queda probado de inmediato y se dicta el procesamiento penal del emisor.
+
+---
+
+## Cómo Defender tus Derechos si Recibís un Cheque Denunciado de Buena Fe
+
+Si sos un comerciante y el banco te rechazó un cheque depositado bajo el motivo de "Denunciado", tu dinero no está necesariamente perdido, pero debés actuar de manera ordenada.
+
+### A. La Presunción de Buena Fe
+La ley argentina protege al portador de **buena fe**. Si recibiste el cheque en el marco de una transacción comercial real, con factura formal, y el cheque cuenta con una cadena regular de endosos, la justicia comercial te otorgará el derecho de cobro.
+* La denuncia del librador no extingue la obligación de pagar el valor del cheque; solo impide que el clearing se realice de forma automática.
+
+### B. El Reclamo Ejecutivo y la Vía Cambiaria
+Tu abogado puede iniciar el **Juicio Ejecutivo** contra el librador y contra todos los endosantes que figuren en el reverso del documento.
+* **Excepción de falta de legitimación**: El deudor intentará argumentar ante el juez que el cheque fue robado y por ende carece de valor. Sin embargo, si demostrás que lo adquiriste de manera legítima mediante una cadena regular de endosos comerciales, el juez ordenará seguir adelante con la ejecución y trabará embargos preventivos sobre los bienes del emisor.
+
+---
+
+## ECHEQ: Adiós a las Denuncias de Extravío
+
+La digitalización total a través del **ECHEQ (Cheque Electrónico)** ha resuelto por completo las pérdidas físicas, los robos de chequeras en tránsito y las falsificaciones del papel:
+* Como el ECHEQ se genera, acepta, endosa y deposita dentro de la plataforma segura de home banking homologada por el BCRA, no existe la posibilidad física de extraviarlo en la calle.
+* En caso de fraudes o disputas digitales complejas, las denuncias se canalizan mediante suspensiones operativas directas en Coelsa (compensadora digital), aportando una trazabilidad y seguridad legal absoluta para las Pymes de Argentina.
+
+<ActionCTA 
+  title="Protegé tus cobranzas con ChequeAR"
+  description="Los fraudes con cheques denunciados son una amenaza real para la liquidez de tu Pyme. Con ChequeAR podés analizar en 1 segundo los antecedentes comerciales y el perfil de deudas de cualquier CUIT antes de aceptar sus cheques comerciales. ¡Operá con total seguridad!"
+/>

@@ -8,10 +8,17 @@ date: "2026-05-20"
 nivelRiesgo: "bajo"
 normativaAplicable: "Comunicaciones A 6578 y complementarias del BCRA"
 solucionChequear: true
-fechaVerificacion: 2026-05-20
-tipoEsquema: "article"
+fechaVerificacion: 2026-06-21
+tipoEsquema: "faq"
 author: "Equipo Técnico ChequeAR"
 reviewedBy: "Asesoría de Producto ChequeAR"
+preguntasFrecuentes:
+  - pregunta: "¿Cómo se acepta y deposita un ECHEQ?"
+    respuesta: "Debés ingresar a la sección 'ECHEQ' del home banking de tu banco, visualizar los cheques electrónicos pendientes recibidos, hacer clic en 'Aceptar' y luego seleccionar 'Depositar' indicando tu cuenta de destino (CBU/Alias)."
+  - pregunta: "¿Cuántos endosos permite un ECHEQ?"
+    respuesta: "A diferencia del cheque físico tradicional de papel que se limita a 1 o 2 endosos, el ECHEQ de carácter comercial permite realizar hasta un máximo de 99 endosos de forma totalmente electrónica."
+  - pregunta: "¿Un ECHEQ puede rebotar por falta de fondos?"
+    respuesta: "Sí, el clearing es el mismo. Si la cuenta corriente emisora no dispone del saldo necesario a la fecha de cobro, el ECHEQ será rechazado y tu banco emitirá un Certificado de Adjudicación de Canales (CAC) firmado digitalmente para que puedas iniciar el reclamo judicial."
 ---
 import RiskAlert from '../../components/mdx/RiskAlert.astro';
 import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
@@ -20,15 +27,77 @@ import ActionCTA from '../../components/mdx/ActionCTA.astro';
 <UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
 
 <RiskAlert nivel={frontmatter.nivelRiesgo}>
-  El ECHEQ reduce prácticamente a cero los errores formales (firmas defectuosas, tachaduras), siendo el medio más seguro y trazable de la plaza financiera actual.
+  El ECHEQ reduce prácticamente a cero los errores formales (firmas defectuosas, tachaduras, enmiendas), convirtiéndose en el medio de pago diferido más seguro, transparente y trazable de la plaza financiera argentina actual. Sin embargo, no elimina el riesgo de falta de fondos del emisor al momento de su vencimiento.
 </RiskAlert>
 
-## Beneficios Clave del ECHEQ
+El **ECHEQ (Cheque Electrónico)** es una de las innovaciones más trascendentes en la historia del sistema de pagos de la República Argentina. Introducido por el Banco Central de la República Argentina (BCRA) mediante la Comunicación "A" 6578 y complementarias, el ECHEQ es un instrumento de pago librado por medios electrónicos que mantiene las mismas propiedades de exigibilidad legal que el cheque tradicional de papel, pero eliminando la necesidad de soporte físico.
 
-El Cheque Electrónico (ECHEQ) ha revolucionado los cobros y pagos comerciales en Argentina gracias a sus claras ventajas operativas:
+En esta guía definitiva, analizamos en profundidad cómo funciona el ecosistema digital del ECHEQ en Argentina, los pasos operativos para emitir, aceptar, endosar y depositar desde el home banking, y los aspectos legales del Certificado de Adjudicación de Canales (CAC) ante posibles rechazos por falta de fondos.
 
-1. **Sin Errores Formales**: Al ser digital, no sufre rechazos por firmas defectuosas o escrituras dudosas.
-2. **Endosos Ilimitados**: Permite hasta 99 endosos, frente a los 1 o 2 del cheque físico.
-3. **Seguridad Total**: Elimina el riesgo de robo o extravío físico durante el traslado.
+---
 
-<ActionCTA />
+## El Ciclo de Vida del ECHEQ: Emisión, Aceptación, Endoso y Depósito
+
+Toda la operatoria de los ECHEQs se realiza obligatoriamente a través del home banking o las bancas electrónicas de empresas de las entidades financieras autorizadas por el BCRA, interactuando con una cámara compensadora digital centralizada (Coelsa).
+
+### Paso 1: La Emisión del ECHEQ
+Para emitir un cheque electrónico, el librador debe:
+1. Ingresar a su home banking en la sección de **ECHEQ / Cheques Electrónicos**.
+2. Seleccionar la opción de **Emisión**.
+3. Completar los campos requeridos:
+   * **CUIT/CUIL del Beneficiario**: La cuenta bancaria de destino se localiza de forma unificada mediante el CUIT del receptor, lo que elimina errores de beneficiarios mal escritos.
+   * **Monto**: Importe en pesos argentinos.
+   * **Fecha de Pago**: Si es un cheque de pago diferido, se establece la fecha futura de clearing. Si es un cheque común, se emite para cobro inmediato.
+   * **Carácter de endosabilidad**: Se puede marcar como "No a la orden" si se desea evitar que circule.
+
+### Paso 2: La Aceptación del ECHEQ
+Una vez emitido, el cheque no ingresa inmediatamente a la cuenta del beneficiario. Queda en un estado de "Pendiente de Aceptación".
+* **El receptor debe ingresar a su home banking** y buscar la sección de ECHEQ recibidos.
+* Tiene la opción de **Aceptar** o **Rechazar** el instrumento.
+* **Plazo de Aceptación**: Tenés tiempo de aceptarlo hasta la fecha de vencimiento del cheque (30 días posteriores a la fecha de cobro). Si no lo aceptás, el cheque vence operativamente y vuelve al emisor original.
+
+### Paso 3: El Endoso Digital
+Si el cheque fue aceptado y es endosable, el beneficiario puede transferirlo a favor de un tercero (proveedor, socio, etc.) de forma 100% electrónica.
+* Para hacerlo, simplemente se selecciona el ECHEQ de la lista, se elige la opción **Endosar** e ingresa el CUIT del nuevo beneficiario.
+* El nuevo beneficiario recibirá la notificación en su respectivo banco y deberá aceptarlo.
+
+### Paso 4: El Depósito al Cobro
+Llegada la fecha de pago, el tenedor actual del ECHEQ debe seleccionar la opción **Depositar**. El sistema le solicitará elegir el CBU o Alias de la cuenta (caja de ahorro o cuenta corriente) donde desea que se acrediten los fondos. El clearing digital se procesará y, en condiciones normales, el dinero estará disponible en **24 horas hábiles**.
+
+---
+
+## Tabla Comparativa: Cheque Físico de Papel vs. ECHEQ
+
+| Característica | Cheque de Papel Tradicional | ECHEQ (Cheque Electrónico) |
+|---|---|---|
+| **Soporte** | Papel de seguridad impreso. | Digital, custodiado en Coelsa / Bancos. |
+| **Límite de Endosos** | Común: 1 / Diferido: 2. | Comercial estándar: hasta **99 endosos**. |
+| **Rechazo por Forma** | Frecuente (firmas disímiles, errores de fecha, enmiendas). | Prácticamente **cero**. Todo se valida por sistema. |
+| **Riesgo de Robo/Pérdida** | Alto (sustracción física en tránsito). | Nulo. No existe el papel físico. |
+| **Clearing Bancario** | 48 horas hábiles promedio. | **24 horas hábiles** fijas. |
+| **Juicio Ejecutivo** | Requiere el papel físico con constancia pegada. | Requiere el Certificado CAC impreso y firmado. |
+
+---
+
+## El Certificado de Adjudicación de Canales (CAC) y la Vía Ejecutiva
+
+Una de las preguntas más habituales es cómo iniciar un juicio de cobro comercial si el cheque es digital y no existe un papel físico para presentar ante el juez comercial.
+
+El BCRA resolvió este aspecto legal mediante la creación del **Certificado de Adjudicación de Canales (CAC)**:
+
+1. **Rechazo del ECHEQ**: Si al momento del vencimiento el emisor no tiene fondos, el clearing rechaza el ECHEQ electrónicamente.
+2. **Generación del CAC**: Tu banco emite un certificado en formato PDF que contiene todos los datos de emisión, firmas electrónicas, cadena completa de endosos con CUITs y la constancia formal del rechazo con hora y fecha.
+3. **Fuerza Ejecutiva**: De acuerdo con las disposiciones del BCRA y la Ley de Cheques, este documento impreso y firmado por la entidad financiera cuenta con **fuerza ejecutiva**. Tu abogado puede presentarlo directamente ante los juzgados comerciales para iniciar el juicio ejecutivo y solicitar embargos preventivos de inmediato de la misma manera que con un cheque físico tradicional.
+
+---
+
+## Ventajas del ECHEQ para la Gestión de Pymes y Comercios
+
+* **Reducción de costos de traslado**: No es necesario enviar cadetes a retirar o depositar cheques físicos en las sucursales, lo que elimina el costo de logística y los riesgos de seguridad en la vía pública.
+* **Mayor facilidad de negociación**: La Pyme puede descontar el ECHEQ en la Bolsa de Comercio de forma electrónica en minutos, sin necesidad de realizar trámites presenciales de entrega del papel.
+* **Trazabilidad absoluta**: Podés seguir en tiempo real toda la cadena de endosos y saber exactamente quién firmó el cheque digital antes de que llegara a tus manos.
+
+<ActionCTA 
+  title="Controlá tus ECHEQs y minimizá rechazos con ChequeAR"
+  description="El ECHEQ elimina los errores de confección física, pero no garantiza la solvencia de la cuenta. Con ChequeAR podés analizar al instante el historial de cheques rechazados, scoring del BCRA y situación de deudas de cualquier CUIT antes de aceptar sus ECHEQs. ¡Cuidá la caja de tu empresa!"
+/>

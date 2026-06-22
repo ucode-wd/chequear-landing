@@ -7,26 +7,97 @@ cluster: "riesgo-cheques"
 date: "2026-05-20"
 nivelRiesgo: "bajo"
 normativaAplicable: "Ley de Cheques 24.452 y modificaciones del Código Civil y Comercial"
-solucionChequear: false
-fechaVerificacion: 2026-05-20
-tipoEsquema: "article"
+solucionChequear: true
+fechaVerificacion: 2026-06-21
+tipoEsquema: "faq"
 author: "Equipo Técnico ChequeAR"
 reviewedBy: "Asesoría Legal ChequeAR"
+preguntasFrecuentes:
+  - pregunta: "¿Qué ley regula los cheques en Argentina?"
+    respuesta: "La operatoria cambiaria y legal de los cheques físicos y ECHEQs está regida por la Ley de Cheques N° 24.452, sus modificatorias y el Código Civil y Comercial de la Nación, junto con las circulares del Banco Central."
+  - pregunta: "¿Qué es la vía ejecutiva de un cheque?"
+    respuesta: "Es un procedimiento judicial acelerado habilitado por la constancia de rechazo bancaria. Permite solicitar embargos inmediatos sobre las cuentas y bienes del deudor sin discutir la causa del origen de la deuda en primer término."
+  - pregunta: "¿Cuándo prescribe un cheque rechazado para juicio?"
+    respuesta: "La acción ejecutiva contra el librador y los endosantes prescribe al cumplirse 1 año contado desde la expiración del plazo para la presentación del cheque al cobro."
 ---
 import RiskAlert from '../../components/mdx/RiskAlert.astro';
 import LegalQuote from '../../components/mdx/LegalQuote.astro';
 import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+import ActionCTA from '../../components/mdx/ActionCTA.astro';
 
 <UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
 
 <RiskAlert nivel={frontmatter.nivelRiesgo}>
-  Conocer tus derechos y obligaciones legales al emitir o recibir cheques es tu principal escudo ante contingencias judiciales y disputas de clearing.
+  Conocer tus derechos y obligaciones legales al emitir o recibir cheques es tu principal escudo ante contingencias judiciales y disputas de clearing. La Ley de Cheques N° 24.452 rige con rigidez formal toda la operatoria cambiaria en Argentina.
 </RiskAlert>
 
-## Marco Legal Vigente
+El cheque es uno de los instrumentos jurídicos y financieros más regulados y antiguos en el comercio de la República Argentina. A pesar del auge de las transferencias digitales inmediatas y los sistemas de pago digitales, el cheque (particularmente en su formato electrónico **ECHEQ**) conserva un papel central en la cadena de pagos y financiamiento de las pequeñas y medianas empresas.
 
-Toda la operatoria de cheques en la República Argentina está regida por la **Ley 24.452**. Esta norma define de manera precisa los tipos de cheques (común y diferido), las obligaciones cambiarias de los endosantes y el procedimiento ejecutivo ante rebotes de clearing.
+La operatoria con cheques no está regida por las normas generales de los contratos civiles, sino por una rama especializada del derecho privado conocida como **Derecho Cambiario**. Conocer las particularidades de esta normativa es clave para cualquier comerciante o empresario, ya que determina qué derechos tenés al cobrar y qué responsabilidades asumís al firmar o endosar.
+
+En esta guía conceptual y legal exhaustiva, analizamos en profundidad la Ley de Cheques N° 24.452, los principios jurídicos que dotan de seguridad al cheque, la clasificación legal de los documentos y el funcionamiento de la vía judicial ejecutiva.
+
+---
+
+## Principios Jurídicos del Derecho Cambiario Argentino
+
+Los cheques, al igual que los pagarés y las letras de cambio, forman parte de los denominados **títulos de crédito** o **títulos valores**. Estos instrumentos gozan de características jurídicas especiales dictadas por el Código Civil y Comercial de la Nación y la Ley de Cheques para garantizar la máxima seguridad y velocidad en el tráfico mercantil:
+
+### A. Autonomía
+La autonomía significa que cada adquisición del cheque es independiente de las relaciones que hayan tenido los tenedores anteriores.
+* *Ejemplo práctico*: Si una Pyme le compra mercadería a un proveedor y le paga con un cheque, y el proveedor le endosa ese cheque a un tercero para pagar el alquiler de una oficina, el tercero es el tenedor autónomo del cheque. Si luego la mercadería original resulta estar rota, la Pyme no puede negarse a pagarle al tercero argumentando el problema con el proveedor. La deuda del cheque es independiente del contrato que le dio origen.
+
+### B. Literalidad
+La literalidad dictamina que el alcance y la medida de los derechos y obligaciones del cheque están limitados estrictamente a lo que figura escrito en el documento de papel o en el registro digital del ECHEQ.
+* Ninguna promesa verbal o contrato paralelo no escrito en el título de crédito puede modificar el monto, los plazos de vencimiento o las condiciones cambiarias expresadas en el documento.
+
+### C. Abstracción
+El cheque es un título de crédito abstracto. Esto significa que la "causa" u origen de la deuda no se debate durante el cobro cambiario rápido (el clearing bancario o el juicio ejecutivo).
+* El banco pagará el cheque sin preguntar qué compraste con él. Y el juez del juicio ejecutivo ordenará el embargo del deudor analizando únicamente si el cheque está formalmente correcto y tiene la constancia de rechazo, postergando cualquier debate causal para un juicio ordinario posterior.
+
+---
+
+## Clasificación de los Cheques en la Legislación Argentina
+
+La Ley N° 24.452 y las reglamentaciones del Banco Central (BCRA) prevén distintas modalidades de cheques adaptadas a las necesidades operativas de cobro y seguridad:
+
+### 1. Según la Fecha de Cobro
+* **Cheque Común**: Es una orden de pago pagadera a la vista (de inmediato). Debe ser depositado o presentado al cobro dentro de los **30 días corridos** desde su fecha de emisión.
+* **Cheque de Pago Diferido (CPD)**: Es un instrumento de crédito a plazo. Contiene una fecha de emisión y una fecha de cobro futura (de 1 a 360 días de plazo máximo). Una vez llegada la fecha de pago, se abren los 30 días corridos de vigencia para el clearing.
+
+### 2. Según las Cláusulas de Seguridad y Restricciones de Circulación
+* **Cheque Cruzado**: Se le trazan dos líneas paralelas en el margen superior izquierdo. **Solo puede ser depositado en una cuenta bancaria**; nunca cobrado por ventanilla.
+* **Cheque Para Abonar en Cuenta**: Lleva escrita esta leyenda en el frente. Al igual que el cruzado, bloquea el cobro en efectivo por caja, forzando la trazabilidad bancaria.
+* **Cheque Imputado**: El librador o el portador indica en el reverso a qué deudas o facturas específicas se debe imputar el pago de ese cheque.
+* **Cheque Certificado**: El banco emisor retiene y bloquea los fondos de la cuenta del librador por un plazo de hasta 5 días hábiles para garantizarle al beneficiario que el cheque se pagará sin riesgos de clearing.
+* **Cheque No a la Orden**: Contiene esta frase en el frente. **No se puede transferir por endoso**. Solo puede ser depositado por el beneficiario original que figura en el documento.
+
+---
+
+## Plazos Legales y Prescripción Cambiaria
+
+Los plazos en el derecho cambiario argentino son fatales: no admiten demoras y su vencimiento causa la pérdida automática de derechos procesales valiosos.
+
+* **Plazo de Presentación al Clearing**: Rige un término fijo de **30 días corridos** desde la fecha de emisión (en cheques comunes) o desde la fecha de pago (en cheques diferidos). Si el cheque proviene de un país limítrofe o del extranjero pero debe cobrarse en Argentina, el plazo se extiende a **60 días**.
+* **Prescripción de la Acción Ejecutiva (Vía Cambiaria)**: Si el cheque es rechazado por el banco, tenés exactamente **1 año** de plazo para iniciar la demanda civil ejecutiva en los juzgados comerciales. El año se cuenta desde el día del rechazo de clearing.
+* **Prescripción de la Acción de Regreso**: Si un endosante de la cadena cambiaria paga el cheque rechazado tras ser demandado, tiene **1 año** de plazo para iniciar juicios de repetición contra los endosantes anteriores o el librador original.
 
 <LegalQuote normativa={frontmatter.normativaAplicable}>
-  "La ley aplicable al cheque es la vigente al momento de su presentación o clearing..." — Extracto interpretativo del Código Civil y Comercial.
+  "Las acciones cambiarias de regreso del portador contra los endosantes, el librador y los otros obligados prescriben al año contado desde la expiración del plazo para la presentación..." — Artículo 51 de la Ley de Cheques N° 24.452.
 </LegalQuote>
+
+---
+
+## La Vía Judicial Ejecutiva
+
+Cuando el clearing bancario falla y el deudor no regulariza el pago tras recibir la intimación por carta documento, se abre la etapa judicial ejecutiva comercial.
+
+### Características del Juicio Ejecutivo:
+1. **La Demanda**: Se presenta el cheque original con la constancia de rechazo adherida (o el CAC del ECHEQ).
+2. **El Embargo**: Antes de citar a declarar al demandado, el juez comercial ordena el **embargo preventivo de fondos en cuentas bancarias** y el registro de embargos en la Propiedad Inmueble y Automotor del deudor.
+3. **Sentencia de Remate**: Una vez trabados los embargos, el deudor es notificado para que oponga excepciones (únicamente falsedad de firma, pago total acreditado por escrito o prescripción del plazo de 1 año). Si no opone excepciones viables, el juez dicta la sentencia de remate ordenando transferir los fondos embargados o rematar los bienes para saldar la deuda más los intereses punitorios fijados en la sentencia.
+
+<ActionCTA 
+  title="Protegé tus cobranzas con ChequeAR"
+  description="No arriesgues la liquidez de tu negocio. Con ChequeAR podés analizar de manera preventiva e instantánea el score legal y comercial de cualquier emisor antes de aceptar sus cheques, reduciendo al mínimo el riesgo de juicios de cobro. ¡Operá con seguridad hoy!"
+/>

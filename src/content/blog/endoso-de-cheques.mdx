@@ -7,30 +7,108 @@ cluster: "riesgo-cheques"
 date: "2026-05-20"
 nivelRiesgo: "bajo"
 normativaAplicable: "Artículos 12 al 22 de la Ley de Cheques 24.452"
-solucionChequear: false
-fechaVerificacion: 2026-05-20
-tipoEsquema: "article"
+solucionChequear: true
+fechaVerificacion: 2026-06-21
+tipoEsquema: "faq"
 author: "Equipo Técnico ChequeAR"
 reviewedBy: "Asesoría Legal ChequeAR"
+preguntasFrecuentes:
+  - pregunta: "¿Cómo se endosa un cheque físico en Argentina?"
+    respuesta: "Para endosar un cheque, el beneficiario debe firmar de puño y letra el reverso del documento de forma transversal o vertical, aclarando su nombre completo, número de DNI o CUIT/CUIL, y dirección."
+  - pregunta: "¿Cuántos endosos admite un cheque de pago diferido?"
+    respuesta: "El cheque de pago diferido físico en Argentina admite hasta un límite máximo de 2 endosos antes de ser depositado o presentado al clearing bancario final."
+  - pregunta: "¿Cuál es la responsabilidad de quien endosa un cheque?"
+    respuesta: "Al endosar un cheque, transmitís la propiedad legal del título de crédito y te convertís en garante solidario del pago ante cualquier tenedor futuro del documento en caso de que sea rechazado por el banco."
 ---
 import RiskAlert from '../../components/mdx/RiskAlert.astro';
 import LegalQuote from '../../components/mdx/LegalQuote.astro';
 import UpdateBadge from '../../components/mdx/UpdateBadge.astro';
+import ActionCTA from '../../components/mdx/ActionCTA.astro';
 
 <UpdateBadge fecha={frontmatter.fechaVerificacion} normativa={frontmatter.normativaAplicable} />
 
 <RiskAlert nivel={frontmatter.nivelRiesgo}>
-  El endoso transmite la propiedad del cheque y convierte al endosante en garante solidario del pago. Asegurate de firmar correctamente para evitar rechazos de clearing.
+  El endoso transmite la propiedad del cheque y convierte al endosante en garante solidario del pago. Asegurate de firmar correctamente y de asentar todos los datos aclaratorios obligatorios para evitar rechazos en el clearing bancario por defectos formales.
 </RiskAlert>
 
-## Límites de Endosos en Argentina
+El **endoso de cheques** es el acto jurídico mediante el cual el beneficiario original de un cheque (el beneficiario que figura en el frente del documento) transmite la propiedad del título de crédito y todos los derechos emergentes de él a favor de otra persona física o jurídica (el endosatario). En la práctica mercantil argentina, esta operación permite que los cheques circulen de mano en mano, actuando casi como moneda de pago de deudas comerciales a plazo.
 
-El Banco Central establece límites estrictos a la cantidad de firmas o endosos que puede tener un cheque físico para evitar la evasión fiscal y el lavado:
+Sin embargo, el endoso no es una firma libre de consecuencias. Firmar el reverso de un cheque te convierte en responsable solidario de su pago ante cualquier tenedor posterior. Si el cheque resulta ser rechazado por falta de fondos, el tenedor puede optar por demandarte a vos directamente en lugar de buscar al emisor original.
 
-- **Cheque Común**: Admite hasta **1 endoso** (más el recibo al momento del cobro).
-- **Cheque de Pago Diferido**: Admite hasta **2 endosos**.
-- **ECHEQ (Cheque Electrónico)**: Admite hasta **99 endosos** por vía digital.
+En esta guía completa explicamos el marco legal del endoso de cheques en Argentina según la Ley N° 24.452, los datos obligatorios que debés consignar de puño y letra, los límites de endosos permitidos en cheques físicos y electrónicos (ECHEQ), y las responsabilidades jurídicas implícitas.
+
+---
+
+## Tipos de Endoso en Argentina
+
+Bajo la ley cambiaria argentina, el endoso debe ser **puro y simple**. Esto significa que no podés condicionar el cobro del cheque a una contraprestación futura (por ejemplo, escribir "pagadero solo si se entrega la mercadería" es nulo y la condición se tendrá por no escrita).
+
+Existen dos tipos principales de endoso según cómo se identifique al nuevo tenedor:
+
+### 1. Endoso Nominal (o Regular)
+Es el método más seguro. En él se especifica el nombre del nuevo beneficiario al cual se le transmite el cheque.
+* **Forma**: Se escribe el nombre del endosatario (ej. "Páguese a la orden de Juan Pérez") seguido de la firma, aclaración, CUIT/DNI y domicilio de quien transmite el cheque.
+* **Seguridad**: Si el cheque se extravía o es robado posteriormente, un tercero no podrá cobrarlo porque la serie de endosos requerirá obligatoriamente la firma de Juan Pérez para continuar circulando.
+
+### 2. Endoso en Blanco
+Ocurre cuando el endosante estampa únicamente su firma en el reverso del cheque, sin identificar a un beneficiario específico.
+* **Efecto**: El cheque se convierte jurídicamente en un cheque al portador. Cualquier persona que tenga el documento físico en su poder está legitimada para presentarlo al cobro o depositarlo.
+* **Riesgo**: Es altamente riesgoso porque facilita el cobro fraudulento en caso de pérdida de valores en la calle.
+
+---
+
+## Cómo Endosar un Cheque Físico Correctamente
+
+Para que el endoso sea válido en el clearing bancario nacional, debe realizarse en el reverso del cheque físico de forma vertical o transversal y debe contener de forma manuscrita los siguientes datos obligatorios:
+
+1. **Firma manuscrita**: El trazo autógrafo del beneficiario. Debe coincidir con la firma registrada en el banco si el endosante es el titular de la cuenta corriente.
+2. **Nombre y Apellido Completos** (o razón social de la firma comercial si se trata de un endoso corporativo).
+3. **CUIT, CUIL o DNI** del endosante.
+4. **Domicilio legal** o dirección comercial.
+5. **Número de Cuenta de Destino** (si se está depositando el valor en cuenta).
+
+Si falta la firma, el endoso no existe. Si falta alguno de los datos aclaratorios (como el CUIT o la aclaración de nombre), el banco receptor del depósito puede rechazar el clearing por el motivo formal "Defectos formales: Endoso incompleto o irregular".
+
+---
+
+## Límites de Endosos en Cheques Físicos y Digitales
+
+Para combatir el lavado de dinero y la evasión fiscal en transacciones comerciales informales, el Banco Central de la República Argentina (BCRA) establece restricciones estrictas al número de endosos permitidos:
+
+* **Cheque Común Físico**: Admite únicamente **1 endoso** (la firma de quien lo transfiere) más la firma de quien lo presenta al cobro o depósito en la ventanilla/cajero del banco.
+* **Cheque de Pago Diferido (CPD) Físico**: Admite un máximo de **2 endosos** correlativos antes de su presentación final al clearing.
+* **ECHEQ (Cheque Electrónico)**: El formato digital elimina los límites físicos del papel. Un ECHEQ emitido con carácter comercial estándar permite realizar hasta **99 endosos** correlativos de forma 100% electrónica desde el home banking.
 
 <LegalQuote normativa={frontmatter.normativaAplicable}>
-  "El endoso debe ser puro y simple. Toda condición a la que esté subordinado se tendrá por no escrita. El endoso parcial es nulo..." — Artículo 15 de la Ley de Cheques.
+  "El endosante responde del pago del cheque, salvo cláusula en contrario. Puede prohibir un nuevo endoso, y en este caso no responderá ante las personas a quienes el cheque sea endosado posteriormente..." — Artículo 22 de la Ley de Cheques N° 24.452.
 </LegalQuote>
+
+---
+
+## La Responsabilidad Cambiaria: Solidaridad de Firmas (Art. 22)
+
+Uno de los aspectos más críticos y menos comprendidos del endoso es la **solidaridad cambiaria**. 
+
+Cuando firmás un cheque en el dorso para pagarle a un proveedor, no te estás desentendiendo del problema. La Ley de Cheques establece que **todos los firmantes de un cheque (librador, endosantes y avalistas) responden solidariamente** ante el tenedor legítimo del título.
+
+* **El Escenario de Rechazo**: Si tu proveedor deposita el cheque que le diste y este rebota por falta de fondos, el proveedor (el tenedor actual) no está obligado a demandar civilmente al emisor del cheque. Puede iniciar la acción ejecutiva de cobro directamente contra vos o contra cualquiera de los endosantes que firmaron con anterioridad.
+* **Derecho de Repetición**: Si sos demandado y pagás el cheque rechazado, adquirís el derecho de "repetición" cambiaria. Podés iniciar un reclamo judicial contra los endosantes anteriores a vos en la cadena cambiaria y contra el librador original para recuperar tu dinero.
+
+---
+
+## Cláusulas Especiales del Endoso
+
+### La Cláusula "No a la Orden"
+Si el librador estampa la leyenda "No a la orden" en el frente del cheque, significa que el cheque **no es endosable**.
+* Solo puede ser cobrado o depositado por el beneficiario original indicado en el frente.
+* Si el beneficiario original intenta endosarlo a un tercero, el banco rechazará el depósito. La única forma de transmitir un cheque "No a la orden" es mediante una cesión ordinaria de derechos civiles (un trámite notarial mucho más engorroso).
+
+### La Cláusula "Sin Garantía" (o Sin Responsabilidad)
+Un endosante puede escribir junto a su firma la leyenda "Sin garantía" o "Sin mi responsabilidad".
+* **Efecto legal**: Libera a ese endosante de la obligación solidaria de responder por el pago en caso de que el cheque sea rechazado por el banco.
+* **Impacto comercial**: La inmensa mayoría de las empresas y comercios rechazan recibir cheques con esta cláusula porque disminuye la seguridad jurídica del instrumento de cobro.
+
+<ActionCTA 
+  title="Asegurá tu cadena de pagos con ChequeAR"
+  description="Recibir cheques endosados de terceros es útil, pero aumenta el riesgo de clearing. Con ChequeAR podés verificar en un clic los antecedentes de pago del emisor y del firmante antes de aceptar cheques comerciales en tu negocio. ¡Protegé tu liquidez hoy!"
+/>
