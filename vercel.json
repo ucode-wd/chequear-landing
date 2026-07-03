@@ -1,0 +1,379 @@
+{
+  "redirects": [
+    {
+      "source": "/blog/aceptar-cheque-cliente-nuevo",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aceptar-cheque-empresa-desconocida",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aceptar-cheque-endosado",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aceptar-cheque-garantia",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aceptar-cheque-tercero",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-llenar-cheque-correctamente",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/errores-aceptar-cheques",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/firma-cheque-incorrecta",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/riesgos-aceptar-cheques-terceros",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/verificar-cheque-antes-aceptar",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/verificar-fondos-cheque",
+      "destination": "/blog/guia-aceptacion-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-180-dias-riesgo",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-360-dias-conviene",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-90-dias-riesgo",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-comun-vs-diferido",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-diferido-180-dias",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-diferido-90-dias",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-pago-diferido-explicado",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/negociar-cheques-diferidos",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tasa-descuento-cheque-diferido",
+      "destination": "/blog/cheques-pago-diferido",
+      "permanent": true
+    },
+    {
+      "source": "/blog/banco-rechaza-cheque-motivos",
+      "destination": "/blog/cheques-rechazados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-rebotado-como-saber",
+      "destination": "/blog/cheques-rechazados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-rechazado-afecta-veraz",
+      "destination": "/blog/cheques-rechazados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-rechazado-como-reclamar",
+      "destination": "/blog/cheques-rechazados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-rechazado-cuantas-veces",
+      "destination": "/blog/cheques-rechazados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-rechazado-que-significa",
+      "destination": "/blog/cheques-rechazados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/consultar-cheques-rechazados-bcra",
+      "destination": "/blog/cheques-rechazados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/multa-cheque-rechazado",
+      "destination": "/blog/cheques-rechazados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-sin-fondos-que-hacer",
+      "destination": "/blog/cheque-sin-fondos-consecuencias",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rechazo-cheque-sin-fondos-bcra",
+      "destination": "/blog/cheque-sin-fondos-consecuencias",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-cuenta-cerrada",
+      "destination": "/blog/cheques-extraviados-denunciados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-denunciado-que-significa",
+      "destination": "/blog/cheques-extraviados-denunciados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-denunciado-seguro",
+      "destination": "/blog/cheques-extraviados-denunciados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-extraviado-pasos",
+      "destination": "/blog/cheques-extraviados-denunciados",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-al-portador-riesgos",
+      "destination": "/blog/endoso-de-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-endosado-varias-veces",
+      "destination": "/blog/endoso-de-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-no-a-la-orden",
+      "destination": "/blog/endoso-de-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/endoso-cheque-limite-firmas",
+      "destination": "/blog/endoso-de-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/endoso-cheques-guia",
+      "destination": "/blog/endoso-de-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/responsabilidad-endosante-cheque",
+      "destination": "/blog/endoso-de-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/diferencia-cheque-echeq",
+      "destination": "/blog/echeq-electronico",
+      "permanent": true
+    },
+    {
+      "source": "/blog/echeq-cheque-electronico",
+      "destination": "/blog/echeq-electronico",
+      "permanent": true
+    },
+    {
+      "source": "/blog/analisis-riesgo-cheques",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/analizar-riesgo-cheque",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/causas-rechazo-cheques",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/central-deudores-bcra",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-cancelado-que-significa",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-certificado-que-es",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-comercio-minorista",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-cruzado-explicado",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-empresa-quiebra",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-garantia-alquiler",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-historial-rechazos",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-mal-llenado-rechazo",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-monto-alto-precauciones",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-operacion-inmobiliaria",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-persona-veraz",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-posdatado-legal",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-posdatado-riesgo",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-proveedor-nuevo",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-sector-agro",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-sector-construccion",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-sin-fecha-validez",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheque-vencido-se-puede-cobrar",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheques-pymes-argentina",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/clearing-cheques-tiempos",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cobrar-cheque-ventanilla",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/consultar-cuit-emisor-cheque",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cuenta-corriente-requisitos-cheques",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fraude-cheques-prevencion",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/guia-cheques-argentina",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/inhibicion-librar-cheques",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/plazos-legales-cheques",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/proteger-negocio-cheques",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/protesto-cheque-que-es",
+      "destination": "/blog/guia-legal-cheques",
+      "permanent": true
+    }
+  ]
+}
