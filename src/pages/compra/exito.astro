@@ -88,9 +88,22 @@ import "../../styles/global.css";
                     clearInterval(interval);
                     if (isMobile) {
                         const start = Date.now();
+                        let fallbackTimeout;
+
+                        // Cancel fallback redirection if app successfully opens and page becomes hidden
+                        const clearFallback = () => {
+                            clearTimeout(fallbackTimeout);
+                            window.removeEventListener("pagehide", clearFallback);
+                            window.removeEventListener("visibilitychange", clearFallback);
+                        };
+
+                        window.addEventListener("pagehide", clearFallback);
+                        window.addEventListener("visibilitychange", clearFallback);
+
                         window.location = scheme;
-                        setTimeout(() => {
-                            if (Date.now() - start < 2000) {
+
+                        fallbackTimeout = setTimeout(() => {
+                            if (document.visibilityState !== "hidden" && Date.now() - start < 2000) {
                                 window.location = fallback;
                             }
                         }, 1500);
