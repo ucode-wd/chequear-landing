@@ -22,10 +22,10 @@ import Footer from "../components/Footer.astro";
             rel="stylesheet"
         />
         <meta name="generator" content={Astro.generator} />
-        <title>ChequeAR - Verificá Cheques en segundos</title>
+        <title>ChequeAR - Consulta de Cheques por CUIT y Riesgo Crediticio</title>
         <meta
             name="description"
-            content="La mejor aplicación para consultar cheques rechazados y riesgo crediticio en Argentina. Escaneá cheques, consultá el BCRA y operá con seguridad."
+            content="Consultá cheques rechazados e historial crediticio por CUIT en segundos. Accedé a datos oficiales del BCRA y ARCA. Evitá estafas y operá seguro."
         />
         <link rel="canonical" href="https://chequearapp.com.ar" />
 
@@ -34,11 +34,11 @@ import Footer from "../components/Footer.astro";
         <meta property="og:url" content="https://chequearapp.com.ar" />
         <meta
             property="og:title"
-            content="ChequeAR - Verificá Cheques en segundos"
+            content="ChequeAR - Consulta de Cheques por CUIT y Riesgo"
         />
         <meta
             property="og:description"
-            content="Consultá el historial de cheques rechazados en el BCRA y ARCA. Escaneá y verificá riesgos en segundos."
+            content="Consultá el historial de cheques rechazados en el BCRA y ARCA. Escaneá y verificá riesgos en segundos por CUIT."
         />
         <meta
             property="og:image"
@@ -51,11 +51,11 @@ import Footer from "../components/Footer.astro";
         <meta property="twitter:url" content="https://chequearapp.com.ar" />
         <meta
             property="twitter:title"
-            content="ChequeAR - Verificá Cheques en segundos"
+            content="ChequeAR - Consulta de Cheques por CUIT"
         />
         <meta
             property="twitter:description"
-            content="Consultá el historial de cheques rechazados en el BCRA y ARCA. Escaneá y verificá riesgos en segundos."
+            content="Consultá el historial de cheques rechazados en el BCRA y ARCA. Escaneá y verificá riesgos por CUIT."
         />
         <meta
             property="twitter:image"
@@ -66,11 +66,11 @@ import Footer from "../components/Footer.astro";
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
             rel="stylesheet"
         />
-        <!-- Schema Data: Software & FAQ -->
+        <!-- Schema Data: SoftwareApplication -->
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": ["SoftwareApplication", "FAQPage"],
+                "@type": "SoftwareApplication",
                 "name": "ChequeAR",
                 "applicationCategory": "FinanceApplication",
                 "operatingSystem": "iOS, Android",
@@ -79,7 +79,14 @@ import Footer from "../components/Footer.astro";
                     "@type": "Offer",
                     "price": "0",
                     "priceCurrency": "ARS"
-                },
+                }
+            }
+        </script>
+        <!-- Schema Data: FAQPage -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
                 "mainEntity": [
                     {
                         "@type": "Question",

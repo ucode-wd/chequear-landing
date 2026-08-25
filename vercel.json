@@ -151,23 +151,33 @@
       "permanent": true
     },
     {
+      "source": "/blog/cheque-sin-fondos",
+      "destination": "/blog/cheque-sin-fondos-consecuencias",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cheques-extraviados-denunciados",
+      "destination": "/blog/cheque-denunciado-guia",
+      "permanent": true
+    },
+    {
       "source": "/blog/cheque-cuenta-cerrada",
-      "destination": "/blog/cheques-extraviados-denunciados",
+      "destination": "/blog/cheque-denunciado-guia",
       "permanent": true
     },
     {
       "source": "/blog/cheque-denunciado-que-significa",
-      "destination": "/blog/cheques-extraviados-denunciados",
+      "destination": "/blog/cheque-denunciado-guia",
       "permanent": true
     },
     {
       "source": "/blog/cheque-denunciado-seguro",
-      "destination": "/blog/cheques-extraviados-denunciados",
+      "destination": "/blog/cheque-denunciado-guia",
       "permanent": true
     },
     {
       "source": "/blog/cheque-extraviado-pasos",
-      "destination": "/blog/cheques-extraviados-denunciados",
+      "destination": "/blog/cheque-denunciado-guia",
       "permanent": true
     },
     {

@@ -1,0 +1,104 @@
+---
+import "../../styles/global.css";
+---
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <!-- Google Fonts - Sora -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <title>Pago Exitoso | ChequeAR</title>
+    </head>
+    <body class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-white text-primary flex flex-col min-h-screen">
+        <!-- Gradients base para unificar todo el canvas -->
+        <div class="fixed inset-0 pointer-events-none -z-50 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-vibrant/8 via-primary-light/40 to-white"></div>
+        
+        <main class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-16">
+            <div class="w-full max-w-md bg-white border border-primary-soft/30 rounded-3xl p-8 sm:p-10 shadow-[0_15px_40px_-15px_rgba(25,44,95,0.1)] text-center relative overflow-hidden">
+                <!-- Decorative top color accent line -->
+                <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary-vivid to-accent-brand"></div>
+
+                <div class="w-20 h-20 rounded-full bg-accent-brand/10 flex items-center justify-center mx-auto mb-6">
+                    <!-- Success Icon -->
+                    <svg class="h-10 w-10 text-accent-brand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"></path>
+                    </svg>
+                </div>
+                
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-primary mb-3">
+                    ¡Pago exitoso!
+                </h1>
+                
+                <p class="text-primary/70 leading-relaxed font-light mb-8">
+                    Tu pago se ha procesado correctamente. Muchas gracias, ya podés seguir usando la aplicación.
+                </p>
+
+                <!-- Action Button for manual redirection -->
+                <a id="action-btn" href="https://app.chequearapp.com.ar" class="w-full h-12 inline-flex items-center justify-center rounded-full bg-primary-vibrant text-base font-semibold text-white shadow-[0_4px_20px_-4px_rgba(25,44,95,0.45)] hover:shadow-[0_8px_30px_-4px_rgba(25,44,95,0.55)] hover:bg-primary-vibrant/90 transition-all duration-300">
+                    Ir a la aplicación
+                </a>
+
+                <div class="countdown mt-6 text-sm font-semibold text-primary/50">
+                    Abriendo la app en 3 segundos
+                </div>
+            </div>
+        </main>
+
+        <script type="text/javascript">
+            const actionBtn = document.getElementById("action-btn");
+            const countdownEl = document.querySelector(".countdown");
+            let seconds = 3;
+
+            const scheme = "chequearapp://(protected)/profile";
+            let fallback = "";
+            let isMobile = false;
+
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(ua)) {
+                isMobile = true;
+                fallback = "https://play.google.com/store/apps/details?id=com.ucode.chequear";
+            } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+                isMobile = true;
+                fallback = "https://apps.apple.com/ar/app/chequear-verific%C3%A1-cheques/id6756928345?l=en-GB";
+            } else {
+                fallback = "https://app.chequearapp.com.ar";
+            }
+
+            // Update action button href to the appropriate fallback/store link
+            if (actionBtn) {
+                actionBtn.href = isMobile ? scheme : fallback;
+                actionBtn.textContent = isMobile ? "Abrir en la App" : "Ir a la aplicación web";
+            }
+
+            const interval = setInterval(() => {
+                seconds--;
+                if (seconds > 0) {
+                    countdownEl.textContent = isMobile 
+                        ? `Abriendo la app en ${seconds} segundos` 
+                        : `Redirigiendo a la web en ${seconds} segundos`;
+                } else {
+                    clearInterval(interval);
+                    if (isMobile) {
+                        const start = Date.now();
+                        window.location = scheme;
+                        setTimeout(() => {
+                            if (Date.now() - start < 2000) {
+                                window.location = fallback;
+                            }
+                        }, 1500);
+                    } else {
+                        window.location = fallback;
+                    }
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>

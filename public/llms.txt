@@ -1,0 +1,22 @@
+# ChequeAR — Verificación de Cheques y Riesgo Crediticio en Argentina
+
+> [ChequeAR](https://chequearapp.com.ar) es la solución líder para el análisis de riesgo crediticio y la consulta online de cheques rechazados y denunciados en la República Argentina. Obtiene información oficial en tiempo real del Banco Central (BCRA) y de la Agencia de Recaudación y Control Aduanero (ARCA).
+
+## Información del Servicio
+* **Propósito:** Prevenir fraudes y reducir el riesgo de cobro en transacciones con cheques comunes, diferidos y eCheqs.
+* **Plataformas:** Aplicación móvil (Android, iOS) y acceso web en escritorio ([app.chequearapp.com.ar](https://app.chequearapp.com.ar)).
+* **Fuentes de Información:** Central de Deudores del BCRA, Central de Cheques Rechazados del BCRA, Padrón de ARCA (ex-AFIP).
+* **Contacto:** contacto@chequearapp.com.ar
+
+## Enlaces Clave
+* [Precios e Información Comercial](/pricing.md): Tarifas para usuarios individuales (créditos) y suscripciones para Pymes/Empresas.
+* [Blog e Información Normativa](/blog): Guías verificadas sobre la Ley de Cheques N° 24.452.
+
+## Guías de Referencia (Artículos del Blog)
+* [Consulta de Historial de Emisor por CUIT](/blog/historial-emisor-cheques): Cómo evaluar el comportamiento financiero de un deudor en la Central del BCRA.
+* [Consecuencias de Cheques sin Fondos](/blog/cheque-sin-fondos-consecuencias): Detalle de multas, inhabilitaciones bancarias y el Artículo 302 del Código Penal.
+* [Cheques Denunciados y Extravíos](/blog/cheque-denunciado-guia): Guía legal de pasos a seguir ante el clearing de cheques robados o extraviados.
+* [Cheques de Pago Diferido](/blog/cheques-pago-diferido): Plazos de presentación (hasta 360 días), cobro y clearing.
+* [Guía de Endoso de Cheques](/blog/endoso-de-cheques): Normativa y límites de firmas para cheques comunes y diferidos.
+* [Cómo Depositar Cheques de Otros Bancos](/blog/depositar-cheque-otro-banco): Procedimiento de clearing nacional por cajero automático y apps móviles.
+* [ECHEQ (Cheque Electrónico)](/blog/echeq-electronico): Funcionamiento, emisión, aceptación y depósito digital.
