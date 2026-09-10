@@ -4,6 +4,8 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Features from "../components/Features.astro";
 import HowItWorks from "../components/HowItWorks.astro";
+import Pricing from "../components/Pricing.astro";
+import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
@@ -66,6 +68,34 @@ import Footer from "../components/Footer.astro";
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
             rel="stylesheet"
         />
+
+        <!-- ChequeAR A/B Testing Init (Zero-flicker) -->
+        <script is:inline>
+            (function() {
+                var urlParams = new URLSearchParams(window.location.search);
+                var forced = urlParams.get('variant') || urlParams.get('ab');
+                var variant = 'A';
+                
+                if (forced && (forced.toUpperCase() === 'B' || forced.toUpperCase() === 'A')) {
+                    variant = forced.toUpperCase();
+                    try { localStorage.setItem('chequear_ab_pricing', variant); } catch(e){}
+                } else {
+                    try {
+                        var saved = localStorage.getItem('chequear_ab_pricing');
+                        if (saved === 'A' || saved === 'B') {
+                            variant = saved;
+                        } else {
+                            variant = Math.random() < 0.5 ? 'A' : 'B';
+                            localStorage.setItem('chequear_ab_pricing', variant);
+                        }
+                    } catch(e) {
+                        variant = Math.random() < 0.5 ? 'A' : 'B';
+                    }
+                }
+                document.documentElement.classList.add('ab-variant-' + variant.toLowerCase());
+                document.documentElement.setAttribute('data-ab-variant', variant);
+            })();
+        </script>
         <!-- Schema Data: SoftwareApplication -->
         <script type="application/ld+json">
             {
@@ -76,9 +106,11 @@ import Footer from "../components/Footer.astro";
                 "operatingSystem": "iOS, Android",
                 "description": "Aplicación para el análisis de riesgo crediticio y consultas online de cheques rechazados en el Banco Central de la República Argentina.",
                 "offers": {
-                    "@type": "Offer",
-                    "price": "0",
-                    "priceCurrency": "ARS"
+                    "@type": "AggregateOffer",
+                    "priceCurrency": "ARS",
+                    "lowPrice": "5000",
+                    "highPrice": "310000",
+                    "offerCount": "9"
                 }
             }
         </script>
@@ -131,6 +163,8 @@ import Footer from "../components/Footer.astro";
             <Hero />
             <Features />
             <HowItWorks />
+            <Pricing />
+            <FAQ />
             <CTA />
             <Contact />
         </main>
@@ -148,7 +182,10 @@ import Footer from "../components/Footer.astro";
         </script>
         <script>
             import { inject } from "@vercel/analytics";
+            import { initABTracking } from "../scripts/abTracker";
+
             inject();
+            initABTracking();
         </script>
     </body>
 </html>

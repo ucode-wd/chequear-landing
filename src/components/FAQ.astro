@@ -1,0 +1,110 @@
+---
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+const faqs: FAQItem[] = [
+    {
+        question: "¿De dónde obtiene ChequeAR la información?",
+        answer: "Consultamos directamente la Central de Deudores y la Central de Cheques Rechazados del Banco Central (BCRA), y el padrón de ARCA (ex AFIP). Son fuentes oficiales en tiempo real.",
+    },
+    {
+        question: "¿Cuántas personas de mi empresa pueden usar ChequeAR?",
+        answer: "Los planes empresariales incluyen múltiples usuarios. Todo tu equipo puede verificar cheques y acceder al mismo historial de consultas.",
+    },
+    {
+        question: "¿Qué pasa si supero los análisis de mi plan?",
+        answer: "Seguís operando sin interrupción. Las consultas excedentes se cobran con un 10% de recargo sobre el precio por cheque de tu plan.",
+    },
+    {
+        question: "¿Emiten factura A o B?",
+        answer: "Sí. Todos los planes empresariales incluyen facturación institucional según tu condición fiscal.",
+    },
+    {
+        question: "¿Funciona con eCheqs (cheques electrónicos)?",
+        answer: "Sí. ChequeAR analiza cheques físicos (escaneando con la cámara o ingresando datos) y eCheqs electrónicos.",
+    },
+    {
+        question: "¿Puedo cancelar en cualquier momento?",
+        answer: "Sí. No hay contratos anuales ni permanencia mínima. Cancelás cuando quieras.",
+    },
+];
+---
+
+<section id="faq" class="relative py-24 sm:py-32 w-full">
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-24 bg-gradient-to-b from-primary/10 to-transparent"
+    >
+    </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 mt-12">
+        <div class="mx-auto max-w-2xl text-center" data-aos="fade-up">
+            <span
+                class="block text-xs font-semibold tracking-[0.2em] uppercase text-primary-vibrant"
+            >
+                PREGUNTAS FRECUENTES
+            </span>
+            <h2 class="mt-6 text-3xl font-medium tracking-tight sm:text-5xl">
+                Respuestas rápidas
+            </h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto mt-16 sm:mt-20">
+            {
+                faqs.map((faq) => (
+                    <div class="border-b border-primary/5">
+                        <button class="faq-toggle w-full flex items-center justify-between py-6 text-left group">
+                            <span class="text-base font-medium text-primary group-hover:text-primary-vibrant transition-colors duration-300 pr-8">
+                                {faq.question}
+                            </span>
+                            <svg
+                                class="faq-chevron h-5 w-5 text-primary/30 transition-transform duration-300 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M19 9l-7 7-7-7"
+                                />
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div>
+                                <p class="pb-6 text-sm leading-relaxed text-primary/50 font-light">
+                                    {faq.answer}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.faq-toggle').forEach((button) => {
+        button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            const chevron = button.querySelector('.faq-chevron');
+            const isOpen = answer?.classList.contains('is-open');
+
+            // Close all others
+            document.querySelectorAll('.faq-answer.is-open').forEach((openAnswer) => {
+                openAnswer.classList.remove('is-open');
+                openAnswer.previousElementSibling
+                    ?.querySelector('.faq-chevron')
+                    ?.classList.remove('rotate-180');
+            });
+
+            // Toggle current
+            if (!isOpen) {
+                answer?.classList.add('is-open');
+                chevron?.classList.add('rotate-180');
+            }
+        });
+    });
+</script>

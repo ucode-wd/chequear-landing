@@ -248,3 +248,32 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
   background-color: transparent !important;
 }
+
+/* =========================================================
+   A/B Test Utility Classes
+   Variant A = With Prices (Default)
+   Variant B = Without Prices / Custom Quotation
+   ========================================================= */
+.ab-only-b,
+.ab-flex-b,
+.ab-inline-b {
+  display: none !important;
+}
+
+html.ab-variant-b .ab-only-a,
+html.ab-variant-b .ab-flex-a,
+html.ab-variant-b .ab-inline-a {
+  display: none !important;
+}
+
+html.ab-variant-b .ab-only-b {
+  display: block !important;
+}
+
+html.ab-variant-b .ab-flex-b {
+  display: flex !important;
+}
+
+html.ab-variant-b .ab-inline-b {
+  display: inline-flex !important;
+}

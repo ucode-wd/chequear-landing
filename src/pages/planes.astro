@@ -1,0 +1,300 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Google Fonts - Sora -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <title>Planes y Precios para Empresas | ChequeAR</title>
+        <meta
+            name="description"
+            content="Conocé en detalle todos los planes corporativos y packs de ChequeAR. Matriz comparativa, facturación A/B, multiusuario e integraciones API."
+        />
+        <link rel="canonical" href="https://chequearapp.com.ar/planes" />
+
+        <!-- ChequeAR A/B Testing Init (Zero-flicker) -->
+        <script is:inline>
+            (function() {
+                var urlParams = new URLSearchParams(window.location.search);
+                var forced = urlParams.get('variant') || urlParams.get('ab');
+                var variant = 'A';
+                
+                if (forced && (forced.toUpperCase() === 'B' || forced.toUpperCase() === 'A')) {
+                    variant = forced.toUpperCase();
+                    try { localStorage.setItem('chequear_ab_pricing', variant); } catch(e){}
+                } else {
+                    try {
+                        var saved = localStorage.getItem('chequear_ab_pricing');
+                        if (saved === 'A' || saved === 'B') {
+                            variant = saved;
+                        } else {
+                            variant = Math.random() < 0.5 ? 'A' : 'B';
+                            localStorage.setItem('chequear_ab_pricing', variant);
+                        }
+                    } catch(e) {
+                        variant = Math.random() < 0.5 ? 'A' : 'B';
+                    }
+                }
+                document.documentElement.classList.add('ab-variant-' + variant.toLowerCase());
+                document.documentElement.setAttribute('data-ab-variant', variant);
+            })();
+        </script>
+    </head>
+    <body class="antialiased selection:bg-accent selection:text-white overflow-x-hidden bg-white text-primary">
+        <!-- Gradients base -->
+        <div class="fixed inset-0 pointer-events-none -z-50 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-vibrant/8 via-primary-light/40 to-white"></div>
+        
+        <Header />
+
+        <main class="pt-28 pb-20 w-full flex flex-col items-center">
+            
+            <!-- Hero Header -->
+            <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8 pb-16">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-vibrant/10 text-primary-vibrant text-xs font-semibold uppercase tracking-wider mb-4">
+                    Transparencia comercial
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-primary leading-[1.1]">
+                    Planes diseñados para proteger tu <span class="bg-gradient-to-r from-primary-vivid via-primary-vibrant to-accent-brand bg-clip-text text-transparent">capital de trabajo</span>
+                </h1>
+                <p class="mt-6 text-lg sm:text-xl text-primary/70 font-light max-w-3xl mx-auto leading-relaxed">
+                    Elegí la capacidad mensual ideal para tu volumen de cobranzas. Todos los planes empresariales incluyen cuentas multiusuario y facturación institucional.
+                </p>
+            </section>
+
+            <!-- Pricing Matrix Table Section -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="bg-white/80 backdrop-blur-md rounded-3xl border border-primary/15 shadow-[0_15px_50px_-20px_rgba(25,44,95,0.08)] overflow-hidden">
+                    
+                    <div class="p-6 sm:p-8 bg-primary/[0.02] border-b border-primary/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-primary tracking-tight">Matriz Comparativa de Planes</h2>
+                            <p class="text-sm text-primary/60 font-light">Valores en Pesos Argentinos (ARS). Renovación mensual con créditos restablecidos.</p>
+                        </div>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded-full bg-accent-brand/15 text-accent border border-accent-brand/30">
+                            Precios Vigentes Septiembre 2026
+                        </span>
+                    </div>
+
+                    <!-- Responsive Table Wrapper -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[760px]">
+                            <thead>
+                                <tr class="border-b border-primary/10 bg-white">
+                                    <th class="p-5 font-semibold text-sm text-primary/70 w-1/4">Característica</th>
+                                    <th class="p-5 font-bold text-base text-primary text-center">Profesional</th>
+                                    <th class="p-5 font-bold text-base text-accent-brand bg-accent-brand/5 text-center border-x border-accent-brand/20">
+                                        <div class="inline-flex items-center gap-1">
+                                            <span>PyME</span>
+                                            <span class="text-[10px] bg-accent-brand text-white px-1.5 py-0.5 rounded font-bold uppercase">Popular</span>
+                                        </div>
+                                    </th>
+                                    <th class="p-5 font-bold text-base text-primary text-center">Empresarial</th>
+                                    <th class="p-5 font-bold text-base text-primary text-center">Corporativo</th>
+                                    <th class="p-5 font-bold text-base text-primary text-center">Enterprise</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-primary/5 text-sm">
+                                <!-- Capacidad -->
+                                <tr class="hover:bg-primary/[0.01]">
+                                    <td class="p-5 font-medium text-primary">Análisis mensuales incluidos</td>
+                                    <td class="p-5 text-center text-primary/80 font-semibold">100</td>
+                                    <td class="p-5 text-center text-primary font-bold bg-accent-brand/5 border-x border-accent-brand/20">250</td>
+                                    <td class="p-5 text-center text-primary/80 font-semibold">500</td>
+                                    <td class="p-5 text-center text-primary/80 font-semibold">1.000</td>
+                                    <td class="p-5 text-center text-primary/80 font-semibold">Ilimitado / Custom</td>
+                                </tr>
+                                <!-- Precio Mensual -->
+                                <tr class="hover:bg-primary/[0.01] bg-primary/[0.015]">
+                                    <td class="p-5 font-medium text-primary">Inversión mensual</td>
+                                    <td class="p-5 text-center text-primary font-extrabold text-base">$38.000</td>
+                                    <td class="p-5 text-center text-primary font-extrabold text-lg bg-accent-brand/5 border-x border-accent-brand/20 text-accent">$90.000</td>
+                                    <td class="p-5 text-center text-primary font-extrabold text-base">$170.000</td>
+                                    <td class="p-5 text-center text-primary font-extrabold text-base">$310.000</td>
+                                    <td class="p-5 text-center text-primary font-bold">A convenir</td>
+                                </tr>
+                                <!-- Precio por cheque -->
+                                <tr class="hover:bg-primary/[0.01]">
+                                    <td class="p-5 font-medium text-primary">Costo base por cheque</td>
+                                    <td class="p-5 text-center text-primary/70 font-medium">$380</td>
+                                    <td class="p-5 text-center text-accent font-bold bg-accent-brand/5 border-x border-accent-brand/20">$360</td>
+                                    <td class="p-5 text-center text-primary/70 font-medium">$340</td>
+                                    <td class="p-5 text-center text-primary/70 font-medium">$310</td>
+                                    <td class="p-5 text-center text-primary/70 font-medium">Tarifa preferencial</td>
+                                </tr>
+                                <!-- Excedentes -->
+                                <tr class="hover:bg-primary/[0.01]">
+                                    <td class="p-5 font-medium text-primary">Costo por cheque excedente (+10%)</td>
+                                    <td class="p-5 text-center text-primary/60">$418</td>
+                                    <td class="p-5 text-center text-primary/80 font-medium bg-accent-brand/5 border-x border-accent-brand/20">$396</td>
+                                    <td class="p-5 text-center text-primary/60">$374</td>
+                                    <td class="p-5 text-center text-primary/60">$341</td>
+                                    <td class="p-5 text-center text-primary/60">Sin recargo</td>
+                                </tr>
+                                <!-- Multiusuario -->
+                                <tr class="hover:bg-primary/[0.01]">
+                                    <td class="p-5 font-medium text-primary">Cuentas y usuarios concurrentes</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-bold bg-accent-brand/5 border-x border-accent-brand/20">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Ilimitados</td>
+                                </tr>
+                                <!-- Factura -->
+                                <tr class="hover:bg-primary/[0.01]">
+                                    <td class="p-5 font-medium text-primary">Facturación oficial (Factura A / B)</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-bold bg-accent-brand/5 border-x border-accent-brand/20">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                </tr>
+                                <!-- Historial -->
+                                <tr class="hover:bg-primary/[0.01]">
+                                    <td class="p-5 font-medium text-primary">Historial unificado de consultas</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-bold bg-accent-brand/5 border-x border-accent-brand/20">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                    <td class="p-5 text-center text-accent-brand font-medium">✓ Sí</td>
+                                </tr>
+                                <!-- CTA Row -->
+                                <tr class="bg-primary/[0.02]">
+                                    <td class="p-5 font-semibold text-primary">Comenzar ahora</td>
+                                    <td class="p-5 text-center">
+                                        <a href="/#contacto?plan=profesional" class="inline-flex h-10 items-center justify-center rounded-full border border-primary-vibrant/40 px-4 text-xs font-semibold text-primary-vibrant hover:bg-primary-vibrant/5 transition-all">
+                                            Solicitar
+                                        </a>
+                                    </td>
+                                    <td class="p-5 text-center bg-accent-brand/5 border-x border-accent-brand/20">
+                                        <a href="/#contacto?plan=pyme" class="inline-flex h-10 items-center justify-center rounded-full bg-primary-vibrant px-5 text-xs font-bold text-white shadow hover:bg-primary-vibrant/90 transition-all">
+                                            Solicitar PyME
+                                        </a>
+                                    </td>
+                                    <td class="p-5 text-center">
+                                        <a href="/#contacto?plan=empresarial" class="inline-flex h-10 items-center justify-center rounded-full border border-primary-vibrant/40 px-4 text-xs font-semibold text-primary-vibrant hover:bg-primary-vibrant/5 transition-all">
+                                            Solicitar
+                                        </a>
+                                    </td>
+                                    <td class="p-5 text-center">
+                                        <a href="/#contacto?plan=corporativo" class="inline-flex h-10 items-center justify-center rounded-full border border-primary-vibrant/40 px-4 text-xs font-semibold text-primary-vibrant hover:bg-primary-vibrant/5 transition-all">
+                                            Solicitar
+                                        </a>
+                                    </td>
+                                    <td class="p-5 text-center">
+                                        <a href="/#contacto?plan=enterprise" class="inline-flex h-10 items-center justify-center rounded-full bg-primary-vivid px-4 text-xs font-semibold text-white hover:bg-primary-vibrant transition-all">
+                                            Contactar
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- API Integration Section (Próximamente) -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-20">
+                <div class="rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.04] via-white to-amber-500/[0.03] p-8 sm:p-12">
+                    <div class="grid lg:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/20 text-xs font-semibold uppercase tracking-wider mb-2">
+                                Próximamente · En desarrollo
+                            </span>
+                            <h3 class="text-3xl font-bold text-primary mt-2">API para Mutuales, Financieras y ERPs</h3>
+                            <p class="mt-4 text-base text-primary/70 font-light leading-relaxed">
+                                Estamos desarrollando la API REST de ChequeAR para que puedas automatizar la verificación de cheques y antecedentes del BCRA directamente desde tus propios sistemas de gestión y cobranzas.
+                            </p>
+                            <div class="mt-6 space-y-3">
+                                <div class="flex items-center gap-3 text-sm text-primary/80">
+                                    <svg class="w-5 h-5 text-accent-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                    <span>Consultas programadas en milisegundos con scoring oficial</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-primary/80">
+                                    <svg class="w-5 h-5 text-accent-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                    <span>Alertas automáticas de cheques rechazados</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-end justify-center">
+                            <div class="bg-primary/95 text-white p-6 rounded-2xl w-full max-w-md shadow-xl border border-primary/20 font-mono text-xs overflow-x-auto">
+                                <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3 text-white/50">
+                                    <span>POST /v1/cheques/evaluar</span>
+                                    <span class="text-amber-400 font-semibold">EN DESARROLLO</span>
+                                </div>
+                                <pre class="text-emerald-300"><code>{`{
+  "cuit": "30-71123456-9",
+  "riesgo": "BAJO",
+  "cheques_rechazados": 0,
+  "deuda_bcra": "SITUACION 1 (Normal)"
+}`}</code></pre>
+                            </div>
+                            <a href="/#contacto?plan=api_waitlist" class="mt-6 flex h-12 items-center justify-center rounded-full border border-primary-vibrant/30 bg-primary-vibrant/5 hover:bg-primary-vibrant text-primary-vibrant hover:text-white px-8 text-sm font-semibold transition-all">
+                                Sumarme a la Lista de Espera API
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Packs Personales Section (Compact Bar) -->
+            <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-16">
+                <div class="rounded-2xl border border-primary/10 bg-white/70 backdrop-blur-md p-5 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-5">
+                    <div class="flex items-center gap-3 text-center sm:text-left flex-wrap sm:flex-nowrap justify-center sm:justify-start">
+                        <span class="px-2.5 py-1 rounded-lg bg-primary/5 text-primary-vibrant text-xs font-semibold tracking-wide shrink-0">
+                            Uso Ocasional
+                        </span>
+                        <p class="text-sm text-primary/70 font-light">
+                            <strong class="font-semibold text-primary">Packs prepagos por uso</strong> sin vencimiento. Desde $440 por cheque.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-2 flex-wrap justify-center">
+                        <div class="px-3 py-1.5 rounded-xl border border-primary/10 bg-white/80 text-xs">
+                            <span class="font-bold text-primary">10 cons.</span> <span class="font-semibold text-accent ml-1">$5.000</span>
+                        </div>
+                        <div class="px-3 py-1.5 rounded-xl border border-primary/10 bg-white/80 text-xs">
+                            <span class="font-bold text-primary">25 cons.</span> <span class="font-semibold text-accent ml-1">$12.000</span>
+                        </div>
+                        <div class="px-3 py-1.5 rounded-xl border border-primary/10 bg-white/80 text-xs">
+                            <span class="font-bold text-primary">50 cons.</span> <span class="font-semibold text-accent ml-1">$23.000</span>
+                        </div>
+                        <div class="px-3 py-1.5 rounded-xl border border-primary/10 bg-white/80 text-xs">
+                            <span class="font-bold text-primary">100 cons.</span> <span class="font-semibold text-accent ml-1">$44.000</span>
+                        </div>
+                    </div>
+
+                    <a href="https://app.chequearapp.com.ar" class="shrink-0 flex h-10 items-center justify-center rounded-full bg-primary-vibrant text-white px-6 text-xs font-semibold hover:bg-primary-vibrant/90 transition-all gap-1.5 shadow-sm">
+                        <span>Cargar en la Web App</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Contact Section Embedded -->
+            <div class="w-full mt-24">
+                <Contact />
+            </div>
+
+        </main>
+
+        <Footer />
+
+        <script>
+            import { initABTracking } from "../scripts/abTracker";
+            initABTracking();
+        </script>
+    </body>
+</html>

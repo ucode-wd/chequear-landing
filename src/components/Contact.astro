@@ -16,30 +16,28 @@
                 <h2
                     class="text-xs font-semibold tracking-[0.2em] uppercase text-primary-vibrant"
                 >
-                    Soporte
+                    Planes Enterprise
                 </h2>
                 <h3
                     class="mt-6 text-3xl sm:text-4xl font-medium tracking-tight text-primary"
                 >
-                    Contacto y soporte
+                    ¿Necesitás un plan a medida?
                 </h3>
 
                 <p
                     class="mt-8 text-lg leading-relaxed text-primary/60 font-light max-w-xl"
                 >
-                    ¿Necesitás una solución personalizada para tu empresa?
-                    Contactanos y te ayudamos a implementar <strong
-                        class="font-medium text-primary">ChequeAR</strong
-                    >
-                    en tu organización.
+                    Si tu empresa necesita más de 1.000 análisis por mes, API
+                    dedicada o condiciones especiales, armamos un plan
+                    <strong class="font-medium text-primary">Enterprise</strong>
+                    a tu medida.
                 </p>
 
                 <p
                     class="mt-4 text-base leading-relaxed text-primary/50 font-light max-w-xl"
                 >
-                    Podemos negociar planes y condiciones con empresas. También
-                    podés dejarnos feedback para mejorar la aplicación o
-                    presentar quejas o reclamos.
+                    También podés escribirnos por consultas sobre planes,
+                    soporte técnico o feedback.
                 </p>
 
                 <div class="mt-16 space-y-10">
@@ -150,6 +148,7 @@
                 data-aos-delay="200"
             >
                 <form id="contact-form" class="space-y-6">
+                    <input type="hidden" name="ab_variant" id="ab_variant_input" value="Variante A (Con Precios)" />
                     <div class="relative group">
                         <input
                             id="name"
@@ -186,17 +185,21 @@
                         <select
                             id="subject"
                             name="subject"
-                            class="peer w-full rounded-2xl border border-primary/10 bg-primary/5 px-6 pt-7 pb-3 text-base font-light text-primary focus:border-accent focus:bg-primary/10 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all shadow-sm appearance-none cursor-pointer [&>option]:bg-[#0d0914] [&>option]:text-primary"
+                            class="peer w-full rounded-2xl border border-primary/10 bg-primary/5 px-6 pt-7 pb-3 text-base font-light text-primary focus:border-accent focus:bg-primary/10 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all shadow-sm appearance-none cursor-pointer [&>option]:bg-white [&>option]:text-primary"
                         >
-                            <option value="general">Consulta general</option>
-                            <option value="negociacion"
-                                >Negociar plan para empresas</option
+                            <option value="contratar-plan"
+                                >Contratar plan empresarial</option
+                            >
+                            <option value="consulta-planes"
+                                >Consulta sobre planes</option
+                            >
+                            <option value="soporte"
+                                >Soporte técnico</option
                             >
                             <option value="feedback"
                                 >Feedback / Sugerencia</option
                             >
                             <option value="queja">Queja / Reclamo</option>
-                            <option value="soporte">Soporte técnico</option>
                         </select>
                         <label
                             for="subject"
@@ -320,18 +323,55 @@
                 publicKey: "eFPWngjeXPb2n3PuI",
             });
 
-            function toggleCompanyField() {
-                if (subjectSelect?.value === "negociacion") {
-                    companyField?.classList.remove("hidden");
-                    companyInput?.setAttribute("required", "true");
-                } else {
-                    companyField?.classList.add("hidden");
-                    companyInput?.removeAttribute("required");
-                    if (companyInput) companyInput.value = "";
+            function selectPlan(planName: string, capacity?: string) {
+                if (!subjectSelect) return;
+                subjectSelect.value = "contratar-plan";
+                toggleCompanyField();
+
+                const messageInput = document.getElementById("message") as HTMLTextAreaElement | null;
+                const companyEl = document.getElementById("company") as HTMLInputElement | null;
+
+                if (messageInput) {
+                    if (planName.toLowerCase().includes("enterprise") || planName.toLowerCase().includes("api")) {
+                        messageInput.value = `Hola, estamos interesados en una solución personalizada Enterprise / API para nuestra organización. Nos gustaría coordinar una demo o llamada.`;
+                    } else {
+                        const capText = capacity ? ` (${capacity} consultas/mes)` : "";
+                        messageInput.value = `Hola, nos interesa contratar el Plan ${planName}${capText} para nuestra empresa. Quisiera coordinar la activación y facturación.`;
+                    }
+                }
+
+                if (companyEl) {
+                    setTimeout(() => {
+                        companyEl.focus();
+                    }, 300);
                 }
             }
 
-            subjectSelect?.addEventListener("change", toggleCompanyField);
+            // Click listener for plan buttons with data-plan
+            document.querySelectorAll(".plan-trigger-btn").forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    const target = e.currentTarget as HTMLElement;
+                    const plan = target.getAttribute("data-plan") || "";
+                    const cap = target.getAttribute("data-plan-capacity") || "";
+                    if (plan) {
+                        selectPlan(plan, cap);
+                    }
+                });
+            });
+
+            // Pre-select if URL has param or hash (e.g., /#contacto?plan=pyme or ?plan=pyme)
+            const urlParams = new URLSearchParams(window.location.search);
+            let planParam = urlParams.get("plan");
+            if (!planParam && window.location.hash.includes("plan=")) {
+                const hashParts = window.location.hash.split("plan=");
+                if (hashParts[1]) planParam = hashParts[1].split("&")[0];
+            }
+
+            if (planParam) {
+                const formattedPlan = planParam.charAt(0).toUpperCase() + planParam.slice(1);
+                selectPlan(formattedPlan);
+            }
+
             toggleCompanyField();
 
             form?.addEventListener("submit", (e) => {
