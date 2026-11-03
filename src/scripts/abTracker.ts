@@ -48,6 +48,10 @@ export function initABTracking() {
             } catch (err) {
                 // Ignore analytics errors
             }
+
+            // Píxel de Meta: salida de la landing hacia la app o las tiendas
+            const fbq = (window as { fbq?: (...args: unknown[]) => void }).fbq;
+            fbq?.("trackCustom", "AppClick", { destination });
         });
     });
 

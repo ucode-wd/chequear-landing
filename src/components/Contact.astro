@@ -395,9 +395,16 @@
                 formMessage.className =
                     "hidden mt-4 text-center text-sm font-medium";
 
+                const subject = subjectSelect?.value ?? "";
+
                 emailjs
                     .sendForm("service_5oar7hb", "template_y6ezqlm", form)
                     .then(() => {
+                        // Píxel de Meta: solo las consultas comerciales cuentan como Lead
+                        const fbq = (window as { fbq?: (...args: unknown[]) => void }).fbq;
+                        if (subject === "contratar-plan" || subject === "consulta-planes") {
+                            fbq?.("track", "Lead", { content_name: subject });
+                        }
                         form.reset();
                         toggleCompanyField();
                         formMessage.textContent =
