@@ -1,10 +1,38 @@
+---
+const guias = [
+  { href: "/blog/historial-emisor-cheques", label: "Consulta de cheques por CUIT" },
+  { href: "/blog/cheque-denunciado-guia", label: "Cheques denunciados en el BCRA" },
+  { href: "/blog/cheques-rechazados", label: "Cheques rechazados: causales y multas" },
+  { href: "/blog/cheque-sin-fondos-consecuencias", label: "Cheque sin fondos: consecuencias" },
+  { href: "/blog/cheque-devuelto-diferencia-rechazado", label: "Cheque devuelto vs. rechazado" },
+  { href: "/blog/cheques-pago-diferido", label: "Cheques de pago diferido: plazos" },
+  { href: "/blog/depositar-cheque-otro-banco", label: "Cómo depositar un cheque de otro banco" },
+  { href: "/blog/echeq-electronico", label: "ECHEQ: cómo emitir y aceptar" },
+  { href: "/blog/endoso-de-cheques", label: "Cómo endosar un cheque" },
+  { href: "/blog/guia-aceptacion-cheques", label: "Checklist para aceptar un cheque" },
+  { href: "/blog/guia-legal-cheques", label: "Ley de Cheques 24.452" },
+  { href: "/planes", label: "Planes para empresas" },
+];
+---
 <footer
   class="relative w-full border-t border-primary/5 py-12 text-sm text-primary/50 font-light"
   data-aos="fade-up"
   data-aos-offset="0"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+    <nav aria-label="Guías sobre cheques" class="mb-10">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-widest text-primary/40">
+        Guías sobre cheques
+      </p>
+      <ul class="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+        {guias.map((g) => (
+          <li>
+            <a href={g.href} class="hover:text-accent transition-colors duration-300">{g.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="flex flex-col items-center justify-between gap-6 border-t border-primary/5 pt-8 sm:flex-row">
       <!-- Left: logo + copyright -->
       <div class="flex items-center gap-4">
         <img

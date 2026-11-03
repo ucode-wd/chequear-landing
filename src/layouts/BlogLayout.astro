@@ -66,16 +66,34 @@ const relatedArticles = allPosts
   )
   .slice(0, 3);
 
-// Guía principal
-const mainGuide = allPosts.find(
-  (p) => p.data.slug === "guia-cheques-argentina"
-);
+// Completa hasta 4 enlaces con otras guías (pilares primero), rotando el punto de
+// partida según el artículo actual para que todas reciban enlaces internos aunque
+// el clúster del artículo no tenga pilar propio.
+const MAX_RELATED_LINKS = 4;
+const pickedSlugs = new Set([
+  currentSlug,
+  ...(clusterPilar ? [clusterPilar.data.slug] : []),
+  ...relatedArticles.map((p) => p.data.slug),
+]);
+const fillerPosts = allPosts
+  .filter((p) => !pickedSlugs.has(p.data.slug))
+  .sort(
+    (a, b) =>
+      Number(b.data.category === "pilar") - Number(a.data.category === "pilar")
+  );
+const rotateBy = fillerPosts.length
+  ? allPosts.findIndex((p) => p.data.slug === currentSlug) % fillerPosts.length
+  : 0;
+const rotatedFillers = [
+  ...fillerPosts.slice(rotateBy),
+  ...fillerPosts.slice(0, rotateBy),
+];
 
 const relatedLinks = [
   ...(clusterPilar ? [clusterPilar] : []),
   ...relatedArticles,
-  ...(mainGuide && mainGuide.data.slug !== currentSlug ? [mainGuide] : []),
-];
+  ...rotatedFillers,
+].slice(0, MAX_RELATED_LINKS);
 
 // --- TOC from headings ---
 const tocItems = headings.filter((h) => h.depth <= 3);

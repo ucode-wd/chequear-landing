@@ -8,7 +8,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   trailingSlash: 'never',
   site: 'https://chequearapp.com.ar',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({ filter: (page) => !page.includes('/compra/') }),
+  ],
   vite: {
     plugins: [tailwindcss()]
   }
